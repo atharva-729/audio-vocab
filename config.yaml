@@ -1,0 +1,22 @@
+paths:
+  data: data
+  raw: data/raw                # downloaded datasets (gitignored)
+  index: index
+  runs: runs
+  reports: reports
+  sister: C:/Users/e416851/Documents/GitHub/podcast-vibe-search   # read-only
+
+models:
+  # Weights stay in the sister repo (not copied). Run with HF_HUB_OFFLINE=1.
+  gemma: C:/Users/e416851/Documents/GitHub/podcast-vibe-search/models/google--embeddinggemma-2
+  clap: C:/Users/e416851/Documents/GitHub/podcast-vibe-search/models/laion--clap-htsat-unfused
+  whisper: C:/Users/e416851/Documents/GitHub/podcast-vibe-search/models/Systran--faster-whisper-small
+  whisper_compute: int8
+
+llm:
+  # Only if Phase 5 synonym drafting needs it.
+  base_url: https://llmfoundry.straivedemo.com/openai/v1
+  model: gpt-5-mini
+  params: {reasoning_effort: minimal}
+  daily_budget_usd: 0.80
+  price_per_mtok: {input: 0.25, cached_input: 0.025, output: 2.00}  # gpt-5-mini list price
