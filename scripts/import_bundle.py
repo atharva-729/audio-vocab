@@ -1,9 +1,9 @@
-"""Unpack bundle.zip (built by fetch_bundle.py), verify checksums, and move files into place.
+"""Unpack bundle.zip (VocalSound + MTG-Jamendo shards), verify every checksum, and move files into data/raw/.
 
-  models/<org>--<name>/      model weights
-  data/audio_cache/raw/      trimmed episode audio (first 15 min, original codec)
-  data/rss/                  raw feed XML
-  data/bundle_episodes.json  feed metadata + picked episodes
+  data/raw/vocalsound/    vs_release_16k.zip, README.md, LICENSE
+  data/raw/mtg-jamendo/   raw_30s audio-low shard tars + checksum file
+
+Usage:  python scripts/import_bundle.py [path/to/bundle.zip]
 """
 import hashlib
 import json
@@ -40,22 +40,24 @@ def main(zip_path=ROOT / "bundle.zip"):
     if bad:
         sys.exit("checksum mismatch:\n  " + "\n  ".join(bad))
 
-    moves = {
-        staging / "models": ROOT / "models",
-        staging / "audio": ROOT / "data" / "audio_cache" / "raw",
-        staging / "feeds": ROOT / "data" / "rss",
-    }
-    for src, dst in moves.items():
+    expected = ["vocalsound/vs_release_16k.zip", "mtg-jamendo/raw_30s_audio-low-53.tar",
+                "mtg-jamendo/raw_30s_audio-low-86.tar"]
+    missing = [e for e in expected if e not in manifest]
+    if missing:
+        print("WARNING: expected files not in bundle (names may differ; check):\n  " + "\n  ".join(missing))
+
+    for sub in ("vocalsound", "mtg-jamendo"):
+        src, dst = staging / sub, ROOT / "data" / "raw" / sub
+        if not src.exists():
+            continue
         dst.mkdir(parents=True, exist_ok=True)
         for item in src.iterdir():
             target = dst / item.name
             if target.exists():
                 shutil.rmtree(target) if target.is_dir() else target.unlink()
             shutil.move(str(item), target)
-    shutil.copy(staging / "episodes.json", ROOT / "data" / "bundle_episodes.json")
-    shutil.copy(staging / "failures.txt", ROOT / "runs" / "bundle_failures.txt")
     shutil.rmtree(staging)
-    print("imported; bundle.zip can be deleted")
+    print("imported into data/raw/; bundle.zip can be deleted (and removed from Drive)")
 
 
 if __name__ == "__main__":

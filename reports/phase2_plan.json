@@ -1,0 +1,700 @@
+{
+ "caps": {
+  "fsd_per_class": 40,
+  "fsd_min_class": 25,
+  "vocalsound_per_class": 100,
+  "xc_per_species": 40,
+  "xc_per_recordist": 2,
+  "fma_genre_instr_tagged": 200,
+  "fma_genre_untagged": 150,
+  "fma_per_artist_genre": 3,
+  "fma_region_per_artist": 5,
+  "fma_calibration_each": 100,
+  "musopen_per_work": 4
+ },
+ "mtg_shards": [
+  "53",
+  "86"
+ ],
+ "esc50": {
+  "clips": 2000,
+  "classes": 50,
+  "per_family": {
+   "machine_domestic": 880,
+   "animal": 480,
+   "nature": 240,
+   "human_vocal": 240,
+   "human_activity": 160
+  }
+ },
+ "fsd50k": {
+  "clips": 2399,
+  "classes": 62,
+  "dropped_lt_min": [
+   "Crow"
+  ],
+  "per_class": {
+   "Bark": {
+    "clips": 40,
+    "groups": 35
+   },
+   "Bicycle_bell": {
+    "clips": 40,
+    "groups": 31
+   },
+   "Boiling": {
+    "clips": 29,
+    "groups": 26
+   },
+   "Breathing": {
+    "clips": 40,
+    "groups": 36
+   },
+   "Burping_and_eructation": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Bus": {
+    "clips": 40,
+    "groups": 30
+   },
+   "Car": {
+    "clips": 40,
+    "groups": 31
+   },
+   "Chewing_and_mastication": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Child_speech_and_kid_speaking": {
+    "clips": 40,
+    "groups": 18
+   },
+   "Chirp_and_tweet": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Chuckle_and_chortle": {
+    "clips": 30,
+    "groups": 28
+   },
+   "Clapping": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Coin_(dropping)": {
+    "clips": 40,
+    "groups": 32
+   },
+   "Cough": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Crash_cymbal": {
+    "clips": 40,
+    "groups": 27
+   },
+   "Cricket": {
+    "clips": 40,
+    "groups": 29
+   },
+   "Crying_and_sobbing": {
+    "clips": 40,
+    "groups": 29
+   },
+   "Cutlery_and_silverware": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Dishes_and_pots_and_pans": {
+    "clips": 40,
+    "groups": 32
+   },
+   "Doorbell": {
+    "clips": 34,
+    "groups": 29
+   },
+   "Drill": {
+    "clips": 40,
+    "groups": 29
+   },
+   "Drip": {
+    "clips": 40,
+    "groups": 35
+   },
+   "Female_speech_and_woman_speaking": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Finger_snapping": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Fire": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Frog": {
+    "clips": 38,
+    "groups": 27
+   },
+   "Frying_(food)": {
+    "clips": 38,
+    "groups": 38
+   },
+   "Giggle": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Growling": {
+    "clips": 28,
+    "groups": 24
+   },
+   "Gull_and_seagull": {
+    "clips": 29,
+    "groups": 21
+   },
+   "Hammer": {
+    "clips": 40,
+    "groups": 29
+   },
+   "Hiss": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Keys_jangling": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Male_speech_and_man_speaking": {
+    "clips": 40,
+    "groups": 36
+   },
+   "Meow": {
+    "clips": 40,
+    "groups": 35
+   },
+   "Microwave_oven": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Motorcycle": {
+    "clips": 40,
+    "groups": 31
+   },
+   "Printer": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Purr": {
+    "clips": 40,
+    "groups": 40
+   },
+   "Rain": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Ringtone": {
+    "clips": 40,
+    "groups": 28
+   },
+   "Sawing": {
+    "clips": 40,
+    "groups": 30
+   },
+   "Scissors": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Screaming": {
+    "clips": 40,
+    "groups": 36
+   },
+   "Shout": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Sigh": {
+    "clips": 29,
+    "groups": 21
+   },
+   "Singing": {
+    "clips": 40,
+    "groups": 31
+   },
+   "Siren": {
+    "clips": 40,
+    "groups": 29
+   },
+   "Sneeze": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Stream": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Thunder": {
+    "clips": 25,
+    "groups": 20
+   },
+   "Toilet_flush": {
+    "clips": 40,
+    "groups": 39
+   },
+   "Train": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Trickle_and_dribble": {
+    "clips": 40,
+    "groups": 32
+   },
+   "Truck": {
+    "clips": 39,
+    "groups": 35
+   },
+   "Typing": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Vehicle_horn_and_car_horn_and_honking": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Waves_and_surf": {
+    "clips": 40,
+    "groups": 35
+   },
+   "Whispering": {
+    "clips": 40,
+    "groups": 34
+   },
+   "Wind": {
+    "clips": 40,
+    "groups": 37
+   },
+   "Writing": {
+    "clips": 40,
+    "groups": 38
+   },
+   "Zipper_(clothing)": {
+    "clips": 40,
+    "groups": 35
+   }
+  },
+  "licences": {
+   "zero": 1209,
+   "by": 778,
+   "by-nc": 330,
+   "sampling+": 82
+  }
+ },
+ "xenocanto": {
+  "clips": 680,
+  "per_species": {
+   "barn owl": {
+    "clips": 40,
+    "groups": 34
+   },
+   "carrion crow": {
+    "clips": 40,
+    "groups": 32
+   },
+   "common blackbird": {
+    "clips": 40,
+    "groups": 32
+   },
+   "common chaffinch": {
+    "clips": 40,
+    "groups": 33
+   },
+   "common cuckoo": {
+    "clips": 40,
+    "groups": 35
+   },
+   "common nightingale": {
+    "clips": 40,
+    "groups": 35
+   },
+   "common wood pigeon": {
+    "clips": 40,
+    "groups": 30
+   },
+   "eurasian collared dove": {
+    "clips": 40,
+    "groups": 32
+   },
+   "eurasian eagle-owl": {
+    "clips": 40,
+    "groups": 31
+   },
+   "eurasian hoopoe": {
+    "clips": 40,
+    "groups": 32
+   },
+   "eurasian magpie": {
+    "clips": 40,
+    "groups": 29
+   },
+   "eurasian scops owl": {
+    "clips": 40,
+    "groups": 37
+   },
+   "eurasian wren": {
+    "clips": 40,
+    "groups": 34
+   },
+   "great tit": {
+    "clips": 40,
+    "groups": 30
+   },
+   "little owl": {
+    "clips": 40,
+    "groups": 31
+   },
+   "long-eared owl": {
+    "clips": 40,
+    "groups": 31
+   },
+   "tawny owl": {
+    "clips": 40,
+    "groups": 35
+   }
+  },
+  "quality": {
+   "A": 575,
+   "B": 105
+  },
+  "licences": {
+   "by-nc-sa": 665,
+   "zero": 10,
+   "by-sa": 3,
+   "by-nc": 2
+  }
+ },
+ "cremad": {
+  "clips": 7442,
+  "actors": 91,
+  "sentences": 12,
+  "per_emotion": {
+   "ANG": 1271,
+   "DIS": 1271,
+   "FEA": 1271,
+   "HAP": 1271,
+   "SAD": 1271,
+   "NEU": 1087
+  }
+ },
+ "vocalsound": {
+  "clips_available": 21024,
+  "speakers": 3365,
+  "classes": [
+   "laughter",
+   "sigh",
+   "cough",
+   "throatclearing",
+   "sneeze",
+   "sniff"
+  ],
+  "planned": 600,
+  "note": "audio arrives via the bundle; per-class counts verified on import"
+ },
+ "fma": {
+  "candidates": 3998,
+  "calibration": 200,
+  "genre_pool": {
+   "blues": {
+    "tracks": 106,
+    "artists": 51,
+    "instr_tagged": 10,
+    "non_nd": 61
+   },
+   "classical": {
+    "tracks": 294,
+    "artists": 139,
+    "instr_tagged": 144,
+    "non_nd": 187
+   },
+   "country": {
+    "tracks": 122,
+    "artists": 58,
+    "instr_tagged": 9,
+    "non_nd": 58
+   },
+   "easy listening": {
+    "tracks": 68,
+    "artists": 48,
+    "instr_tagged": 13,
+    "non_nd": 58
+   },
+   "electronic": {
+    "tracks": 350,
+    "artists": 272,
+    "instr_tagged": 200,
+    "non_nd": 222
+   },
+   "folk": {
+    "tracks": 289,
+    "artists": 179,
+    "instr_tagged": 139,
+    "non_nd": 182
+   },
+   "hip-hop": {
+    "tracks": 236,
+    "artists": 133,
+    "instr_tagged": 86,
+    "non_nd": 151
+   },
+   "jazz": {
+    "tracks": 222,
+    "artists": 154,
+    "instr_tagged": 72,
+    "non_nd": 129
+   },
+   "pop": {
+    "tracks": 211,
+    "artists": 149,
+    "instr_tagged": 61,
+    "non_nd": 159
+   },
+   "rock": {
+    "tracks": 350,
+    "artists": 249,
+    "instr_tagged": 200,
+    "non_nd": 210
+   },
+   "soul": {
+    "tracks": 94,
+    "artists": 43,
+    "instr_tagged": 9,
+    "non_nd": 62
+   }
+  },
+  "region_pool": {
+   "African": {
+    "tracks": 184,
+    "artists": 75,
+    "instr_tagged": 7,
+    "non_nd": 92
+   },
+   "Balkan": {
+    "tracks": 294,
+    "artists": 78,
+    "instr_tagged": 0,
+    "non_nd": 78
+   },
+   "Brazilian": {
+    "tracks": 108,
+    "artists": 40,
+    "instr_tagged": 1,
+    "non_nd": 70
+   },
+   "East Asian": {
+    "tracks": 67,
+    "artists": 29,
+    "instr_tagged": 3,
+    "non_nd": 38
+   },
+   "European": {
+    "tracks": 288,
+    "artists": 102,
+    "instr_tagged": 3,
+    "non_nd": 115
+   },
+   "French": {
+    "tracks": 160,
+    "artists": 46,
+    "instr_tagged": 0,
+    "non_nd": 52
+   },
+   "Indian": {
+    "tracks": 48,
+    "artists": 22,
+    "instr_tagged": 2,
+    "non_nd": 34
+   },
+   "Latin": {
+    "tracks": 60,
+    "artists": 27,
+    "instr_tagged": 20,
+    "non_nd": 35
+   },
+   "Latin American": {
+    "tracks": 307,
+    "artists": 136,
+    "instr_tagged": 3,
+    "non_nd": 180
+   },
+   "Middle Eastern": {
+    "tracks": 73,
+    "artists": 26,
+    "instr_tagged": 2,
+    "non_nd": 29
+   },
+   "Spanish": {
+    "tracks": 67,
+    "artists": 25,
+    "instr_tagged": 0,
+    "non_nd": 47
+   }
+  }
+ },
+ "musopen": {
+  "movements": 116,
+  "works": 37,
+  "composers": [
+   "Bach",
+   "Beethoven",
+   "Borodin",
+   "Brahms",
+   "Dvorak",
+   "Greig",
+   "Haydn",
+   "Mendelssohn",
+   "Mozart",
+   "Rimsky-Korsakov",
+   "Schubert",
+   "Smetana",
+   "Suk",
+   "Tchaikovsky"
+  ],
+  "hours": 15.4,
+  "gb": 7.4
+ },
+ "mtg": {
+  "tracks_in_shards": 1135,
+  "tag_instrumental": 534,
+  "artists": 750,
+  "cells": {
+   "piano|classical": {
+    "tracks": 62,
+    "artists": 49
+   },
+   "piano|jazz": {
+    "tracks": 25,
+    "artists": 20
+   },
+   "piano|ambient": {
+    "tracks": 31,
+    "artists": 30
+   },
+   "piano|pop": {
+    "tracks": 26,
+    "artists": 23
+   },
+   "piano|electronic": {
+    "tracks": 28,
+    "artists": 18
+   },
+   "piano|rock": {
+    "tracks": 9,
+    "artists": 9
+   },
+   "piano|folk": {
+    "tracks": 4,
+    "artists": 4
+   },
+   "piano|soundtrack": {
+    "tracks": 39,
+    "artists": 29
+   },
+   "guitar|classical": {
+    "tracks": 5,
+    "artists": 5
+   },
+   "guitar|jazz": {
+    "tracks": 10,
+    "artists": 8
+   },
+   "guitar|ambient": {
+    "tracks": 9,
+    "artists": 9
+   },
+   "guitar|pop": {
+    "tracks": 31,
+    "artists": 27
+   },
+   "guitar|electronic": {
+    "tracks": 8,
+    "artists": 8
+   },
+   "guitar|rock": {
+    "tracks": 31,
+    "artists": 27
+   },
+   "guitar|folk": {
+    "tracks": 11,
+    "artists": 10
+   },
+   "guitar|soundtrack": {
+    "tracks": 9,
+    "artists": 9
+   },
+   "strings|classical": {
+    "tracks": 5,
+    "artists": 5
+   },
+   "strings|jazz": {
+    "tracks": 3,
+    "artists": 2
+   },
+   "strings|ambient": {
+    "tracks": 1,
+    "artists": 1
+   },
+   "strings|pop": {
+    "tracks": 2,
+    "artists": 2
+   },
+   "strings|electronic": {
+    "tracks": 3,
+    "artists": 3
+   },
+   "strings|rock": {
+    "tracks": 1,
+    "artists": 1
+   },
+   "strings|folk": {
+    "tracks": 1,
+    "artists": 1
+   },
+   "strings|soundtrack": {
+    "tracks": 5,
+    "artists": 5
+   },
+   "synthesizer|classical": {
+    "tracks": 3,
+    "artists": 3
+   },
+   "synthesizer|jazz": {
+    "tracks": 7,
+    "artists": 4
+   },
+   "synthesizer|ambient": {
+    "tracks": 39,
+    "artists": 30
+   },
+   "synthesizer|pop": {
+    "tracks": 21,
+    "artists": 18
+   },
+   "synthesizer|electronic": {
+    "tracks": 67,
+    "artists": 52
+   },
+   "synthesizer|rock": {
+    "tracks": 12,
+    "artists": 11
+   },
+   "synthesizer|folk": {
+    "tracks": 0,
+    "artists": 0
+   },
+   "synthesizer|soundtrack": {
+    "tracks": 14,
+    "artists": 13
+   }
+  }
+ }
+}

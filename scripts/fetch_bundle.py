@@ -1,243 +1,123 @@
-"""Build the offline bundle (models + feeds + trimmed audio) on a machine with open internet.
+"""Build the offline dataset bundle on a machine with open internet (the work proxy blocks these hosts).
 
-Run on the personal laptop, then copy bundle.zip to the work machine. Needs:
-  Python 3.10+, ffmpeg/ffprobe on PATH, and `pip install huggingface_hub`.
+Contents (and nothing else):
+  bundle/vocalsound/   vs_release_16k.zip (as downloaded), README.md, LICENSE
+  bundle/mtg-jamendo/  raw_30s audio-low shards for track folders 53 and 86 (as downloaded), checksum file
+  bundle/manifest.json {relative path: {bytes, sha256}}
+then bundle.zip (stored, zip64). Safe to rerun: verified files are skipped.
 
-  python fetch_bundle.py                 # everything, then bundle.zip
-  python fetch_bundle.py --skip-models   # feeds + audio only
-
-Safe to rerun: finished models/episodes are skipped.
+Needs Python 3.10+ and `pip install requests`. Usage:  python fetch_bundle.py [--out bundle] [--no-zip]
+Keep bundle.zip PRIVATE on Google Drive.
 """
 import argparse
 import hashlib
 import json
-import shutil
-import subprocess
+import re
 import sys
 import time
-import urllib.request
-import xml.etree.ElementTree as ET
 import zipfile
-from concurrent.futures import ThreadPoolExecutor
-from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-import yaml
+import requests
 
-MODELS = ["google/embeddinggemma-2", "laion/clap-htsat-unfused", "Systran/faster-whisper-small"]
-EPISODES_PER_SHOW = 3
-MIN_EPISODE_MIN = 10
-TRIM_S = 900  # first 15 minutes
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) vibe-search-prototype"
-IT = "{http://www.itunes.com/dtds/podcast-1.0.dtd}"
+VOCALSOUND_ZIP = "https://www.dropbox.com/s/c5ace70qh1vbyzb/vs_release_16k.zip?dl=1"
+VOCALSOUND_RAW = "https://raw.githubusercontent.com/YuanGongND/vocalsound/main/"
+MTG_RAW = "https://raw.githubusercontent.com/MTG/mtg-jamendo-dataset/master/"
+MTG_SHARDS = ["53", "86"]
+EXPECTED_SHA = {  # from data/download/raw_30s_audio-low_sha256_tars.txt in the MTG repo, 2026-10-22
+    "raw_30s_audio-low-53.tar": "9913b3105212b75f4779b375c6659da98f54f31dbf526fc8a8191ad9be027f54",
+    "raw_30s_audio-low-86.tar": "9fda026a125fb878fc20e23ba543d6d16084d842fbcd5c68f53e6196796e8da8",
+}
+UA = {"User-Agent": "Mozilla/5.0 audio-vocab-bundle"}
 
 
 def log(msg):
     print(time.strftime("%H:%M:%S"), msg, flush=True)
 
 
-def sha256(path):
+def sha256(p):
     h = hashlib.sha256()
-    with open(path, "rb") as f:
+    with open(p, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
             h.update(chunk)
     return h.hexdigest()
 
 
-# ---------- models ----------
-
-def fetch_models(out):
-    from huggingface_hub import snapshot_download
-
-    for repo in MODELS:
-        dest = out / "models" / repo.replace("/", "--")
-        if (dest / ".done").exists():
-            log(f"model {repo}: already done")
-            continue
-        log(f"model {repo}: downloading ...")
-        snapshot_download(repo, local_dir=dest)
-        (dest / ".done").write_text("ok")
-        size = sum(f.stat().st_size for f in dest.rglob("*") if f.is_file()) / 1e6
-        log(f"model {repo}: {size:.0f} MB")
-
-
-# ---------- feeds ----------
-
-def duration_s(text):
-    if not text:
-        return None
-    try:
-        s = 0.0
-        for part in text.strip().split(":"):
-            s = s * 60 + float(part)
-        return s
-    except ValueError:
-        return None
+def download(url, dest, expect_sha=None):
+    if dest.exists() and (expect_sha is None or sha256(dest) == expect_sha):
+        log(f"{dest.name}: already done")
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    tmp = dest.with_suffix(dest.suffix + ".part")
+    log(f"{dest.name}: downloading {url}")
+    with requests.get(url, headers=UA, stream=True, timeout=120) as r:
+        r.raise_for_status()
+        with open(tmp, "wb") as f:
+            for chunk in r.iter_content(1 << 20):
+                f.write(chunk)
+    if expect_sha and sha256(tmp) != expect_sha:
+        tmp.unlink()
+        sys.exit(f"{dest.name}: checksum mismatch")
+    tmp.replace(dest)
+    log(f"{dest.name}: {dest.stat().st_size / 1e9:.2f} GB")
 
 
-def parse_feed(show, xml_bytes):
-    ch = ET.fromstring(xml_bytes).find("channel")
-    cats = []
-    for c in ch.findall(IT + "category"):
-        cats.append(c.get("text"))
-        cats += [f"{c.get('text')} > {sub.get('text')}" for sub in c.findall(IT + "category")]
-    eps = []
-    for it in ch.findall("item"):
-        enc = it.find("enclosure")
-        if enc is None or not enc.get("url"):
-            continue
-        try:
-            pub = parsedate_to_datetime(it.findtext("pubDate")).isoformat()
-        except Exception:
-            pub = ""
-        eps.append({
-            "guid": (it.findtext("guid") or enc.get("url")).strip(),
-            "title": (it.findtext("title") or "").strip(),
-            "pub": pub,
-            "duration_s": duration_s(it.findtext(IT + "duration")),
-            "type": (it.findtext(IT + "episodeType") or "full").strip().lower(),
-            "audio_url": enc.get("url"),
-            "mime": enc.get("type", ""),
-        })
-    eps.sort(key=lambda e: e["pub"], reverse=True)
-    full = [e for e in eps if e["type"] == "full"]
-    picked = [e for e in full if (e["duration_s"] or 0) >= MIN_EPISODE_MIN * 60][:EPISODES_PER_SHOW]
-    if len(picked) < EPISODES_PER_SHOW:  # some feeds omit itunes:duration
-        picked += [e for e in full if e["duration_s"] is None][:EPISODES_PER_SHOW - len(picked)]
-    for e in picked:
-        e["id"] = f"{show['id']}_{hashlib.sha1(e['guid'].encode()).hexdigest()[:8]}"
-    return {
-        "show_id": show["id"], "show": (ch.findtext("title") or show["name"]).strip(), "vibe": show["vibe"],
-        "spare": bool(show.get("spare")), "feed": show["feed"], "link": (ch.findtext("link") or "").strip(),
-        "itunes_categories": cats, "n_items": len(eps), "episodes": picked,
-    }
+def mtg_shard_urls():
+    """Mirrors and tar checksums, as used by the official scripts/download/download.py (mtg-fast, then mtg)."""
+    script = requests.get(MTG_RAW + "scripts/download/download.py", headers=UA, timeout=60).text
+    bases = re.findall(r"['\"](https://(?:cdn\.freesound\.org|essentia\.upf\.edu)/[^'\"]*mtg-jamendo/)['\"]", script)
+    bases = list(dict.fromkeys(b.rstrip("/") for b in bases)) or [
+        "https://cdn.freesound.org/mtg-jamendo", "https://essentia.upf.edu/documentation/datasets/mtg-jamendo"]
+    sums_txt = requests.get(MTG_RAW + "data/download/raw_30s_audio-low_sha256_tars.txt", headers=UA, timeout=60)
+    sums_txt.raise_for_status()
+    sums = dict(line.split()[::-1] for line in sums_txt.text.splitlines() if line.strip())
+    return bases, sums, sums_txt.text
 
-
-def fetch_feed(show, out):
-    path = out / "feeds" / f"{show['id']}.xml"
-    if not path.exists():
-        req = urllib.request.Request(show["feed"], headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            path.write_bytes(r.read())
-    try:
-        return parse_feed(show, path.read_bytes())
-    except ET.ParseError:
-        path.unlink()  # don't cache an error page
-        raise
-
-
-# ---------- audio ----------
-
-def probe_duration(path):
-    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
-                       capture_output=True, text=True)
-    try:
-        return float(r.stdout.strip())
-    except ValueError:
-        return 0.0
-
-
-def fetch_audio(ep, out):
-    """Copy the first TRIM_S seconds of the stream without re-encoding; fall back to FLAC."""
-    audio_dir = out / "audio"
-    for f in audio_dir.glob(ep["id"] + ".*"):
-        if f.suffix != ".part":
-            return {"file": f.name, "status": "cached"}
-    is_mp3 = "mpeg" in ep["mime"] or ep["audio_url"].split("?")[0].lower().endswith(".mp3")
-    attempts = [(".mp3" if is_mp3 else ".m4a", ["-c:a", "copy"]),
-                (".flac", ["-c:a", "flac", "-ac", "1", "-ar", "48000"])]
-    err = ""
-    for ext, codec in attempts:
-        tmp = audio_dir / f"{ep['id']}.part{ext}"
-        cmd = ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error", "-y",
-               "-user_agent", UA, "-reconnect", "1", "-reconnect_streamed", "1", "-reconnect_delay_max", "5",
-               "-i", ep["audio_url"], "-t", str(TRIM_S), "-map", "0:a:0", "-vn", *codec, str(tmp)]
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)
-        if r.returncode == 0 and tmp.exists() and probe_duration(tmp) > 60:
-            final = audio_dir / f"{ep['id']}{ext}"
-            tmp.replace(final)
-            return {"file": final.name, "status": "ok"}
-        err = (r.stderr or "no output").strip().splitlines()[-1:] or ["?"]
-        err = err[0][:200]
-        tmp.unlink(missing_ok=True)
-    return {"file": None, "status": f"failed: {err}"}
-
-
-# ---------- main ----------
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--feeds", default=str(Path(__file__).with_name("feeds.yaml")))
     ap.add_argument("--out", default="bundle")
-    ap.add_argument("--skip-models", action="store_true")
     ap.add_argument("--no-zip", action="store_true")
-    ap.add_argument("--workers", type=int, default=4)
     args = ap.parse_args()
-
-    for tool in ("ffmpeg", "ffprobe"):
-        if not shutil.which(tool):
-            sys.exit(f"{tool} not found on PATH. Install with:  winget install Gyan.FFmpeg  (then open a new terminal)")
-
     out = Path(args.out).resolve()
-    for d in ("models", "feeds", "audio"):
-        (out / d).mkdir(parents=True, exist_ok=True)
-    shows = yaml.safe_load(Path(args.feeds).read_text(encoding="utf-8"))["shows"]
-    shutil.copy(args.feeds, out / "feeds.yaml")
 
-    if not args.skip_models:
-        fetch_models(out)
+    vs = out / "vocalsound"
+    download(VOCALSOUND_ZIP, vs / "vs_release_16k.zip")
+    for name in ("README.md", "LICENSE"):
+        r = requests.get(VOCALSOUND_RAW + name, headers=UA, timeout=60)
+        if r.ok:
+            (vs / name).write_bytes(r.content)
+    with zipfile.ZipFile(vs / "vs_release_16k.zip") as z:
+        wavs = [n for n in z.namelist() if n.endswith(".wav")]
+        log(f"vocalsound: zip opens, {len(wavs)} wav files")
 
-    failures, results = [], []
-    for show in shows:
-        try:
-            res = fetch_feed(show, out)
-            results.append(res)
-            log(f"feed {show['id']}: {len(res['episodes'])} episodes, categories={res['itunes_categories'][:2]}")
-            if len(res["episodes"]) < EPISODES_PER_SHOW:
-                failures.append(f"{show['id']}: only {len(res['episodes'])} usable episodes")
-        except Exception as e:
-            failures.append(f"{show['id']}: feed failed: {type(e).__name__}: {e}")
-            log(f"feed {show['id']}: FAILED {e}")
+    bases, sums, sums_txt = mtg_shard_urls()
+    mt = out / "mtg-jamendo"
+    mt.mkdir(parents=True, exist_ok=True)
+    (mt / "raw_30s_audio-low_sha256_tars.txt").write_text(sums_txt, encoding="utf-8")
+    for shard in MTG_SHARDS:
+        name = f"raw_30s_audio-low-{shard}.tar"
+        assert sums.get(name) == EXPECTED_SHA[name], f"{name}: checksum list changed upstream"
+        for i, base in enumerate(bases):
+            try:
+                download(f"{base}/raw_30s/audio-low/{name}", mt / name, sums[name])
+                break
+            except requests.RequestException as e:
+                log(f"{name}: {base} failed ({e})" + ("; trying next mirror" if i + 1 < len(bases) else ""))
+        else:
+            sys.exit(f"{name}: all mirrors failed")
 
-    jobs = [ep for res in results for ep in res["episodes"]]
-    log(f"audio: {len(jobs)} episodes, first {TRIM_S // 60} min each ...")
-
-    def run(ep):
-        try:
-            r = fetch_audio(ep, out)
-        except Exception as e:
-            r = {"file": None, "status": f"failed: {type(e).__name__}: {e}"}
-        ep.update(r)
-        log(f"audio {ep['id']}: {r['status']}")
-        return ep
-
-    with ThreadPoolExecutor(args.workers) as ex:
-        list(ex.map(run, jobs))
-    failures += [f"{ep['id']} ({ep['title'][:50]}): {ep['status']}" for ep in jobs if not ep["file"]]
-
-    (out / "episodes.json").write_text(json.dumps(results, indent=1, ensure_ascii=False), encoding="utf-8")
-    (out / "failures.txt").write_text("\n".join(failures) + "\n", encoding="utf-8")
-
-    log("checksums ...")
-    files = sorted(p for p in out.rglob("*") if p.is_file() and p.name != "manifest.json" and ".cache" not in p.parts)
-    manifest = {str(p.relative_to(out)).replace("\\", "/"): {"bytes": p.stat().st_size, "sha256": sha256(p)}
-                for p in files}
+    files = sorted(p for p in out.rglob("*") if p.is_file() and p.name != "manifest.json" and not p.name.endswith(".part"))
+    manifest = {str(p.relative_to(out)).replace("\\", "/"): {"bytes": p.stat().st_size, "sha256": sha256(p)} for p in files}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
-
-    ok = sum(1 for ep in jobs if ep["file"])
-    audio_gb = sum(v["bytes"] for k, v in manifest.items() if k.startswith("audio/")) / 1e9
-    total_gb = sum(v["bytes"] for v in manifest.values()) / 1e9
-    log(f"done: {len(results)}/{len(shows)} feeds, {ok}/{len(jobs)} episodes, audio {audio_gb:.2f} GB, total {total_gb:.2f} GB")
-    log(f"{len(failures)} problems listed in {out / 'failures.txt'}")
+    log(f"manifest: {len(manifest)} files, {sum(v['bytes'] for v in manifest.values()) / 1e9:.2f} GB")
 
     if not args.no_zip:
-        zip_path = out.with_suffix(".zip")
-        log(f"zipping to {zip_path} ...")
-        # Audio and weights are already compressed; store keeps zipping fast.
-        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_STORED, allowZip64=True) as z:
+        zp = out.with_suffix(".zip")
+        with zipfile.ZipFile(zp, "w", zipfile.ZIP_STORED, allowZip64=True) as z:
             for p in files + [out / "manifest.json"]:
                 z.write(p, Path("bundle") / p.relative_to(out))
-        log(f"zip ready: {zip_path} ({zip_path.stat().st_size / 1e9:.2f} GB). Upload this to Drive.")
+        log(f"zip ready: {zp} ({zp.stat().st_size / 1e9:.2f} GB). Upload to Google Drive (private).")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,68 @@
+{
+ "1": {
+  "audio_tokens": 25,
+  "mel_frames": 99,
+  "valid_mel_frames": 99,
+  "seq_len": 29
+ },
+ "2": {
+  "audio_tokens": 50,
+  "mel_frames": 199,
+  "valid_mel_frames": 199,
+  "seq_len": 54
+ },
+ "5": {
+  "audio_tokens": 125,
+  "mel_frames": 499,
+  "valid_mel_frames": 499,
+  "seq_len": 129
+ },
+ "10": {
+  "audio_tokens": 250,
+  "mel_frames": 999,
+  "valid_mel_frames": 999,
+  "seq_len": 254
+ },
+ "11.2": {
+  "audio_tokens": 280,
+  "mel_frames": 1119,
+  "valid_mel_frames": 1119,
+  "seq_len": 284
+ },
+ "15": {
+  "audio_tokens": 375,
+  "mel_frames": 1499,
+  "valid_mel_frames": 1499,
+  "seq_len": 379
+ },
+ "20": {
+  "audio_tokens": 500,
+  "mel_frames": 1999,
+  "valid_mel_frames": 1999,
+  "seq_len": 504
+ },
+ "30": {
+  "audio_tokens": 750,
+  "mel_frames": 2999,
+  "valid_mel_frames": 2999,
+  "seq_len": 754
+ },
+ "31": {
+  "audio_tokens": 750,
+  "mel_frames": 2999,
+  "valid_mel_frames": 2999,
+  "seq_len": 754
+ },
+ "40": {
+  "audio_tokens": 750,
+  "mel_frames": 2999,
+  "valid_mel_frames": 2999,
+  "seq_len": 754
+ },
+ "60": {
+  "audio_tokens": 750,
+  "mel_frames": 2999,
+  "valid_mel_frames": 2999,
+  "seq_len": 754
+ }
+}
