@@ -13,6 +13,50 @@ models:
   whisper: C:/Users/e416851/Documents/GitHub/podcast-vibe-search/models/Systran--faster-whisper-small
   whisper_compute: int8
 
+analysis:
+  seed: 0
+  probe_C: 1.0            # fixed logistic-regression regularisation (not tuned)
+  knn_k: 10
+  bootstrap: 1000
+  pairwise_threshold: 0.70  # "told apart" for effective vocabulary size
+  tune_fold: 1             # the fold used to choose prefix / centring strength; everything else is reported
+  alphas: [0.0, 0.25, 0.5, 0.75, 1.0]
+
+# Phase 5 synonym clouds: written by hand (no LLM, no WordNet dependency), fixed before any results.
+# Each concept lists the dataset labels whose clips count as "the right sound" for precision.
+synonyms:
+  laugh:    {words: [laugh, laughter, giggle, chuckle, chortle, cackle, guffaw, snicker, titter, belly laugh, hysterical laughter], labels: [laughing, laughter, Giggle, Chuckle_and_chortle]}
+  cry:      {words: [cry, crying, sobbing, weeping, wailing, whimpering, bawling, blubbering, tears, sniveling], labels: [crying_baby, Crying_and_sobbing]}
+  scream:   {words: [scream, screaming, shriek, yell, shout, screech, howl, holler, bellow, cry out], labels: [Screaming, Shout]}
+  whisper:  {words: [whisper, whispering, murmur, mutter, hushed voice, soft speech, susurration, breathy voice, under one's breath, mumble], labels: [Whispering]}
+  cough:    {words: [cough, coughing, hacking, throat clearing, wheeze, splutter, hack, croup, ahem, choking], labels: [coughing, cough, Cough, throatclearing]}
+  sneeze:   {words: [sneeze, sneezing, achoo, sniffle, sniff, snort, nose blowing, sternutation, snuffle, runny nose], labels: [sneezing, sneeze, Sneeze, sniff]}
+  rain:     {words: [rain, rainfall, downpour, drizzle, shower, rainstorm, pouring rain, raindrops, deluge, sprinkle], labels: [rain, Rain]}
+  wind:     {words: [wind, breeze, gust, gale, blowing wind, windstorm, draft, howling wind, squall, whoosh], labels: [wind, Wind]}
+  water:    {words: [water, stream, brook, babbling water, trickle, dripping, waves, splashing, flowing water, creek], labels: [water_drops, sea_waves, pouring_water, Stream, Waves_and_surf, Drip, Trickle_and_dribble]}
+  dog:      {words: [dog, barking, bark, woof, puppy, hound, yapping, growl, canine, doggy], labels: [dog, Bark, Growling]}
+  cat:      {words: [cat, meow, kitten, purr, mewing, feline, kitty, hiss, caterwaul, tomcat], labels: [cat, Meow, Purr, Hiss]}
+  bird:     {words: [bird, birdsong, chirping, tweeting, warbling, songbird, birdcall, trill, twitter, dawn chorus], labels: [chirping_birds, Chirp_and_tweet, common blackbird, common nightingale, eurasian wren, great tit, common chaffinch]}
+  owl:      {words: [owl, hooting, hoot, owl call, night owl, tawny owl, barn owl, screech owl, hooting owl, owl screech], labels: [tawny owl, eurasian eagle-owl, little owl, long-eared owl, barn owl, eurasian scops owl]}
+  engine:   {words: [engine, motor, revving, idling engine, car engine, roaring engine, vroom, combustion engine, diesel engine, rumbling motor], labels: [engine, Car, Motorcycle, Truck, Bus]}
+  applause: {words: [applause, clapping, ovation, handclaps, cheering crowd, standing ovation, round of applause, audience clapping, claps, acclaim], labels: [clapping, Clapping]}
+  siren:    {words: [siren, alarm, police siren, ambulance siren, wailing siren, emergency siren, fire engine siren, klaxon, warning siren, air raid siren], labels: [siren, Siren]}
+
+# Phase 6 emotion prompts (zero-shot), one per CREMA-D emotion; taxonomy texts are also used.
+emotion_prompts:
+  ANG: ["an angry voice", "a person shouting angrily"]
+  DIS: ["a disgusted voice", "a person speaking with disgust"]
+  FEA: ["a frightened voice", "a person speaking fearfully"]
+  HAP: ["a happy voice", "a person speaking cheerfully"]
+  NEU: ["a neutral voice", "a person speaking calmly and flatly"]
+  SAD: ["a sad voice", "a person speaking sadly"]
+
+# Phase 8 descriptor words, fixed before results
+descriptors:
+  instruments: [strings, violin, cello, piano, harpsichord, orchestra, string quartet, flute, brass, organ, acoustic guitar, electric guitar, drums, synthesizer, bass, saxophone, choir, harp]
+  qualities: [ornate, slow, fast, dramatic, acoustic, ancient, elegant, gentle, loud, quiet, sad, joyful, complex, simple, grand, intimate, rhythmic, melodic, dissonant, harmonious]
+  contexts: [film score, church, concert hall, nightclub, cafe, wedding, video game, elevator, festival]
+
 llm:
   # Only if Phase 5 synonym drafting needs it.
   base_url: https://llmfoundry.straivedemo.com/openai/v1

@@ -78,6 +78,62 @@ def load(name, **kw):
     return BACKENDS[name](**kw)
 
 
+def clip_key(row):
+    """Cache key for a clips.parquet row: dataset + clip + exact window + source; perturbations add their params."""
+    return {"dataset": row["dataset"], "clip": row["clip_id"], "source": row["source"],
+            "start": round(float(row["start"]), 3), "dur": round(float(row["dur"]), 3),
+            **({"perturb": row["perturb"]} if row.get("perturb") else {})}
+
+
+def load_window(key, sr):
+    from .audio import decode
+    from .config import path
+    if "perturb" not in key:
+        return decode(path("raw") / key["source"], sr, start=key["start"] or None, dur=key["dur"])
+    from .perturb import apply, source_factor
+    x = decode(path("raw") / key["source"], sr, start=key["start"] or None, dur=key["dur"] * source_factor(key["perturb"]))
+    return apply(x, sr, key["perturb"], out_len=int(key["dur"] * sr))
+
+
+def keep_awake():
+    """Stop Windows sleeping while a long job runs (ES_CONTINUOUS | ES_SYSTEM_REQUIRED)."""
+    try:
+        import ctypes
+        ctypes.windll.kernel32.SetThreadExecutionState(0x80000001)
+    except Exception:
+        pass
+
+
+def embed_index(name, datasets=None, batch=8):
+    """Embed every clips.parquet row (cached per clip) -> index/<name>.npy + index/<name>_clip_ids.json, in row order."""
+    import json
+    import time
+
+    import pandas as pd
+
+    from .config import path
+    keep_awake()
+    clips = pd.read_parquet(path("data") / "clips.parquet")
+    if datasets:
+        clips = clips[clips.dataset.isin(datasets)]
+    model = load(name)
+    keys = [clip_key(r) for r in clips.to_dict("records")]
+    out, t0 = [], time.time()
+    for ds, idx in clips.groupby("dataset", sort=False).indices.items():
+        k = [keys[i] for i in idx]
+        for j in range(0, len(k), 400):
+            out.append(embed_cached(model, k[j:j + 400], load_window, batch=batch))
+            print(f"{name} {ds}: {min(j + 400, len(k))}/{len(k)}  ({(time.time() - t0) / 60:.0f} min)", flush=True)
+    order = np.concatenate(list(clips.groupby("dataset", sort=False).indices.values()))
+    emb = np.zeros((len(clips), out[0].shape[1]), np.float32)
+    emb[order] = np.concatenate(out)
+    tag = "" if not datasets else "_" + "_".join(datasets)
+    path("index").mkdir(exist_ok=True)
+    np.save(path("index") / f"{name}{tag}.npy", emb)
+    (path("index") / f"{name}{tag}_clip_ids.json").write_text(json.dumps(clips.clip_id.tolist()))
+    return emb.shape, time.time() - t0
+
+
 def embed_cached(model, keys, load_clip, batch=8):
     """Audio embeddings for `keys` (JSON-able dicts naming dataset, clip id and preprocessing), cached one file per
     clip under runs/cache/emb_<model>/. `load_clip(key, sr)` returns the samples for a cache miss."""

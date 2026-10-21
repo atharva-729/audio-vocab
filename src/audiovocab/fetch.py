@@ -60,6 +60,42 @@ def download(url, dest, session=None, timeout=120, retries=3):
     return "ok"
 
 
+def download_ranged(url, dest, name, chunk=64 << 20, retries=30):
+    """Large files as a sequence of fixed-size range requests. The proxy holds back long single responses
+    (a 3 GB stream delivered 0 bytes in 8 min), but completes bounded ranges."""
+    if dest.exists() and dest.stat().st_size:
+        return "cached"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    tmp = dest.with_name(dest.name + ".part")
+    s = requests.Session()
+    r = s.get(url, headers={**UA, "Range": "bytes=0-0"}, timeout=120)
+    r.raise_for_status()
+    size = int(r.headers["content-range"].rsplit("/", 1)[1])
+    pos, fails, t0 = (tmp.stat().st_size if tmp.exists() else 0), 0, time.time()
+    with open(tmp, "ab") as f:
+        while pos < size:
+            end = min(pos + chunk, size) - 1
+            try:
+                r = s.get(url, headers={**UA, "Range": f"bytes={pos}-{end}"}, timeout=600)
+                if r.status_code != 206 or len(r.content) != end - pos + 1:
+                    raise IOError(f"HTTP {r.status_code}, {len(r.content)} bytes")
+                f.write(r.content)
+                f.flush()
+                pos = end + 1
+                fails = 0
+                if (pos // chunk) % 8 == 0 or pos == size:
+                    log(name, f"{dest.name}: {pos / 1e9:.2f}/{size / 1e9:.2f} GB "
+                              f"({pos / 1e6 / max(time.time() - t0, 1):.1f} MB/s this session)")
+            except (requests.RequestException, IOError) as e:
+                fails += 1
+                if fails > retries:
+                    raise
+                log(name, f"{dest.name}: retry {fails} at {pos}: {e}")
+                time.sleep(min(60, 5 * fails))
+    tmp.replace(dest)
+    return "ok"
+
+
 def _pool(name, items, fn, workers):
     done = fail = 0
     with ThreadPoolExecutor(workers) as ex:
@@ -98,7 +134,7 @@ def esc50():
 def fsd50k():
     base = "https://zenodo.org/records/4060432/files/"
     for part in ("FSD50K.eval_audio.z01", "FSD50K.eval_audio.zip", "FSD50K.doc.zip"):
-        log("fsd50k", f"{part}: {download(base + part + '?download=1', raw('fsd50k', part), timeout=600, retries=20)}")
+        log("fsd50k", f"{part}: {download_ranged(base + part + '?download=1', raw('fsd50k', part), 'fsd50k')}")
     extract_fsd50k()
 
 
@@ -186,28 +222,30 @@ def fma():
 
 
 def musopen():
-    """Two 10 s windows per movement (at 30% and 60% of its length), cut over HTTP by ffmpeg's ranged seeking.
-    Saved as FLAC, so nothing is re-encoded lossily."""
+    """Full FLAC per selected movement (Python download: ffmpeg's own TLS rejects the proxy's certificate), then two
+    10 s windows at 30% and 60% of its length, cut locally to mono FLAC (lossless). The full file is then deleted."""
     df = sel("musopen")
     base = "https://archive.org/download/MusopenCollectionAsFlac/"
 
     def one(row):
         try:
-            for k, frac in enumerate((0.3, 0.6)):
-                dest = raw("musopen", f"{row.clip.replace('/', '__')[:-5]}_w{k}.flac")
-                if dest.exists():
-                    continue
-                dest.parent.mkdir(parents=True, exist_ok=True)
-                url = base + requests.utils.quote(row.clip)
-                tmp = dest.with_name(dest.stem + ".part.flac")
+            stem = row.clip.replace("/", "__")[:-5]
+            wins = [raw("musopen", f"{stem}_w{k}.flac") for k in (0, 1)]
+            if all(w.exists() for w in wins):
+                return True
+            full = raw("musopen", "full", f"{stem}.flac")
+            download_ranged(base + requests.utils.quote(row.clip), full, "musopen", chunk=32 << 20)
+            for w, frac in zip(wins, (0.3, 0.6)):
+                tmp = w.with_name(w.stem + ".part.flac")
                 subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{row.length * frac:.2f}",
-                                "-i", url, "-t", "10", "-ac", "1", "-c:a", "flac", str(tmp)],
+                                "-i", str(full), "-t", "10", "-ac", "1", "-c:a", "flac", str(tmp)],
                                check=True, capture_output=True, timeout=600)
-                tmp.replace(dest)
+                tmp.replace(w)
+            full.unlink()
             return True
         except Exception as e:
             return f"{row.clip}: {e}"
-    log("musopen", f"done={_pool('musopen', list(df.itertuples()), one, 4)}")
+    log("musopen", f"done={_pool('musopen', list(df.itertuples()), one, 3)}")
 
 
 FETCHERS = {"esc50": esc50, "cremad": cremad, "xenocanto": xenocanto, "fma": fma, "musopen": musopen,
