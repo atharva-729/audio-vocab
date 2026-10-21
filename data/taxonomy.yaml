@@ -1,0 +1,208 @@
+# Class -> family, sibling groups, and text forms. Fixed before any results are seen (Phase 2, 2026-10-22).
+# Any later change is logged with its reason in reports/decisions_log.md.
+#
+# Families: human_vocal, human_activity, speech_emotion, animal, nature, machine_domestic, music.
+# "human_activity" is an addition to the README's list, for non-vocal human sounds (clapping, footsteps...),
+# which fit neither "human vocal" nor "machine/domestic".
+#
+# Each class has:  family, groups (sibling groups it belongs to, may be empty), text (2-3 short natural
+# descriptions; the class name itself is always embedded too).
+
+families: [human_vocal, human_activity, speech_emotion, animal, nature, machine_domestic, music]
+
+esc50:   # all 50 classes; official 5 folds
+  dog:              {family: animal, groups: [esc_pets], text: ["a dog barking", "a dog woofing loudly"]}
+  rooster:          {family: animal, groups: [esc_farm, esc_birds], text: ["a rooster crowing", "a cockerel calling at dawn"]}
+  pig:              {family: animal, groups: [esc_farm], text: ["a pig grunting", "pigs oinking"]}
+  cow:              {family: animal, groups: [esc_farm], text: ["a cow mooing", "cattle lowing"]}
+  frog:             {family: animal, groups: [], text: ["a frog croaking", "frogs calling at night"]}
+  cat:              {family: animal, groups: [esc_pets], text: ["a cat meowing", "a cat mewing"]}
+  hen:              {family: animal, groups: [esc_farm, esc_birds], text: ["a hen clucking", "chickens clucking"]}
+  insects:          {family: animal, groups: [], text: ["insects buzzing", "a fly buzzing"]}
+  sheep:            {family: animal, groups: [esc_farm], text: ["a sheep bleating", "sheep baaing"]}
+  crow:             {family: animal, groups: [esc_birds], text: ["a crow cawing", "crows calling"]}
+  chirping_birds:   {family: animal, groups: [esc_birds], text: ["birds chirping", "songbirds singing"]}
+  crickets:         {family: animal, groups: [], text: ["crickets chirping", "crickets at night"]}
+  rain:             {family: nature, groups: [esc_water, esc_weather], text: ["rain falling", "a steady rain shower"]}
+  sea_waves:        {family: nature, groups: [esc_water], text: ["ocean waves crashing", "waves on a beach"]}
+  crackling_fire:   {family: nature, groups: [], text: ["a fire crackling", "a crackling campfire"]}
+  thunderstorm:     {family: nature, groups: [esc_weather], text: ["thunder rumbling", "a thunderstorm"]}
+  wind:             {family: nature, groups: [esc_weather], text: ["wind blowing", "a strong gusty wind"]}
+  water_drops:      {family: nature, groups: [esc_water], text: ["water dripping", "drops of water falling"]}
+  pouring_water:    {family: machine_domestic, groups: [esc_water], text: ["water being poured", "pouring water into a glass"]}
+  toilet_flush:     {family: machine_domestic, groups: [esc_water], text: ["a toilet flushing", "a flushing toilet"]}
+  crying_baby:      {family: human_vocal, groups: [esc_body], text: ["a baby crying", "an infant wailing"]}
+  sneezing:         {family: human_vocal, groups: [esc_body], text: ["a person sneezing", "someone sneezing loudly"]}
+  breathing:        {family: human_vocal, groups: [esc_body], text: ["a person breathing", "heavy breathing"]}
+  coughing:         {family: human_vocal, groups: [esc_body], text: ["a person coughing", "someone coughing"]}
+  laughing:         {family: human_vocal, groups: [esc_body], text: ["a person laughing", "people laughing"]}
+  snoring:          {family: human_vocal, groups: [esc_body], text: ["a person snoring", "someone snoring while asleep"]}
+  clapping:         {family: human_activity, groups: [], text: ["hands clapping", "people applauding"]}
+  footsteps:        {family: human_activity, groups: [], text: ["footsteps walking", "someone walking on a floor"]}
+  brushing_teeth:   {family: human_activity, groups: [], text: ["someone brushing their teeth", "a toothbrush scrubbing"]}
+  drinking_sipping: {family: human_activity, groups: [], text: ["someone drinking", "a person sipping a drink"]}
+  door_wood_knock:  {family: machine_domestic, groups: [esc_door], text: ["knocking on a wooden door", "a knock at the door"]}
+  door_wood_creaks: {family: machine_domestic, groups: [esc_door], text: ["a door creaking", "a creaky wooden door opening"]}
+  mouse_click:      {family: machine_domestic, groups: [esc_computer], text: ["a computer mouse clicking", "mouse clicks"]}
+  keyboard_typing:  {family: machine_domestic, groups: [esc_computer], text: ["typing on a keyboard", "keyboard keys clacking"]}
+  can_opening:      {family: machine_domestic, groups: [], text: ["a can being opened", "a soda can opening with a hiss"]}
+  washing_machine:  {family: machine_domestic, groups: [esc_appliances], text: ["a washing machine running", "a washer spinning"]}
+  vacuum_cleaner:   {family: machine_domestic, groups: [esc_appliances], text: ["a vacuum cleaner running", "someone vacuuming"]}
+  clock_alarm:      {family: machine_domestic, groups: [esc_clocks], text: ["an alarm clock ringing", "a beeping alarm clock"]}
+  clock_tick:       {family: machine_domestic, groups: [esc_clocks], text: ["a clock ticking", "the tick of a clock"]}
+  glass_breaking:   {family: machine_domestic, groups: [], text: ["glass breaking", "a glass shattering"]}
+  helicopter:       {family: machine_domestic, groups: [esc_vehicles], text: ["a helicopter flying", "helicopter rotor blades"]}
+  chainsaw:         {family: machine_domestic, groups: [esc_tools], text: ["a chainsaw cutting", "a chainsaw revving"]}
+  siren:            {family: machine_domestic, groups: [esc_vehicles], text: ["a siren wailing", "an ambulance siren"]}
+  car_horn:         {family: machine_domestic, groups: [esc_vehicles], text: ["a car horn honking", "a car beeping its horn"]}
+  engine:           {family: machine_domestic, groups: [esc_vehicles], text: ["an engine running", "a motor idling"]}
+  train:            {family: machine_domestic, groups: [esc_vehicles], text: ["a train passing", "a train on the tracks"]}
+  church_bells:     {family: machine_domestic, groups: [esc_clocks], text: ["church bells ringing", "a bell tolling"]}
+  airplane:         {family: machine_domestic, groups: [esc_vehicles], text: ["an airplane flying overhead", "a jet plane"]}
+  fireworks:        {family: machine_domestic, groups: [], text: ["fireworks exploding", "fireworks popping"]}
+  hand_saw:         {family: machine_domestic, groups: [esc_tools], text: ["a hand saw cutting wood", "sawing wood by hand"]}
+
+fsd50k:   # eval split; a clip is assigned to a class when it carries that label and no other class in the same
+          # sibling group (FSD50K propagates labels up the AudioSet hierarchy, so parents are not used as classes)
+  Giggle:                 {family: human_vocal, groups: [laughter_types], text: ["a person giggling", "giggles"]}
+  Chuckle_and_chortle:    {family: human_vocal, groups: [laughter_types], text: ["a person chuckling", "a quiet chortle"]}
+  Cough:                  {family: human_vocal, groups: [fsd_body], text: ["a person coughing", "a dry cough"]}
+  Sneeze:                 {family: human_vocal, groups: [fsd_body], text: ["a person sneezing", "a loud sneeze"]}
+  Sigh:                   {family: human_vocal, groups: [fsd_body], text: ["a person sighing", "a long sigh"]}
+  Burping_and_eructation: {family: human_vocal, groups: [fsd_body], text: ["a person burping", "a loud burp"]}
+  Breathing:              {family: human_vocal, groups: [fsd_body], text: ["a person breathing", "heavy breathing"]}
+  Screaming:              {family: human_vocal, groups: [loud_voice], text: ["a person screaming", "a scream of terror"]}
+  Shout:                  {family: human_vocal, groups: [loud_voice], text: ["a person shouting", "someone yelling a word"]}
+  Whispering:             {family: human_vocal, groups: [voice_kinds], text: ["a person whispering", "soft whispers"]}
+  Singing:                {family: human_vocal, groups: [voice_kinds], text: ["a person singing", "a voice singing a song"]}
+  Crying_and_sobbing:     {family: human_vocal, groups: [voice_kinds], text: ["a person crying", "someone sobbing"]}
+  Male_speech_and_man_speaking:     {family: human_vocal, groups: [speakers], text: ["a man speaking", "a male voice talking"]}
+  Female_speech_and_woman_speaking: {family: human_vocal, groups: [speakers], text: ["a woman speaking", "a female voice talking"]}
+  Child_speech_and_kid_speaking:    {family: human_vocal, groups: [speakers], text: ["a child speaking", "a kid talking"]}
+  Chewing_and_mastication: {family: human_activity, groups: [], text: ["someone chewing", "chewing food loudly"]}
+  Finger_snapping:        {family: human_activity, groups: [], text: ["fingers snapping", "a finger snap"]}
+  Clapping:               {family: human_activity, groups: [], text: ["hands clapping", "a person clapping"]}
+  Bark:                   {family: animal, groups: [dog_sounds], text: ["a dog barking", "barking"]}
+  Growling:               {family: animal, groups: [dog_sounds], text: ["a dog growling", "a low growl"]}
+  Meow:                   {family: animal, groups: [cat_sounds], text: ["a cat meowing", "a meow"]}
+  Purr:                   {family: animal, groups: [cat_sounds], text: ["a cat purring", "purring"]}
+  Hiss:                   {family: animal, groups: [cat_sounds], text: ["a cat hissing", "a hiss"]}
+  Crow:                   {family: animal, groups: [fsd_birds], text: ["a crow cawing", "crows calling"]}
+  Chirp_and_tweet:        {family: animal, groups: [fsd_birds], text: ["a bird chirping", "birds tweeting"]}
+  Gull_and_seagull:       {family: animal, groups: [fsd_birds], text: ["a seagull crying", "gulls calling"]}
+  Frog:                   {family: animal, groups: [], text: ["a frog croaking", "frogs calling"]}
+  Cricket:                {family: animal, groups: [], text: ["crickets chirping", "a cricket"]}
+  Rain:                   {family: nature, groups: [fsd_weather], text: ["rain falling", "a rain shower"]}
+  Thunder:                {family: nature, groups: [fsd_weather], text: ["thunder rumbling", "a thunderclap"]}
+  Wind:                   {family: nature, groups: [fsd_weather], text: ["wind blowing", "a gusty wind"]}
+  Stream:                 {family: nature, groups: [fsd_water], text: ["a stream flowing", "a babbling brook"]}
+  Waves_and_surf:         {family: nature, groups: [fsd_water], text: ["waves crashing", "surf on a beach"]}
+  Drip:                   {family: nature, groups: [fsd_water], text: ["water dripping", "a slow drip"]}
+  Trickle_and_dribble:    {family: nature, groups: [fsd_water], text: ["water trickling", "a thin trickle of water"]}
+  Fire:                   {family: nature, groups: [], text: ["a fire burning", "a crackling fire"]}
+  Car:                    {family: machine_domestic, groups: [road_vehicles], text: ["a car driving past", "a car engine"]}
+  Motorcycle:             {family: machine_domestic, groups: [road_vehicles], text: ["a motorcycle", "a motorbike revving"]}
+  Bus:                    {family: machine_domestic, groups: [road_vehicles], text: ["a bus", "a bus pulling away"]}
+  Truck:                  {family: machine_domestic, groups: [road_vehicles], text: ["a truck", "a lorry driving by"]}
+  Train:                  {family: machine_domestic, groups: [], text: ["a train passing", "a train on the tracks"]}
+  Siren:                  {family: machine_domestic, groups: [signals], text: ["a siren", "a police siren wailing"]}
+  Vehicle_horn_and_car_horn_and_honking: {family: machine_domestic, groups: [signals], text: ["a car horn honking", "a horn beeping"]}
+  Doorbell:               {family: machine_domestic, groups: [signals], text: ["a doorbell ringing", "a ding-dong doorbell"]}
+  Ringtone:               {family: machine_domestic, groups: [signals], text: ["a phone ringtone", "a mobile phone ringing"]}
+  Bicycle_bell:           {family: machine_domestic, groups: [signals], text: ["a bicycle bell", "a bike bell ringing"]}
+  Drill:                  {family: machine_domestic, groups: [tools], text: ["a power drill", "drilling"]}
+  Sawing:                 {family: machine_domestic, groups: [tools], text: ["sawing wood", "a saw cutting"]}
+  Hammer:                 {family: machine_domestic, groups: [tools], text: ["hammering", "a hammer hitting a nail"]}
+  Typing:                 {family: machine_domestic, groups: [], text: ["typing on a keyboard", "someone typing"]}
+  Printer:                {family: machine_domestic, groups: [], text: ["a printer printing", "an office printer"]}
+  Microwave_oven:         {family: machine_domestic, groups: [kitchen], text: ["a microwave oven running", "a microwave beeping"]}
+  Frying_(food):          {family: machine_domestic, groups: [kitchen], text: ["food frying in a pan", "sizzling oil"]}
+  Boiling:                {family: machine_domestic, groups: [kitchen], text: ["water boiling", "a pot bubbling"]}
+  Cutlery_and_silverware: {family: machine_domestic, groups: [kitchen], text: ["cutlery clinking", "knives and forks"]}
+  Dishes_and_pots_and_pans: {family: machine_domestic, groups: [kitchen], text: ["dishes clattering", "pots and pans banging"]}
+  Toilet_flush:           {family: machine_domestic, groups: [], text: ["a toilet flushing", "a flush"]}
+  Zipper_(clothing):      {family: machine_domestic, groups: [], text: ["a zipper", "someone zipping a jacket"]}
+  Keys_jangling:          {family: machine_domestic, groups: [], text: ["keys jangling", "a bunch of keys"]}
+  Scissors:               {family: machine_domestic, groups: [], text: ["scissors cutting", "snipping scissors"]}
+  Writing:                {family: machine_domestic, groups: [], text: ["writing with a pen", "a pencil on paper"]}
+  Coin_(dropping):        {family: machine_domestic, groups: [], text: ["a coin dropping", "coins falling"]}
+  Crash_cymbal:           {family: music, groups: [], text: ["a crash cymbal", "a cymbal crash"]}
+
+vocalsound:   # speaker-disjoint train/validation/test splits provided by the dataset
+  laughter:       {family: human_vocal, groups: [vocal_nonspeech], text: ["a person laughing", "laughter"]}
+  sigh:           {family: human_vocal, groups: [vocal_nonspeech], text: ["a person sighing", "a sigh"]}
+  cough:          {family: human_vocal, groups: [vocal_nonspeech], text: ["a person coughing", "a cough"]}
+  throatclearing: {family: human_vocal, groups: [vocal_nonspeech], text: ["a person clearing their throat", "throat clearing"]}
+  sneeze:         {family: human_vocal, groups: [vocal_nonspeech], text: ["a person sneezing", "a sneeze"]}
+  sniff:          {family: human_vocal, groups: [vocal_nonspeech], text: ["a person sniffing", "a sniff"]}
+
+xenocanto:   # species; non-ND recordings, quality A then B, grouped by recordist
+  common cuckoo:          {sci: Cuculus canorus, family: animal, groups: [cuckoo_vs_owls, hooting_calls], text: ["a cuckoo calling", "the call of a cuckoo"]}
+  tawny owl:              {sci: Strix aluco, family: animal, groups: [owls, cuckoo_vs_owls, hooting_calls], text: ["a tawny owl hooting", "an owl hooting at night"]}
+  eurasian eagle-owl:     {sci: Bubo bubo, family: animal, groups: [owls, cuckoo_vs_owls], text: ["an eagle owl hooting", "a deep owl hoot"]}
+  little owl:             {sci: Athene noctua, family: animal, groups: [owls, cuckoo_vs_owls], text: ["a little owl calling", "a small owl's call"]}
+  long-eared owl:         {sci: Asio otus, family: animal, groups: [owls, cuckoo_vs_owls, hooting_calls], text: ["a long-eared owl hooting", "a soft owl hoot"]}
+  barn owl:               {sci: Tyto alba, family: animal, groups: [owls, cuckoo_vs_owls], text: ["a barn owl screeching", "an owl's screech"]}
+  eurasian scops owl:     {sci: Otus scops, family: animal, groups: [owls, cuckoo_vs_owls], text: ["a scops owl calling", "a repeated owl whistle"]}
+  eurasian collared dove: {sci: Streptopelia decaocto, family: animal, groups: [hooting_calls], text: ["a collared dove cooing", "a dove cooing"]}
+  common wood pigeon:     {sci: Columba palumbus, family: animal, groups: [hooting_calls], text: ["a wood pigeon cooing", "a pigeon cooing"]}
+  eurasian hoopoe:        {sci: Upupa epops, family: animal, groups: [hooting_calls], text: ["a hoopoe calling", "the oop-oop call of a hoopoe"]}
+  common blackbird:       {sci: Turdus merula, family: animal, groups: [songbirds], text: ["a blackbird singing", "blackbird song"]}
+  common nightingale:     {sci: Luscinia megarhynchos, family: animal, groups: [songbirds], text: ["a nightingale singing", "nightingale song"]}
+  eurasian wren:          {sci: Troglodytes troglodytes, family: animal, groups: [songbirds], text: ["a wren singing", "a wren's loud trilling song"]}
+  great tit:              {sci: Parus major, family: animal, groups: [songbirds], text: ["a great tit singing", "a tit calling teacher-teacher"]}
+  common chaffinch:       {sci: Fringilla coelebs, family: animal, groups: [songbirds], text: ["a chaffinch singing", "chaffinch song"]}
+  carrion crow:           {sci: Corvus corone, family: animal, groups: [corvids], text: ["a crow cawing", "a carrion crow calling"]}
+  eurasian magpie:        {sci: Pica pica, family: animal, groups: [corvids], text: ["a magpie chattering", "a magpie's rattling call"]}
+
+cremad:   # emotion codes; actor-grouped splits; the 12 sentences are held fixed across emotions
+  ANG: {family: speech_emotion, groups: [emotions], word: angry, text: ["an angry voice", "a person speaking angrily"]}
+  DIS: {family: speech_emotion, groups: [emotions], word: disgusted, text: ["a disgusted voice", "a person speaking with disgust"]}
+  FEA: {family: speech_emotion, groups: [emotions], word: afraid, text: ["a frightened voice", "a person speaking fearfully"]}
+  HAP: {family: speech_emotion, groups: [emotions], word: happy, text: ["a happy voice", "a person speaking happily"]}
+  NEU: {family: speech_emotion, groups: [emotions], word: neutral, text: ["a neutral voice", "a person speaking calmly and flatly"]}
+  SAD: {family: speech_emotion, groups: [emotions], word: sad, text: ["a sad voice", "a person speaking sadly"]}
+
+music:
+  # FMA top-level genres -> genre word. Membership: the track's genres_all contains exactly one of these top-levels.
+  genres:
+    Classical:        classical
+    Jazz:             jazz
+    Folk:             folk
+    Electronic:       electronic
+    Rock:             rock
+    Pop:              pop
+    Hip-Hop:          hip-hop
+    Blues:            blues
+    Country:          country
+    Soul-RnB:         soul
+    Easy Listening:   easy listening
+  # Dropped from the genre-word tests (not genre words, or not about style):
+  dropped_genres:
+    Instrumental: "a property, not a genre; used only as a metadata hint for the instrumental filter"
+    Experimental: "a catch-all (noise, field recordings, sound art), not one musical style"
+    International: "a parent of regional subgenres; used for regions instead"
+    Spoken: "not music"
+    Old-Time / Historic: "an era/recording-quality label, not a style"
+  # FMA International subgenres -> region word. Most specific subgenre wins (Spanish beats Europe).
+  regions:
+    Europe:        European
+    Balkan:        Balkan
+    Latin America: Latin American
+    French:        French
+    African:       African        # includes the child Afrobeat
+    Afrobeat:      African
+    Brazilian:     Brazilian
+    Indian:        Indian
+    Middle East:   Middle Eastern
+    Asia-Far East: East Asian
+    Spanish:       Spanish
+    Latin:         Latin
+  dropped_regions:
+    Reggae - Dub: "a genre (Jamaican style) rather than a region; would conflate genre and region"
+    Reggae - Dancehall: "as above"
+    other: "subgenres with < 20 distinct artists (Celtic, Romany, Klezmer, Polka, Turkish, Flamenco, Tango, Fado, Cumbia, Pacific...)"
+  word_forms: ["{w}", "{w} music", "a piece of {w} music"]
+  # MTG-Jamendo instrument-held-fixed cells (Phase 8); shards 53 and 86
+  mtg_instruments: [piano, guitar, strings, synthesizer]
+  mtg_genres: [classical, jazz, ambient, pop, electronic, rock, folk, soundtrack]
