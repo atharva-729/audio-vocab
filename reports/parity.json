@@ -1,0 +1,22 @@
+{
+ "gemma_audio": {
+  "n": 10,
+  "max_abs_diff": 1.5832483768463135e-07,
+  "min_cosine": 1.0,
+  "pass": true
+ },
+ "gemma_s_per_20s_clip": 4.19,
+ "gemma_text": {
+  "n": 5,
+  "max_abs_diff": 1.0803341865539551e-07,
+  "min_cosine": 1.0,
+  "pass": true
+ },
+ "clap_audio": {
+  "n": 5,
+  "max_abs_diff": 0.0,
+  "min_cosine": 0.9999999403953552,
+  "pass": true
+ },
+ "clap_s_per_20s_clip": 0.58
+}

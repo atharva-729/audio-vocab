@@ -1,0 +1,31 @@
+# Pinned to the versions in podcast-vibe-search/.venv (2026-10-22), plus plotly.
+# Core data
+numpy==2.5.4
+pandas==3.0.6
+pyarrow==26.0.0
+pyyaml==6.0.3
+requests==2.34.2
+
+# Audio + features
+librosa==1.0.0
+soundfile==0.14.0
+pillow==13.0.0            # EmbeddingGemma 2 processor needs PIL
+
+# Models (CPU)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu   # EmbeddingGemma 2 loads its video processor even if unused
+transformers==5.20.2
+sentence-transformers==6.1.0
+huggingface_hub==1.33.0
+faster-whisper==1.2.1     # instrumental filter (vocal check)
+
+# Analysis + plots
+scikit-learn==1.9.1
+scipy==1.18.1
+umap-learn==0.5.12
+plotly==7.1.0
+
+# Dev
+pytest==9.1.1
+truststore==0.10.5

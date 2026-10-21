@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Large / derived data
+data/raw/
+index/
+runs/cache/
+runs/*.log
+runs/*.err
+runs/*.pid
+bundle/
+bundle.zip
+
+.env

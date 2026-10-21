@@ -1,0 +1,13 @@
+[project]
+name = "audio-vocab"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[project.scripts]
+vocab = "audiovocab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
