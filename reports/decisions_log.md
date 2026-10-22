@@ -50,3 +50,12 @@ Entries are append-only.
 16. **Musopen via archive.org** (Public Domain Mark), because musopen.org sits behind a Cloudflare bot check.
     At most 4 movements per work, so the 32-movement Goldberg Variations doesn't dominate. That gives 116 movements
     from 37 works.
+
+## 2026-10-22 (Phase 4, after the first Gemma run)
+
+17. **Probes standardise features (fit on training folds) before logistic regression.** The first run used raw
+    L2-normalised vectors with fixed C = 1. For Gemma the probe came out *below* kNN on ESC-50 (0.71 vs 0.77), a
+    sign of underfitting rather than missing information: Gemma's vectors sit in a narrow cone (mean per-dimension
+    std 0.015), so C = 1 is effectively a very strong penalty. CLAP's spread-out vectors were barely affected.
+    Standardising is a scale correction applied identically to both models and every probe; C stays fixed at 1 and
+    nothing was tuned on reported folds. Check on two ESC-50 folds: Gemma 0.70 → 0.83.
