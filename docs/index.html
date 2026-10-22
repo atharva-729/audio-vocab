@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Vocab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #0d1016; --bg2: #141922; --bg3: #1c2230; --rule: #2a3241;
+  --fg: #ece8df; --soft: #c9c4b8; --mut: #8d95a3;
+  --ok: #2fd3a7; --ok-bg: rgba(47,211,167,.12); --bad: #ff6a5e; --bad-bg: rgba(255,106,94,.13);
+  --hl: #f6b93b; --sky: #5aa9ff;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  --serif: "Fraunces", Georgia, serif; --sans: "IBM Plex Sans", system-ui, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--sky); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+section { padding: 38px 0; border-bottom: 1px solid var(--rule); }
+section.alt { background: var(--bg2); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin-bottom: 6px; }
+h3 { font-size: 1rem; font-family: var(--sans); margin: 18px 0 6px; }
+.lead { color: var(--soft); max-width: 75ch; margin: 6px 0 0; }
+.mut { color: var(--mut); }
+.kicker { font: 500 11.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mut);
+  display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.kicker b { color: var(--hl); font-weight: 500; }
+.kicker::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .3; }
+.em { color: var(--hl); font-weight: 600; }
+code { font-family: var(--mono); font-size: 13px; color: var(--soft); }
+nav { position: sticky; top: 0; z-index: 20; background: rgba(13,16,22,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+nav .wrap { display: flex; gap: 18px; align-items: center; height: 46px; overflow-x: auto; white-space: nowrap; }
+nav .brand { font-weight: 600; font-size: 14px; }
+nav a { text-decoration: none; color: var(--soft); font-size: 13.5px; }
+nav a:hover { color: var(--fg); }
+.hero { padding: 30px 0 32px; }
+.tag { color: var(--soft); font-size: 1.05rem; margin: 8px 0 18px; max-width: 80ch; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 880px) { .grid2, .grid3, .grid4 { grid-template-columns: 1fr; } }
+.box { background: var(--bg2); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; min-width: 0; }
+section.alt .box { background: var(--bg); }
+ul.bul { margin: 0; padding-left: 18px; }
+ul.bul li { margin: 6px 0; color: var(--soft); }
+ul.bul li b, ul.bul li strong { color: var(--fg); }
+.heads li { font-size: 1.02rem; }
+.heads li::marker { color: var(--hl); }
+.notobv { border-left: 3px solid var(--hl); padding: 4px 0 4px 14px; margin: 14px 0 0; }
+.notobv ul { margin: 0; padding-left: 18px; }
+.notobv li { margin: 5px 0; color: var(--soft); }
+.chart { width: 100%; min-height: 320px; }
+.tile .big { font: 600 2rem/1 var(--serif); color: var(--fg); }
+.tile .l { font-size: 13px; color: var(--mut); margin-top: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { color: var(--mut); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+td.n { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.scroll { overflow-x: auto; }
+.pill { display: inline-block; font-size: 11.5px; padding: 1px 8px; border-radius: 999px; background: var(--bg3); color: var(--soft); }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.bad { background: var(--bad-bg); color: var(--bad); }
+.pill.hl { background: rgba(246,185,59,.14); color: var(--hl); }
+.drill { margin-top: 12px; display: none; }
+.drill.on { display: block; }
+.pips span { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 2px; background: var(--bad); }
+.pips span.y { background: var(--ok); }
+select { background: var(--bg3); color: var(--fg); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 10px; font: inherit; }
+.line { text-align: center; color: var(--mut); font-family: var(--serif); font-size: 1.15rem; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--soft); margin: 6px 0; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+footer { padding: 26px 0 40px; color: var(--mut); font-size: 12.5px; }
+footer li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <span class="brand">Audio Vocab</span>
+  <a href="#hear">What it hears</a><a href="#name">Knows vs names</a><a href="#words">Words vs sounds</a>
+  <a href="#emotion">Emotion</a><a href="#music">Music</a><a href="#classical">What makes a genre</a>
+  <a href="#vibe">Back to Vibe Search</a><a href="#how">How</a>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker"><b>Audio embeddings</b> internal study</div>
+  <h1>What can an audio embedding actually hear, and which of it can words reach?</h1>
+  <p class="tag" id="tagline"></p>
+  <div class="grid2">
+    <div class="box"><ul class="bul heads" id="headlines"></ul>
+      <p class="mut" style="margin:12px 0 0;font-size:13px" id="scope"></p></div>
+    <div class="box"><div class="legend" id="lg-hero"></div><div id="ch-hero" class="chart" style="min-height:360px"></div>
+      <div class="mut" style="font-size:12.5px">Click a row to see its classes. <a href="#hear">Details below.</a></div></div>
+  </div>
+  <div class="box drill" id="drill-hero"></div>
+</div></section>
+
+<section class="alt" id="data"><div class="wrap">
+  <div class="kicker"><b>Data</b> labelled datasets only, no hand-labelling</div>
+  <h2>Labelled datasets, two models</h2>
+  <p class="lead" id="data-lead"></p>
+  <div class="scroll" style="margin-top:14px"><table id="tbl-data"></table></div>
+</div></section>
+
+<section id="hear"><div class="wrap">
+  <div class="kicker"><b>Q1</b> resolution</div>
+  <h2>Where is the space fine-grained, and where is it coarse?</h2>
+  <p class="lead" id="hear-lead"></p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Sibling sets: the fine distinctions</h3><div class="legend" id="lg-sib"></div><div id="ch-sib" class="chart" style="min-height:420px"></div></div>
+    <div class="box"><h3 style="margin-top:0">Effective vocabulary per family</h3><p class="mut" style="font-size:13px;margin:0" id="vocab-note"></p><div class="scroll"><table id="tbl-vocab"></table></div></div>
+  </div>
+  <div class="notobv"><ul id="nb-hear"></ul></div>
+</div></section>
+
+<section class="alt" id="name"><div class="wrap">
+  <div class="kicker"><b>Q2</b> knows vs can name</div>
+  <h2>When the audio separates two sounds, can a word find them?</h2>
+  <p class="lead" id="name-lead"></p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">EmbeddingGemma 2</h3><div id="ch-name-gemma" class="chart" style="min-height:380px"></div></div>
+    <div class="box"><h3 style="margin-top:0">CLAP</h3><div id="ch-name-clap" class="chart" style="min-height:380px"></div></div>
+  </div>
+  <div class="legend" id="lg-fam"></div>
+  <div class="box drill" id="drill-name"></div>
+  <div class="notobv"><ul id="nb-name"></ul></div>
+</div></section>
+
+<section id="words"><div class="wrap">
+  <div class="kicker"><b>Q3</b> words vs sounds</div>
+  <h2>Is the text vocabulary organised like the audio vocabulary?</h2>
+  <p class="lead" id="words-lead"></p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Synonym clouds <select id="sel-concept"></select></h3>
+      <p class="mut" style="font-size:13px;margin:0">Each synonym's nearest sound clips: share that are the right sound.</p>
+      <div class="legend" id="lg-syn"></div><div id="ch-syn" class="chart" style="min-height:360px"></div>
+      <div class="grid3" id="syn-tiles"></div></div>
+    <div class="box"><h3 style="margin-top:0">Centring strength vs zero-shot accuracy (Gemma)</h3>
+      <div class="legend" id="lg-alpha"></div><div id="ch-alpha" class="chart" style="min-height:360px"></div>
+      <p class="mut" style="font-size:13px" id="alpha-note"></p></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="box"><h3 style="margin-top:0">Same shape? Audio-centroid vs text similarity</h3><div class="scroll"><table id="tbl-struct"></table></div></div>
+    <div class="box"><h3 style="margin-top:0">The gap per family</h3><div class="legend" id="lg-gap"></div><div id="ch-gap" class="chart" style="min-height:300px"></div></div>
+  </div>
+  <div class="notobv"><ul id="nb-words"></ul></div>
+</div></section>
+
+<section class="alt" id="emotion"><div class="wrap">
+  <div class="kicker"><b>Q4</b> emotion</div>
+  <h2 id="emo-title">Who, what, or how?</h2>
+  <p class="lead" id="emo-lead"></p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Linear probe skill above chance</h3><div class="legend" id="lg-emo"></div><div id="ch-emo" class="chart" style="min-height:340px"></div></div>
+    <div class="box"><h3 style="margin-top:0">Emotion confusion (Gemma probe, rows = true)</h3><div id="ch-conf" class="chart" style="min-height:340px"></div></div>
+  </div>
+  <div class="grid4" style="margin-top:14px" id="emo-tiles"></div>
+  <div class="notobv"><ul id="nb-emo"></ul></div>
+</div></section>
+
+<section id="music"><div class="wrap">
+  <div class="kicker"><b>Q5</b> music without lyrics</div>
+  <h2>Can a genre word find instrumental music of that genre?</h2>
+  <p class="lead" id="music-lead"></p>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Per genre: precision of the nearest tracks vs base rate (Gemma)</h3><div class="legend" id="lg-gen"></div><div id="ch-genre" class="chart" style="min-height:380px"></div></div>
+    <div class="box"><h3 style="margin-top:0">Knows vs names, per genre (recall)</h3><div class="legend" id="lg-gen2"></div><div id="ch-genre2" class="chart" style="min-height:380px"></div></div>
+  </div>
+  <div class="grid4" style="margin-top:14px" id="music-tiles"></div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Regions (instrumental)</h3><div class="scroll"><table id="tbl-region"></table></div></div>
+    <div class="box"><h3 style="margin-top:0">Instrumental filter</h3><div class="scroll"><table id="tbl-filter"></table></div></div>
+  </div>
+  <div class="notobv"><ul id="nb-music"></ul></div>
+</div></section>
+
+<section class="alt" id="classical"><div class="wrap">
+  <div class="kicker"><b>Q5</b> what makes a genre</div>
+  <h2 id="wm-title">What makes classical sound "classical" to the model?</h2>
+  <p class="lead" id="wm-lead"></p>
+  <div style="margin:10px 0"><select id="sel-genre"></select></div>
+  <div class="grid2">
+    <div class="box"><h3 style="margin-top:0">Change one thing at a time: change in genre score</h3><div class="legend" id="lg-pert"></div><div id="ch-pert" class="chart" style="min-height:420px"></div></div>
+    <div class="box"><h3 style="margin-top:0">Measured features vs genre score (Spearman, across genres)</h3><div id="ch-feat" class="chart" style="min-height:420px"></div></div>
+  </div>
+  <div class="grid3" style="margin-top:14px">
+    <div class="box"><h3 style="margin-top:0">Same instrument, different genre</h3><div id="wm-inst"></div></div>
+    <div class="box"><h3 style="margin-top:0">Descriptor words</h3><div id="wm-desc"></div></div>
+    <div class="box"><h3 style="margin-top:0">Top false positives</h3><div class="scroll" id="wm-fp"></div></div>
+  </div>
+  <div class="notobv"><ul id="nb-wm"></ul></div>
+</div></section>
+
+<section id="vibe"><div class="wrap">
+  <div class="kicker"><b>Bridge</b> back to Vibe Search</div>
+  <h2>Do the Vibe Search failures line up with weak areas of the space?</h2>
+  <p class="lead" id="vibe-lead"></p>
+  <div class="box scroll" style="margin-top:14px"><table id="tbl-bridge"></table></div>
+  <div class="notobv"><ul id="nb-vibe"></ul></div>
+</div></section>
+
+<div class="line">That is the result. Everything below is the how.</div>
+
+<section id="how"><div class="wrap">
+  <div class="kicker"><b>Method</b> and limits</div>
+  <h2>How it was measured</h2>
+  <div class="grid2" style="margin-top:12px">
+    <div class="box"><h3 style="margin-top:0">Protocol</h3><ul class="bul" id="how-proto"></ul></div>
+    <div class="box"><h3 style="margin-top:0">Limits</h3><ul class="bul" id="how-limits"></ul></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="box"><h3 style="margin-top:0">Map of all clips (Gemma, UMAP, by family)</h3><div id="ch-umap" class="chart" style="min-height:420px"></div></div>
+    <div class="box"><h3 style="margin-top:0">Joint map: words (rings) and clips</h3><div id="ch-joint" class="chart" style="min-height:420px"></div><p class="mut" style="font-size:13px" id="joint-note"></p></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="box"><h3 style="margin-top:0">Sanity checks</h3><div class="scroll"><table id="tbl-sanity"></table></div></div>
+    <div class="box"><h3 style="margin-top:0">Reproduce</h3><ul class="bul" id="how-repro"></ul></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div id="foot-attr"></div>
+  <p>Models: EmbeddingGemma 2 (Google DeepMind, Apache 2.0); LAION-CLAP htsat-unfused (Apache 2.0). Instrumental filter: faster-whisper small. Internal prototype: findings hold for these datasets with these models, not for all audio.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

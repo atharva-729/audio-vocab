@@ -1,0 +1,850 @@
+{
+ "clap": {
+  "prefix": "SearchQuery",
+  "synonyms": {
+   "raw": {
+    "laugh": {
+     "text_within": 0.5006,
+     "text_across": 0.1819,
+     "text_margin": 0.3187,
+     "retrieval_overlap_jaccard": 0.0918,
+     "precision_at_25_mean": 0.5527,
+     "precision_at_25_by_word": {
+      "laugh": 0.84,
+      "laughter": 0.92,
+      "giggle": 0.92,
+      "chuckle": 0.68,
+      "chortle": 0.16,
+      "cackle": 0.8,
+      "guffaw": 0.04,
+      "snicker": 0.0,
+      "titter": 0.0,
+      "belly laugh": 0.8,
+      "hysterical laughter": 0.92
+     },
+     "base_rate": 0.0427,
+     "n_right_clips": 140
+    },
+    "cry": {
+     "text_within": 0.402,
+     "text_across": 0.2538,
+     "text_margin": 0.1482,
+     "retrieval_overlap_jaccard": 0.0241,
+     "precision_at_25_mean": 0.096,
+     "precision_at_25_by_word": {
+      "cry": 0.08,
+      "crying": 0.32,
+      "sobbing": 0.0,
+      "weeping": 0.0,
+      "wailing": 0.0,
+      "whimpering": 0.0,
+      "bawling": 0.56,
+      "blubbering": 0.0,
+      "tears": 0.0,
+      "sniveling": 0.0
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "scream": {
+     "text_within": 0.5587,
+     "text_across": 0.2139,
+     "text_margin": 0.3448,
+     "retrieval_overlap_jaccard": 0.0938,
+     "precision_at_25_mean": 0.0,
+     "precision_at_25_by_word": {
+      "scream": 0.0,
+      "screaming": 0.0,
+      "shriek": 0.0,
+      "yell": 0.0,
+      "shout": 0.0,
+      "screech": 0.0,
+      "howl": 0.0,
+      "holler": 0.0,
+      "bellow": 0.0,
+      "cry out": 0.0
+     },
+     "base_rate": 0.0,
+     "n_right_clips": 0
+    },
+    "whisper": {
+     "text_within": 0.3772,
+     "text_across": 0.2211,
+     "text_margin": 0.1561,
+     "retrieval_overlap_jaccard": 0.1228,
+     "precision_at_25_mean": 0.0,
+     "precision_at_25_by_word": {
+      "whisper": 0.0,
+      "whispering": 0.0,
+      "murmur": 0.0,
+      "mutter": 0.0,
+      "hushed voice": 0.0,
+      "soft speech": 0.0,
+      "susurration": 0.0,
+      "breathy voice": 0.0,
+      "under one's breath": 0.0,
+      "mumble": 0.0
+     },
+     "base_rate": 0.0,
+     "n_right_clips": 0
+    },
+    "cough": {
+     "text_within": 0.2992,
+     "text_across": 0.1935,
+     "text_margin": 0.1057,
+     "retrieval_overlap_jaccard": 0.0166,
+     "precision_at_25_mean": 0.4,
+     "precision_at_25_by_word": {
+      "cough": 1.0,
+      "coughing": 1.0,
+      "hacking": 0.32,
+      "throat clearing": 0.56,
+      "wheeze": 0.2,
+      "splutter": 0.04,
+      "hack": 0.04,
+      "croup": 0.0,
+      "ahem": 0.04,
+      "choking": 0.8
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "sneeze": {
+     "text_within": 0.3909,
+     "text_across": 0.1819,
+     "text_margin": 0.209,
+     "retrieval_overlap_jaccard": 0.0589,
+     "precision_at_25_mean": 0.604,
+     "precision_at_25_by_word": {
+      "sneeze": 1.0,
+      "sneezing": 1.0,
+      "achoo": 0.0,
+      "sniffle": 0.52,
+      "sniff": 1.0,
+      "snort": 0.2,
+      "nose blowing": 0.56,
+      "sternutation": 0.08,
+      "snuffle": 0.68,
+      "runny nose": 1.0
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "rain": {
+     "text_within": 0.58,
+     "text_across": 0.2049,
+     "text_margin": 0.3751,
+     "retrieval_overlap_jaccard": 0.1815,
+     "precision_at_25_mean": 0.528,
+     "precision_at_25_by_word": {
+      "rain": 1.0,
+      "rainfall": 0.92,
+      "downpour": 0.88,
+      "drizzle": 0.12,
+      "shower": 0.16,
+      "rainstorm": 0.48,
+      "pouring rain": 0.96,
+      "raindrops": 0.72,
+      "deluge": 0.04,
+      "sprinkle": 0.0
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "wind": {
+     "text_within": 0.3672,
+     "text_across": 0.2014,
+     "text_margin": 0.1658,
+     "retrieval_overlap_jaccard": 0.1543,
+     "precision_at_25_mean": 0.412,
+     "precision_at_25_by_word": {
+      "wind": 0.8,
+      "breeze": 0.4,
+      "gust": 0.0,
+      "gale": 0.48,
+      "blowing wind": 0.4,
+      "windstorm": 0.64,
+      "draft": 0.48,
+      "howling wind": 0.52,
+      "squall": 0.0,
+      "whoosh": 0.4
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "water": {
+     "text_within": 0.4365,
+     "text_across": 0.169,
+     "text_margin": 0.2675,
+     "retrieval_overlap_jaccard": 0.112,
+     "precision_at_25_mean": 0.516,
+     "precision_at_25_by_word": {
+      "water": 0.72,
+      "stream": 0.24,
+      "brook": 0.4,
+      "babbling water": 0.52,
+      "trickle": 0.16,
+      "dripping": 0.92,
+      "waves": 1.0,
+      "splashing": 0.8,
+      "flowing water": 0.24,
+      "creek": 0.16
+     },
+     "base_rate": 0.0366,
+     "n_right_clips": 120
+    },
+    "dog": {
+     "text_within": 0.321,
+     "text_across": 0.1769,
+     "text_margin": 0.1441,
+     "retrieval_overlap_jaccard": 0.1165,
+     "precision_at_25_mean": 0.428,
+     "precision_at_25_by_word": {
+      "dog": 1.0,
+      "barking": 0.84,
+      "bark": 0.92,
+      "woof": 0.08,
+      "puppy": 0.08,
+      "hound": 0.68,
+      "yapping": 0.0,
+      "growl": 0.0,
+      "canine": 0.0,
+      "doggy": 0.68
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "cat": {
+     "text_within": 0.3316,
+     "text_across": 0.1363,
+     "text_margin": 0.1953,
+     "retrieval_overlap_jaccard": 0.1412,
+     "precision_at_25_mean": 0.504,
+     "precision_at_25_by_word": {
+      "cat": 0.96,
+      "meow": 1.0,
+      "kitten": 0.96,
+      "purr": 0.04,
+      "mewing": 0.76,
+      "feline": 0.2,
+      "kitty": 0.64,
+      "hiss": 0.0,
+      "caterwaul": 0.0,
+      "tomcat": 0.48
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "bird": {
+     "text_within": 0.3743,
+     "text_across": 0.1564,
+     "text_margin": 0.2178,
+     "retrieval_overlap_jaccard": 0.0314,
+     "precision_at_25_mean": 0.424,
+     "precision_at_25_by_word": {
+      "bird": 0.48,
+      "birdsong": 0.84,
+      "chirping": 0.44,
+      "tweeting": 0.04,
+      "warbling": 0.08,
+      "songbird": 0.92,
+      "birdcall": 0.64,
+      "trill": 0.0,
+      "twitter": 0.08,
+      "dawn chorus": 0.72
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "owl": {
+     "text_within": 0.5287,
+     "text_across": 0.2502,
+     "text_margin": 0.2785,
+     "retrieval_overlap_jaccard": 0.1923,
+     "precision_at_25_mean": 0.708,
+     "precision_at_25_by_word": {
+      "owl": 0.28,
+      "hooting": 0.0,
+      "hoot": 0.96,
+      "owl call": 0.72,
+      "night owl": 1.0,
+      "tawny owl": 0.88,
+      "barn owl": 0.8,
+      "screech owl": 0.88,
+      "hooting owl": 1.0,
+      "owl screech": 0.56
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "engine": {
+     "text_within": 0.4964,
+     "text_across": 0.1396,
+     "text_margin": 0.3567,
+     "retrieval_overlap_jaccard": 0.1747,
+     "precision_at_25_mean": 0.428,
+     "precision_at_25_by_word": {
+      "engine": 0.28,
+      "motor": 0.6,
+      "revving": 0.2,
+      "idling engine": 0.32,
+      "car engine": 0.52,
+      "roaring engine": 0.24,
+      "vroom": 0.0,
+      "combustion engine": 0.68,
+      "diesel engine": 0.68,
+      "rumbling motor": 0.76
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "applause": {
+     "text_within": 0.5694,
+     "text_across": 0.1778,
+     "text_margin": 0.3916,
+     "retrieval_overlap_jaccard": 0.4696,
+     "precision_at_25_mean": 0.88,
+     "precision_at_25_by_word": {
+      "applause": 1.0,
+      "clapping": 1.0,
+      "ovation": 0.0,
+      "handclaps": 0.92,
+      "cheering crowd": 0.92,
+      "standing ovation": 1.0,
+      "round of applause": 1.0,
+      "audience clapping": 1.0,
+      "claps": 1.0,
+      "acclaim": 0.96
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "siren": {
+     "text_within": 0.7124,
+     "text_across": 0.1499,
+     "text_margin": 0.5624,
+     "retrieval_overlap_jaccard": 0.4097,
+     "precision_at_25_mean": 0.896,
+     "precision_at_25_by_word": {
+      "siren": 1.0,
+      "alarm": 0.52,
+      "police siren": 1.0,
+      "ambulance siren": 1.0,
+      "wailing siren": 0.92,
+      "emergency siren": 1.0,
+      "fire engine siren": 1.0,
+      "klaxon": 0.56,
+      "warning siren": 1.0,
+      "air raid siren": 0.96
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    }
+   },
+   "centred": {
+    "laugh": {
+     "text_within": 0.5439,
+     "text_across": 0.2267,
+     "text_margin": 0.3172,
+     "retrieval_overlap_jaccard": 0.1957,
+     "precision_at_25_mean": 0.6218,
+     "precision_at_25_by_word": {
+      "laugh": 1.0,
+      "laughter": 1.0,
+      "giggle": 0.96,
+      "chuckle": 0.88,
+      "chortle": 0.28,
+      "cackle": 0.88,
+      "guffaw": 0.0,
+      "snicker": 0.04,
+      "titter": 0.0,
+      "belly laugh": 0.88,
+      "hysterical laughter": 0.92
+     },
+     "base_rate": 0.0427,
+     "n_right_clips": 140
+    },
+    "cry": {
+     "text_within": 0.3173,
+     "text_across": 0.2107,
+     "text_margin": 0.1065,
+     "retrieval_overlap_jaccard": 0.0315,
+     "precision_at_25_mean": 0.268,
+     "precision_at_25_by_word": {
+      "cry": 0.12,
+      "crying": 0.92,
+      "sobbing": 0.12,
+      "weeping": 0.08,
+      "wailing": 0.24,
+      "whimpering": 0.28,
+      "bawling": 0.92,
+      "blubbering": 0.0,
+      "tears": 0.0,
+      "sniveling": 0.0
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "scream": {
+     "text_within": 0.5833,
+     "text_across": 0.2396,
+     "text_margin": 0.3437,
+     "retrieval_overlap_jaccard": 0.1553,
+     "precision_at_25_mean": 0.0,
+     "precision_at_25_by_word": {
+      "scream": 0.0,
+      "screaming": 0.0,
+      "shriek": 0.0,
+      "yell": 0.0,
+      "shout": 0.0,
+      "screech": 0.0,
+      "howl": 0.0,
+      "holler": 0.0,
+      "bellow": 0.0,
+      "cry out": 0.0
+     },
+     "base_rate": 0.0,
+     "n_right_clips": 0
+    },
+    "whisper": {
+     "text_within": 0.2025,
+     "text_across": 0.1224,
+     "text_margin": 0.0802,
+     "retrieval_overlap_jaccard": 0.0305,
+     "precision_at_25_mean": 0.0,
+     "precision_at_25_by_word": {
+      "whisper": 0.0,
+      "whispering": 0.0,
+      "murmur": 0.0,
+      "mutter": 0.0,
+      "hushed voice": 0.0,
+      "soft speech": 0.0,
+      "susurration": 0.0,
+      "breathy voice": 0.0,
+      "under one's breath": 0.0,
+      "mumble": 0.0
+     },
+     "base_rate": 0.0,
+     "n_right_clips": 0
+    },
+    "cough": {
+     "text_within": 0.319,
+     "text_across": 0.2008,
+     "text_margin": 0.1182,
+     "retrieval_overlap_jaccard": 0.0245,
+     "precision_at_25_mean": 0.316,
+     "precision_at_25_by_word": {
+      "cough": 1.0,
+      "coughing": 0.96,
+      "hacking": 0.0,
+      "throat clearing": 0.2,
+      "wheeze": 0.12,
+      "splutter": 0.0,
+      "hack": 0.0,
+      "croup": 0.0,
+      "ahem": 0.0,
+      "choking": 0.88
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "sneeze": {
+     "text_within": 0.4391,
+     "text_across": 0.2181,
+     "text_margin": 0.221,
+     "retrieval_overlap_jaccard": 0.0676,
+     "precision_at_25_mean": 0.52,
+     "precision_at_25_by_word": {
+      "sneeze": 1.0,
+      "sneezing": 1.0,
+      "achoo": 0.0,
+      "sniffle": 0.24,
+      "sniff": 0.88,
+      "snort": 0.12,
+      "nose blowing": 0.6,
+      "sternutation": 0.0,
+      "snuffle": 0.4,
+      "runny nose": 0.96
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "rain": {
+     "text_within": 0.5494,
+     "text_across": 0.1893,
+     "text_margin": 0.3601,
+     "retrieval_overlap_jaccard": 0.2177,
+     "precision_at_25_mean": 0.58,
+     "precision_at_25_by_word": {
+      "rain": 1.0,
+      "rainfall": 1.0,
+      "downpour": 0.92,
+      "drizzle": 0.16,
+      "shower": 0.16,
+      "rainstorm": 0.64,
+      "pouring rain": 1.0,
+      "raindrops": 0.8,
+      "deluge": 0.12,
+      "sprinkle": 0.0
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "wind": {
+     "text_within": 0.3993,
+     "text_across": 0.2178,
+     "text_margin": 0.1815,
+     "retrieval_overlap_jaccard": 0.1268,
+     "precision_at_25_mean": 0.404,
+     "precision_at_25_by_word": {
+      "wind": 0.92,
+      "breeze": 0.24,
+      "gust": 0.0,
+      "gale": 0.44,
+      "blowing wind": 0.68,
+      "windstorm": 0.68,
+      "draft": 0.12,
+      "howling wind": 0.64,
+      "squall": 0.0,
+      "whoosh": 0.32
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "water": {
+     "text_within": 0.4639,
+     "text_across": 0.1854,
+     "text_margin": 0.2785,
+     "retrieval_overlap_jaccard": 0.1286,
+     "precision_at_25_mean": 0.444,
+     "precision_at_25_by_word": {
+      "water": 0.56,
+      "stream": 0.2,
+      "brook": 0.28,
+      "babbling water": 0.24,
+      "trickle": 0.04,
+      "dripping": 0.88,
+      "waves": 1.0,
+      "splashing": 0.96,
+      "flowing water": 0.04,
+      "creek": 0.24
+     },
+     "base_rate": 0.0366,
+     "n_right_clips": 120
+    },
+    "dog": {
+     "text_within": 0.379,
+     "text_across": 0.2276,
+     "text_margin": 0.1515,
+     "retrieval_overlap_jaccard": 0.1006,
+     "precision_at_25_mean": 0.4,
+     "precision_at_25_by_word": {
+      "dog": 0.96,
+      "barking": 0.96,
+      "bark": 0.92,
+      "woof": 0.08,
+      "puppy": 0.08,
+      "hound": 0.44,
+      "yapping": 0.0,
+      "growl": 0.0,
+      "canine": 0.0,
+      "doggy": 0.56
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "cat": {
+     "text_within": 0.492,
+     "text_across": 0.2542,
+     "text_margin": 0.2378,
+     "retrieval_overlap_jaccard": 0.2176,
+     "precision_at_25_mean": 0.592,
+     "precision_at_25_by_word": {
+      "cat": 0.96,
+      "meow": 1.0,
+      "kitten": 0.92,
+      "purr": 0.36,
+      "mewing": 0.84,
+      "feline": 0.48,
+      "kitty": 0.6,
+      "hiss": 0.0,
+      "caterwaul": 0.0,
+      "tomcat": 0.76
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "bird": {
+     "text_within": 0.38,
+     "text_across": 0.1654,
+     "text_margin": 0.2146,
+     "retrieval_overlap_jaccard": 0.0542,
+     "precision_at_25_mean": 0.592,
+     "precision_at_25_by_word": {
+      "bird": 0.8,
+      "birdsong": 0.96,
+      "chirping": 0.64,
+      "tweeting": 0.28,
+      "warbling": 0.16,
+      "songbird": 1.0,
+      "birdcall": 0.8,
+      "trill": 0.12,
+      "twitter": 0.4,
+      "dawn chorus": 0.76
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "owl": {
+     "text_within": 0.515,
+     "text_across": 0.2271,
+     "text_margin": 0.2878,
+     "retrieval_overlap_jaccard": 0.1698,
+     "precision_at_25_mean": 0.752,
+     "precision_at_25_by_word": {
+      "owl": 0.2,
+      "hooting": 0.0,
+      "hoot": 0.84,
+      "owl call": 1.0,
+      "night owl": 0.88,
+      "tawny owl": 1.0,
+      "barn owl": 0.88,
+      "screech owl": 1.0,
+      "hooting owl": 0.8,
+      "owl screech": 0.92
+     },
+     "base_rate": 0.0732,
+     "n_right_clips": 240
+    },
+    "engine": {
+     "text_within": 0.561,
+     "text_across": 0.1875,
+     "text_margin": 0.3735,
+     "retrieval_overlap_jaccard": 0.2098,
+     "precision_at_25_mean": 0.508,
+     "precision_at_25_by_word": {
+      "engine": 0.28,
+      "motor": 0.6,
+      "revving": 0.32,
+      "idling engine": 0.72,
+      "car engine": 0.68,
+      "roaring engine": 0.36,
+      "vroom": 0.0,
+      "combustion engine": 0.72,
+      "diesel engine": 0.68,
+      "rumbling motor": 0.72
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "applause": {
+     "text_within": 0.5694,
+     "text_across": 0.1559,
+     "text_margin": 0.4135,
+     "retrieval_overlap_jaccard": 0.4659,
+     "precision_at_25_mean": 0.876,
+     "precision_at_25_by_word": {
+      "applause": 1.0,
+      "clapping": 1.0,
+      "ovation": 0.0,
+      "handclaps": 0.8,
+      "cheering crowd": 1.0,
+      "standing ovation": 1.0,
+      "round of applause": 1.0,
+      "audience clapping": 1.0,
+      "claps": 1.0,
+      "acclaim": 0.96
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    },
+    "siren": {
+     "text_within": 0.7138,
+     "text_across": 0.1261,
+     "text_margin": 0.5877,
+     "retrieval_overlap_jaccard": 0.4306,
+     "precision_at_25_mean": 0.836,
+     "precision_at_25_by_word": {
+      "siren": 1.0,
+      "alarm": 0.16,
+      "police siren": 1.0,
+      "ambulance siren": 1.0,
+      "wailing siren": 0.96,
+      "emergency siren": 1.0,
+      "fire engine siren": 1.0,
+      "klaxon": 0.24,
+      "warning siren": 1.0,
+      "air raid siren": 1.0
+     },
+     "base_rate": 0.0122,
+     "n_right_clips": 40
+    }
+   }
+  },
+  "structure": {
+   "esc50": {
+    "all": {
+     "rho": 0.5479,
+     "p_perm": 0.0005,
+     "n_classes": 50
+    },
+    "families": {
+     "animal": {
+      "rho": 0.7226,
+      "p_perm": 0.0005,
+      "n_classes": 12
+     },
+     "human_activity": {
+      "rho": 0.6,
+      "p_perm": 0.1719,
+      "n_classes": 4
+     },
+     "human_vocal": {
+      "rho": 0.7357,
+      "p_perm": 0.002,
+      "n_classes": 6
+     },
+     "machine_domestic": {
+      "rho": 0.6259,
+      "p_perm": 0.0005,
+      "n_classes": 22
+     },
+     "nature": {
+      "rho": 0.0964,
+      "p_perm": 0.3798,
+      "n_classes": 6
+     }
+    }
+   },
+   "vocalsound": {
+    "all": {
+     "rho": 0.6143,
+     "p_perm": 0.0205,
+     "n_classes": 6
+    },
+    "families": {
+     "human_vocal": {
+      "rho": 0.6143,
+      "p_perm": 0.018,
+      "n_classes": 6
+     }
+    }
+   },
+   "xenocanto": {
+    "all": {
+     "rho": 0.5367,
+     "p_perm": 0.0005,
+     "n_classes": 17
+    },
+    "families": {
+     "animal": {
+      "rho": 0.5367,
+      "p_perm": 0.0005,
+      "n_classes": 17
+     }
+    }
+   }
+  },
+  "gap": {
+   "animal": {
+    "text_audio_matching": 0.4573,
+    "text_audio_nonmatching": 0.1724,
+    "margin": 0.285,
+    "audio_audio_within_family": 0.428,
+    "gap_audio_minus_text": -0.0293,
+    "n": 904
+   },
+   "human_activity": {
+    "text_audio_matching": 0.4855,
+    "text_audio_nonmatching": 0.014,
+    "margin": 0.4715,
+    "audio_audio_within_family": 0.2392,
+    "gap_audio_minus_text": -0.2463,
+    "n": 128
+   },
+   "human_vocal": {
+    "text_audio_matching": 0.5015,
+    "text_audio_nonmatching": 0.2073,
+    "margin": 0.2942,
+    "audio_audio_within_family": 0.5053,
+    "gap_audio_minus_text": 0.0038,
+    "n": 674
+   },
+   "machine_domestic": {
+    "text_audio_matching": 0.5159,
+    "text_audio_nonmatching": -0.004,
+    "margin": 0.5199,
+    "audio_audio_within_family": 0.1499,
+    "gap_audio_minus_text": -0.3661,
+    "n": 704
+   },
+   "nature": {
+    "text_audio_matching": 0.472,
+    "text_audio_nonmatching": 0.0292,
+    "margin": 0.4427,
+    "audio_audio_within_family": 0.2862,
+    "gap_audio_minus_text": -0.1857,
+    "n": 192
+   }
+  },
+  "alpha": {
+   "tune_acc": {
+    "0.0": 0.733,
+    "0.25": 0.7404,
+    "0.5": 0.7478,
+    "0.75": 0.7404,
+    "1.0": 0.733
+   },
+   "chosen_alpha": 0.5,
+   "report": {
+    "animal": {
+     "0.0": 0.5288,
+     "0.25": 0.5542,
+     "0.5": 0.5774,
+     "0.75": 0.583,
+     "1.0": 0.5642,
+     "n": 904
+    },
+    "human_activity": {
+     "0.0": 0.8828,
+     "0.25": 0.8828,
+     "0.5": 0.9062,
+     "0.75": 0.9453,
+     "1.0": 0.9609,
+     "n": 128
+    },
+    "human_vocal": {
+     "0.0": 0.8131,
+     "0.25": 0.8205,
+     "0.5": 0.8234,
+     "0.75": 0.8279,
+     "1.0": 0.8309,
+     "n": 674
+    },
+    "machine_domestic": {
+     "0.0": 0.9134,
+     "0.25": 0.9148,
+     "0.5": 0.9205,
+     "0.75": 0.9205,
+     "1.0": 0.9247,
+     "n": 704
+    },
+    "nature": {
+     "0.0": 0.7917,
+     "0.25": 0.8125,
+     "0.5": 0.8125,
+     "0.75": 0.8073,
+     "1.0": 0.8073,
+     "n": 192
+    },
+    "all": {
+     "0.0": 0.7433,
+     "0.25": 0.756,
+     "0.5": 0.7675,
+     "0.75": 0.7721,
+     "1.0": 0.7683
+    }
+   }
+  }
+ }
+}

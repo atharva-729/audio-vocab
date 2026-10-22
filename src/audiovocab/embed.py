@@ -136,13 +136,30 @@ def embed_index(name, datasets=None, batch=8):
 
 def embed_cached(model, keys, load_clip, batch=8):
     """Audio embeddings for `keys` (JSON-able dicts naming dataset, clip id and preprocessing), cached one file per
-    clip under runs/cache/emb_<model>/. `load_clip(key, sr)` returns the samples for a cache miss."""
+    clip under runs/cache/emb_<model>/. `load_clip(key, sr)` returns the samples for a cache miss.
+    Clips that can't be decoded (corrupt or near-empty files) get an all-zero row and are logged to
+    runs/undecodable.jsonl; analyses treat zero rows as missing."""
+    import json
+
+    from .config import path
     ns = f"emb_{model.name}"
+    dim = 768 if model.name == "gemma" else 512
     out = [cache.get_array(ns, k) for k in keys]
     todo = [i for i, v in enumerate(out) if v is None]
     for j in range(0, len(todo), batch):
-        idx = todo[j:j + batch]
-        vecs = model.audio([load_clip(keys[i], model.sr) for i in idx])
-        for i, v in zip(idx, vecs):
-            out[i] = cache.put_array(ns, keys[i], v)
-    return np.stack(out) if out else np.zeros((0, 0), np.float32)
+        idx, clips = [], []
+        for i in todo[j:j + batch]:
+            try:
+                x = load_clip(keys[i], model.sr)
+                if len(x) < 0.25 * model.sr:
+                    raise ValueError(f"only {len(x)} samples")
+                idx.append(i)
+                clips.append(x)
+            except Exception as e:
+                out[i] = np.zeros(dim, np.float32)
+                with open(path("runs") / "undecodable.jsonl", "a", encoding="utf-8") as f:
+                    f.write(json.dumps({"model": model.name, "key": keys[i], "error": str(e)[:200]}) + "\n")
+        if clips:
+            for i, v in zip(idx, model.audio(clips)):
+                out[i] = cache.put_array(ns, keys[i], v)
+    return np.stack(out) if out else np.zeros((0, dim), np.float32)
