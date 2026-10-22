@@ -5,7 +5,6 @@ preprocessing as src/audiovocab/embed.py, and writes one small file to bring bac
 Inlined: the clip selection, the local weights' SHA-256, and reference vectors for 3 ESC-50 clips (a parity check).
 Run:  .venv/Scripts/python.exe scripts/make_colab_notebook.py
 """
-import inspect
 import json
 import sys
 from pathlib import Path
@@ -15,7 +14,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from audiovocab import cache, embed, splitzip  # noqa: E402
+from audiovocab import cache, embed  # noqa: E402
 
 WEIGHT_SHA = {
     "google/embeddinggemma-2": ("model.safetensors", "197a32965d4b1105faf060417baa899e193fb73cd401f42ec9295234d5553d79"),
@@ -45,7 +44,6 @@ def main():
     sel = pd.read_parquet(ROOT / "data" / "selection" / "fsd50k.parquet")
     selection = [[str(c), str(l)] for c, l in zip(sel["clip"], sel["label"])]
     refs = reference_vectors()
-    split_src = inspect.getsource(splitzip).split('"""', 2)[2]  # module body without its docstring
 
     cells = [
         cell("""
@@ -136,19 +134,26 @@ def fetch(name, chunk=64 << 20):
     return dst_drive
 PARTS = [fetch('FSD50K.eval_audio.z01'), fetch('FSD50K.eval_audio.zip')]
 """),
-        cell("# Split-zip reader (copied from src/audiovocab/splitzip.py)\nimport io, zipfile\n" + split_src),
         cell("""
-# Extract only the selected clips
+# Extract only the selected clips. The archive is a two-part zip64, which Python's zipfile can't read, so the parts
+# are first joined into one ordinary zip with `zip -s 0` (the method in FSD50K's own instructions).
+import zipfile
 AUD = f'{WORK}/audio'
 os.makedirs(AUD, exist_ok=True)
 want = {c for c, _ in SELECTION}
 todo = [c for c in want if not os.path.exists(f'{AUD}/{c}.wav')]
 if todo:
-    local_parts = []
-    for p in PARTS:   # read from the VM disk if it's still there (much faster than Drive)
+    for p in PARTS:   # work on the VM disk (fast); copy back from Drive after a disconnect
         lp = f'{LOCAL}/{os.path.basename(p)}'
-        local_parts.append(lp if os.path.exists(lp) else p)
-    with SplitZip(local_parts) as z:
+        if not os.path.exists(lp) or os.path.getsize(lp) != os.path.getsize(p):
+            print('copying', os.path.basename(p), 'from Drive to the VM disk ...'); subprocess.run(['cp', p, lp], check=True)
+    unsplit = f'{LOCAL}/FSD50K.eval_audio.unsplit.zip'
+    if not os.path.exists(unsplit):
+        if subprocess.run(['which', 'zip'], capture_output=True).returncode != 0:
+            subprocess.run(['apt-get', '-qq', 'install', '-y', 'zip'], check=True)
+        print('joining the two parts (a few minutes) ...')
+        subprocess.run(['zip', '-q', '-s', '0', f'{LOCAL}/FSD50K.eval_audio.zip', '--out', unsplit], check=True)
+    with zipfile.ZipFile(unsplit) as z:
         names = {n.rsplit('/', 1)[-1][:-4]: n for n in z.namelist() if n.endswith('.wav')}
         for c in todo:
             with open(f'{AUD}/{c}.wav', 'wb') as f:

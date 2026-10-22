@@ -3,6 +3,9 @@
 The parts are exposed as one virtual file. zipfile then finds the central directory at the end, but it shifts every
 member offset by the size of the disks before the central directory's disk. Members on other disks are corrected
 using each entry's disk number (`ZipInfo.volume`).
+
+Limitation: Python refuses multi-disk *zip64* archives (FSD50K's eval split is one). For those, join the parts with
+`zip -s 0 name.zip --out joined.zip` first, as colab/fsd50k_embed.ipynb does.
 """
 import io
 import zipfile
