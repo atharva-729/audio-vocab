@@ -21,14 +21,18 @@ def knn_predict(X, y, groups, k=10):
 
 
 def probe_predict(X, y, fold, C=1.0, seed=0):
-    """Grouped cross-validated linear probe: each fold is predicted by a model trained on the others."""
+    """Grouped cross-validated linear probe: each fold is predicted by a model trained on the others.
+    Features are standardised on the training folds first: Gemma's unit vectors sit in a narrow cone (per-dimension
+    std ~0.015), where a fixed C would mostly measure regularisation, not separability."""
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import StandardScaler
     pred = np.empty(len(y), dtype=y.dtype)
     for f in np.unique(fold):
         tr, te = fold != f, fold == f
         if len(np.unique(y[tr])) < 2:
             pred[te] = y[tr][0]
             continue
-        m = LogisticRegression(C=C, max_iter=3000, random_state=seed)
+        m = make_pipeline(StandardScaler(), LogisticRegression(C=C, max_iter=3000, random_state=seed))
         m.fit(X[tr], y[tr])
         pred[te] = m.predict(X[te])
     return pred

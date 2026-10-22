@@ -15,3 +15,13 @@ bundle/
 bundle*.zip
 
 .env
+
+# Run logs and local diagnostics
+runs/*.out
+runs/*.jsonl
+runs/*.txt
+
+# Derived caches (rebuildable). whisper.parquet holds snippets of transcribed lyrics (third-party text).
+data/whisper.parquet
+data/cremad_acoustic.parquet
+data/music_features.parquet
