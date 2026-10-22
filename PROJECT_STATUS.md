@@ -3,6 +3,10 @@
 Context handoff for anyone (or any AI chat) picking this up. `README.md` is the **original build plan**; this file
 describes **what was built, how it diverged, what was found, and what's open**. Last updated 2026-10-22.
 
+**For a follow-on project, read CONTEXT.md:** the full briefing, with every finding table, per-class detail,
+method lessons, reusable artefacts, trust levels and practical guidance (regenerate it with
+`python scripts/make_context.py` after any rerun).
+
 ## 1. In one paragraph
 
 Audio Vocab studies the shared audio–text embedding space of **EmbeddingGemma 2** (with **LAION-CLAP** as a second
