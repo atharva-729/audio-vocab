@@ -66,93 +66,168 @@ named `reports/*.json` files.
 
 ## Checkpoint 3: embed and first look
 
-- **Clips** (`data/clips.parquet`): ESC-50 2,000 · VocalSound 600 · xeno-canto 680 · CREMA-D 7,442 · FMA 4,192 ·
-  MTG 1,135 · Musopen 232 windows (116 movements). **FSD50K is not in yet:** Zenodo blocked the work network, and
-  `colab/fsd50k_embed.ipynb` does it in Colab.
-- **Embeddings:** all 16,281 windows with both models. 30 FMA files (15 per model) were corrupt and are skipped,
-  logged in `runs/undecodable.jsonl`. Gemma took about 5.5 h on this CPU; CLAP took about 1.5 h.
+- **Clips** (`data/clips.parquet`, 18,564 items):
+  - ESC-50 2,000; FSD50K 2,399; VocalSound 600; xeno-canto 680; CREMA-D 7,442.
+  - Music: FMA 4,192; Musopen 116 movements (232 windows); MTG-Jamendo 1,135.
+  - FSD50K was embedded in Colab (`colab/fsd50k_embed.ipynb`), because Zenodo blocked the work network. Parity
+    with this laptop's pipeline is 1.0000 for both models on 3 reference clips, and the weights' SHA-256 match.
+- **Embeddings:** both models, L2-normalised. 15 corrupt FMA files per model are skipped and logged. Gemma took
+  about 5.5 h on this CPU; CLAP about 1.5 h.
+- **Instrumental filter** (`reports/instrumental_filter.json`, decisions 18–19):
+  - Whisper small on a 20 s window. The rule (all transcribed words, threshold T = 1) was chosen on 200 held-out
+    calibration tracks: vocal recall 0.61, instrumental recall 0.92.
+  - Result: 3,050 FMA tracks instrumental, 927 vocal.
+  - MTG: only the 186 piano tracks were checked, and 177 are instrumental.
 - **Sanity checks** (`reports/phase3_sanity.json`): **all pass, both models.**
-  - Every ESC-50 class is tighter than random clips.
-  - ESC-50 probe on the official folds: Gemma 0.82 (CI 0.80–0.84), CLAP 0.97 (chance 0.02).
-  - "dog barking" retrieves 17 dog clips (Gemma) or 25 (CLAP) in its top 25, against 0.5 by chance.
-  - The music genre probe check is in Phase 7.
-- **UMAPs** (`reports/phase3_umap.json`, drawn on the page): on the joint map only 11% of a word's 10 nearest
-  neighbours are clips. Mean cosine (Gemma): clip↔clip 0.76, text↔text 0.67, text↔clip 0.60. That's the same
-  modality gap the sister project found, now on clean data.
-- **Method fix** (decision 17): probes standardise features on the training folds. Without it, Gemma's narrow-cone
-  vectors made the fixed C underfit, and the probe scored below kNN.
+  - ESC-50 classes are tighter than random.
+  - ESC-50 probe on the official folds: Gemma 0.83, CLAP 0.97 (chance 0.02).
+  - "dog barking" retrieves 17 (Gemma) or 25 (CLAP) dog clips in its top 25, against 0.5 by chance.
+  - Music genre probe with artist-grouped splits: 0.41 / 0.49 (chance 0.09).
+- **UMAPs** (`reports/phase3_umap.json`): on the joint map only 6% of a word's 10 nearest neighbours are clips.
+  Mean cosine: clip↔clip 0.76, text↔text 0.67, text↔clip 0.60. That's the modality gap on clean data.
+- **Method fixes** (decisions 17, 21):
+  - Probes standardise features.
+  - C is chosen per fold by cross-validation inside the training folds. A fixed C underfit Gemma's narrow-cone
+    vectors and overfit the small music sets.
 
 ## Checkpoint 4: resolution (Q1) and knows vs can name (Q2)
 
-`reports/phase4_resolution.json`, grouped splits, reported on non-tune folds. Gemma's prefix (chosen on the tune
-fold) is `SearchQuery` (0.240 vs 0.211 zero-shot on tune).
+`reports/phase4_resolution.json`: grouped splits, reported on the non-tune folds, 95% cluster-bootstrap CIs.
+Gemma's prefix, chosen on the tune fold, is `SearchQuery`.
 
 | Set | Gemma probe | Gemma zero-shot | CLAP probe | CLAP zero-shot | chance |
 |---|---|---|---|---|---|
-| ESC-50, 50 classes | 0.82 | 0.25 | 0.97 | 0.90 | 0.02 |
-| VocalSound (laugh, sigh, cough, throat, sneeze, sniff) | 0.83 | 0.34 | 0.81 | 0.76 | 0.17 |
-| xeno-canto, 17 bird species | 0.66 | 0.17 | 0.67 | 0.25 | 0.06 |
-| Owls, 6 species | 0.73 | 0.22 | 0.71 | 0.21 | 0.17 |
-| Cuckoo vs 6 owls | 0.72 | 0.22 | 0.74 | 0.27 | 0.14 |
+| ESC-50, 50 classes | 0.83 | 0.25 | 0.97 | 0.90 | 0.02 |
+| FSD50K, 62 classes | 0.48 | 0.19 | 0.75 | 0.67 | 0.02 |
+| VocalSound, 6 vocal sounds | 0.84 | 0.34 | 0.82 | 0.76 | 0.17 |
+| xeno-canto, 17 bird species | 0.67 | 0.17 | 0.66 | 0.25 | 0.06 |
+| **Giggle vs chuckle** | **0.69** (0.56–0.82) | 0.68 | **0.69** (0.57–0.80) | 0.56 | 0.50 |
+| Cuckoo vs 6 owls | 0.73 (0.67–0.80) | 0.22 | 0.74 (0.69–0.80) | 0.27 | 0.14 |
+| Owls, 6 species | 0.72 | 0.22 | 0.71 | 0.21 | 0.17 |
 | Songbirds, 5 species | 0.63 | 0.20 | 0.69 | 0.38 | 0.20 |
-| Crow vs magpie | 0.97 | 0.93 | 0.97 | 0.90 | 0.50 |
+| Scream vs shout | 0.84 | 0.84 | 0.89 | 0.87 | 0.50 |
+| Whisper vs sing vs cry | 0.81 | 0.78 | 0.91 | 0.91 | 0.33 |
+| Car vs motorcycle vs bus vs truck | 0.44 | 0.32 | 0.59 | 0.52 | 0.25 |
 
-- **Resolution:**
-  - The space is fine-grained for everyday sounds and human vocal sounds: ESC-50 families reach 0.84–0.98 (Gemma)
-    and ≥ 0.97 (CLAP).
-  - It is coarser for bird species: 0.63–0.73 within owls or songbirds, in both models.
-  - "Cuckoo vs owl" isn't easy: 0.72–0.74 over 7 classes.
-- **Effective vocabulary:** every class in every family clears 70% pairwise separability, so the measure is at its
-  ceiling here. The differences show in the sibling sets and the bird species.
-- **Knows vs can name:**
-  - **CLAP** names everyday sounds almost as well as it separates them (ESC-50 0.97 vs 0.90). The gap opens on
-    bird species (0.67 vs 0.25).
-  - **Gemma** knows far more than words can reach everywhere: ESC-50 0.82 vs 0.25, VocalSound 0.83 vs 0.34.
-- **Laughter types** (giggle vs chuckle) are pending FSD50K.
+**Anand's question:**
+- **Giggle vs chuckle is told apart, but coarsely.** The probe gets 69% (chance 50%), on only 59 test clips. These
+  are the only two laughter subtypes in licence-clear labelled data.
+- **Relative to chance, bird species are separated at least as well.** Cuckoo vs owls skill is about 0.69, against
+  0.39 for laughter. So the space is not concentrated on human expression over wildlife.
+- **Words reach the two very differently.** "giggle" finds giggles 90% (Gemma) and 97% (CLAP) of the time, while
+  bird-species names barely beat chance.
+
+**Knows vs can name:**
+- **CLAP** names what it knows for everyday sounds (ESC-50 gap 7 points).
+- **Gemma** knows far more than words reach everywhere (ESC-50 gap 57 points).
+- **Both** fail to name bird species.
+
+**Effective vocabulary:** most families clear the 70% pairwise bar entirely (FSD50K human vocal 13/15, machines
+22/26 for Gemma). The sibling sets are the sharper view.
 
 ## Checkpoint 5: words vs sounds (Q3)
 
-`reports/phase5_words.json` (pooled ESC-50, VocalSound and xeno-canto clips; FSD50K pending).
+`reports/phase5_words.json`, using pooled ESC-50, FSD50K, VocalSound and xeno-canto clips.
 
 - **Synonym clouds:**
-  - Synonyms sit much more loosely in Gemma's text space than in CLAP's (cohesion margin 0.03–0.16 vs 0.11–0.56).
-  - Synonyms retrieve largely *different* clips: top-25 overlap 0.06–0.48, with only "applause" and "siren" above
-    0.3. So the text side is finer than the audio side: the word changes, the retrieved sounds change too, but
-    rarely to a better match.
-  - "scream" and "whisper" have no matching clips without FSD50K.
-- **Structure match:**
-  - Audio-centroid and text similarity line up significantly for ESC-50 (Gemma ρ 0.24, CLAP 0.55; p < .001) and
-    birds (0.32 / 0.54).
-  - The match is strongest for human vocal sounds (ESC-50: 0.75 / 0.74) and absent for nature (−0.19 / 0.10).
-- **Gap per family:**
-  - Gemma: a clip's own class text beats other class texts by only 0.02–0.045 cosine. Clips sit about 0.86 from
-    each other and about 0.70 from text.
-  - CLAP: the margin is 0.28–0.52.
-  - So Gemma's audio–text alignment for sound events is thin.
-- **Centring sweep:**
-  - Tuned on the tune fold: α = 0.75 (Gemma), 0.5 (CLAP).
-  - On the report folds, centring helps both models overall (Gemma 0.25 → 0.28, CLAP 0.74 → 0.77).
-  - For Gemma it *hurts* animals (0.21 → 0.15 at full strength) and nature, and helps human vocal (0.37 → 0.44)
-    and machines.
+  - Synonyms of one concept retrieve largely *different* clips: top-25 Jaccard 0.06–0.25 for Gemma; only "siren"
+    and "applause" agree much.
+  - Gemma's synonyms barely cluster in text space (cohesion margin about 0.03–0.16, against 0.11–0.56 for CLAP).
+- **Structure match** (Spearman between class-centroid and class-text similarity; all permutation p < .05 except
+  VocalSound for Gemma):
+  - Gemma ρ: ESC-50 0.24, FSD50K 0.24, xeno-canto 0.32.
+  - CLAP ρ: 0.55, 0.58, 0.54, and VocalSound 0.61.
+  - Strongest for human vocal sounds; absent for nature.
+- **Gap per family:** a clip's own class text beats other class texts by only 0.03–0.04 cosine for Gemma, against
+  0.31–0.48 for CLAP.
+- **Centring sweep** (α tuned on the tune fold: 0.75 for both models):
+  - Gemma overall 0.23 → 0.24, but animals fall 0.22 → 0.16 at full strength.
+  - CLAP 0.71 → 0.73.
+  - This is category retrieval only; Vibe Search showed the vibe can get worse even when categories improve.
 
 ## Checkpoint 6: emotion (Q4)
 
 `reports/phase6_emotion.json`: CREMA-D, 7,442 clips, 91 actors, 12 sentences, 6 emotions.
 
-| Probe (skill above chance) | how (emotion) | what (sentence) | who (speaker) |
+| Probe accuracy (skill) | how (emotion) | what (sentence) | who (speaker) |
 |---|---|---|---|
-| Gemma | 0.55 (0.46) | **1.00** (1.00) | 0.04 (0.03) |
-| CLAP | 0.56 (0.47) | 0.88 (0.87) | 0.48 (0.47) |
+| Gemma | 0.56 (0.47) | **1.00** (1.00) | 0.06 (0.05) |
+| CLAP | 0.58 (0.49) | 0.88 (0.87) | 0.48 (0.47) |
 | Prosody features | 0.44 (0.33) | 0.38 (0.33) | 0.16 (0.15) |
 | Prosody + MFCC | 0.47 (0.36) | 0.72 (0.70) | 0.49 (0.48) |
 
-- **Zero-shot emotion** ("an angry voice"…): Gemma 0.15 raw / 0.19 centred; CLAP 0.16 / 0.36 (chance 0.17). Raw,
-  both models call almost everything "neutral".
-- **Anger:** the probe finds it best of all emotions (recall 0.72 Gemma, 0.73 CLAP), but the words "an angry voice"
-  find 2% (Gemma) or 0% (CLAP).
+- **Zero-shot emotion:** Gemma 0.15 raw / 0.19 centred; CLAP 0.16 / 0.36 (chance 0.17). Raw, both models call
+  nearly everything "neutral".
+- **Anger:** probe recall 0.74 / 0.75; the words "an angry voice" find 0.02 / 0.00.
 - **Verdict:**
-  - The embeddings carry emotion, a bit better than loudness/pitch features, but **words can't reach it** ("knows
-    but can't name").
-  - Gemma encodes *what* is said almost perfectly and *who* says it barely at all; CLAP keeps the speaker.
-  - The sister's "heated argument" failure fits: the hostility signal exists in the audio, but the query words
-    don't find it.
+  - **Knows but can't name.** The emotion signal is there, a bit above loudness/pitch features, but words don't
+    reach it.
+  - Gemma encodes what is said almost perfectly and who says it barely at all.
+
+## Checkpoint 7: music without lyrics → genre and region words (Q5, part 1)
+
+`reports/phase7_genre.json`: 3,050 instrumental FMA tracks, artist-grouped folds. The best word form (tune fold) is
+the sentence form, raw for Gemma and centred for CLAP.
+
+| | Gemma | CLAP | chance |
+|---|---|---|---|
+| Genre probe, 11 genres | 0.41 | 0.49 | 0.09 |
+| Genre zero-shot (instrumental) | 0.27 | 0.37 | 0.09 |
+| Genre zero-shot on *vocal* tracks (lyrics effect) | 0.30 | 0.30 | 0.09 |
+| True genre in the word's top 3 | 0.51 | 0.61 | 0.27 |
+| Region probe, 11 regions | 0.34 | 0.35 | 0.09 |
+| Region zero-shot / top 3 | 0.21 / 0.49 | 0.17 / 0.33 | 0.09 / 0.27 |
+| **Musopen canonical classical called "classical"** | **0.99** | **1.00** | — |
+
+- **Precision of the 25 nearest tracks vs base rate (Gemma):** rock 0.84 vs 0.18, folk 0.72 vs 0.16, classical
+  0.52 vs 0.12, hip-hop 0.36 vs 0.06, country 0.24 vs 0.03. Easy listening and soul both 0.
+- **Lyrics barely help:** zero-shot on vocal tracks is about the same as on instrumental ones, with residual vocals
+  in the instrumental set as a caveat.
+- **Regions:** words beat chance, but only work as a coarse filter (the true region is in the top 3 about half the
+  time).
+- **Phase 8 genres**, fixed by the pre-set rule (precision@25 ≥ 2× base rate, Wilson bound above it, Gemma):
+  classical, country, electronic, folk, hip-hop, pop, rock. **Contrast:** easy listening.
+
+## Checkpoint 8: what makes a genre (Q5, part 2)
+
+`reports/phase8_whatmakes.json`. Per genre: 16 member tracks plus others, non-ND licences only, 11 perturbations,
+both models. Changes are read as a share of each genre's member-vs-rest gap.
+
+- **"Classical", Gemma:**
+  - **Keeping only the drums erases 105% of the classical gap.** Classical tracks still ranked "classical" first
+    drop from 81% to 31%.
+  - **Removing the drums raises the classical score of *any* track.**
+  - Shuffling 0.5 s chunks erases 58%, but reversing barely matters (4%). So the model reacts to continuity
+    (shuffling adds a cut every 0.5 s) more than to melody direction.
+  - Tempo, pitch and dynamics barely move it.
+  - **CLAP agrees:** drums-only erases 62%; low-pass and shuffling 37% each.
+- **Features:**
+  - The classical score falls with percussive share (ρ −0.63), bandwidth (−0.58) and brightness (−0.53).
+  - 14 features explain R² 0.52 out of sample.
+- **Instrument held fixed:**
+  - Among MTG piano tracks, the classical score separates classical piano from other piano with AUC 0.75
+    (CI 0.68–0.82). So "classical" is more than "piano".
+  - Guitar, strings and synth have too few tracks to test.
+- **Descriptors:**
+  - Text side: orchestra, piano, melodic, film score.
+  - Audio side: piano, flute, saxophone, melodic.
+  - Agreement ρ 0.72.
+- **False positives** (top 50 non-classical tracks by classical score): folk 14, jazz 8, pop 8.
+- **Answer:** to this model, "classical" mostly means **tonal, drum-free, darker and narrower-band sound**: timbre and texture
+  more than tempo, key or melodic direction. It holds beyond piano and transfers to canonical recordings.
+- **Contrast genre:** easy listening has no member-vs-rest gap at all; the word doesn't single out its own tracks.
+
+## Checkpoint 9: findings page and the bridge
+
+- **Page:** `docs/index.html` + `docs/app.js` + `docs/data.js`, built by `vocab page` from `reports/*.json`.
+  - The grep check for numbers typed into the HTML's visible text finds **none** (product names like
+    "EmbeddingGemma 2" are excluded).
+  - Headless-Edge screenshots were checked: charts render, labels fit, and drill-down works.
+  - Attributions, limits and "internal prototype" are in the footer and method section.
+  - Audio playback is not included (labels only), so no licence question arises on the page.
+- **Bridge** (`reports/vibe_search_bridge.json`):
+  - The pre-set rule marks 10 of 12 sister searches as "weak areas", including 6 that scored 3–4 of 4 by ear.
+    **Per-class resolution on labelled data doesn't predict podcast listening success**: those searches succeed on
+    speaking style and show-level sound.
+  - The four failures (heated argument, whispering, rain/nature, music) all sit in weak or unnameable areas.
+  - "Heated argument" unpacks to *knows but can't name* for anger (probe 74%, words 2%).

@@ -3,6 +3,7 @@
   "cremad": 7442,
   "esc50": 2000,
   "fma": 4192,
+  "fsd50k": 2399,
   "mtg": 1135,
   "musopen": 232,
   "vocalsound": 600,
@@ -12,6 +13,7 @@
   "cremad": 7442,
   "esc50": 2000,
   "fma": 4192,
+  "fsd50k": 2399,
   "mtg": 1135,
   "musopen": 116,
   "vocalsound": 600,
@@ -22,6 +24,7 @@
    "cremad": 7442,
    "esc50": 2000,
    "fma": 4177,
+   "fsd50k": 2399,
    "mtg": 1135,
    "musopen": 232,
    "vocalsound": 600,
@@ -31,6 +34,7 @@
    "cremad": 7442,
    "esc50": 2000,
    "fma": 4177,
+   "fsd50k": 2399,
    "mtg": 1135,
    "musopen": 232,
    "vocalsound": 600,
@@ -46,10 +50,10 @@
     "pass": true
    },
    "2_esc50_probe_official_folds": {
-    "acc": 0.8225,
+    "acc": 0.825,
     "ci": [
-     0.802,
-     0.8423
+     0.8044,
+     0.844
     ],
     "chance": 0.02,
     "pass": true
@@ -57,6 +61,16 @@
    "3_dog_barking_top25": {
     "dog_in_top25": 17,
     "expected_by_chance": 0.5,
+    "pass": true
+   },
+   "4_music_genre_probe_artist_grouped": {
+    "acc": 0.4072,
+    "ci": [
+     0.3781,
+     0.4339
+    ],
+    "chance": 0.0909,
+    "n": 1832,
     "pass": true
    }
   },
@@ -68,10 +82,10 @@
     "pass": true
    },
    "2_esc50_probe_official_folds": {
-    "acc": 0.9705,
+    "acc": 0.9725,
     "ci": [
-     0.9627,
-     0.9779
+     0.9652,
+     0.9796
     ],
     "chance": 0.02,
     "pass": true
@@ -79,6 +93,16 @@
    "3_dog_barking_top25": {
     "dog_in_top25": 25,
     "expected_by_chance": 0.5,
+    "pass": true
+   },
+   "4_music_genre_probe_artist_grouped": {
+    "acc": 0.4934,
+    "ci": [
+     0.4627,
+     0.5224
+    ],
+    "chance": 0.0909,
+    "n": 1832,
     "pass": true
    }
   }

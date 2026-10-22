@@ -1,0 +1,262 @@
+{
+ "model": "gemma",
+ "source": "podcast-vibe-search/reports/study_results.json (long, strength 0.0)",
+ "listening_total": [
+  33,
+  48
+ ],
+ "rows": [
+  {
+   "query": "two friends laughing about football, late-night energy",
+   "listening_yes": 4,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "esc50",
+     "label": "laughing",
+     "probe": 0.9688,
+     "zero_shot": 1.0
+    },
+    {
+     "dataset": "vocalsound",
+     "label": "laughter",
+     "probe": 0.9512,
+     "zero_shot": 1.0
+    }
+   ],
+   "probe_mean": 0.96,
+   "zero_shot_mean": 1.0,
+   "verdict": "space and words fine here: likely a podcast-corpus data gap"
+  },
+  {
+   "query": "calm, slow, one voice, like a bedtime story",
+   "listening_yes": 4,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "cremad",
+     "label": "NEU",
+     "probe": 0.68721251149954,
+     "zero_shot": 0.9551886792452831
+    },
+    {
+     "dataset": "cremad",
+     "label": "SAD",
+     "probe": 0.5405192761605035,
+     "zero_shot": 0.010080645161290322
+    }
+   ],
+   "probe_mean": 0.6139,
+   "zero_shot_mean": 0.4826,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "heated argument, people talking over each other",
+   "listening_yes": 1,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "cremad",
+     "label": "ANG",
+     "probe": 0.7403619197482297,
+     "zero_shot": 0.018145161290322582
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Shout",
+     "probe": 0.4118,
+     "zero_shot": 0.4412
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Screaming",
+     "probe": 0.7778,
+     "zero_shot": 0.8333
+    }
+   ],
+   "probe_mean": 0.6433,
+   "zero_shot_mean": 0.4309,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "soft whispering, very quiet",
+   "listening_yes": 2,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "fsd50k",
+     "label": "Whispering",
+     "probe": 0.3939,
+     "zero_shot": 0.0303
+    }
+   ],
+   "probe_mean": 0.3939,
+   "zero_shot_mean": 0.0303,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "excited fast talking about sports",
+   "listening_yes": 3,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "cremad",
+     "label": "HAP",
+     "probe": 0.48701809598741147,
+     "zero_shot": 0.04939516129032258
+    }
+   ],
+   "probe_mean": 0.487,
+   "zero_shot_mean": 0.0494,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "serious news voice reading the headlines",
+   "listening_yes": 3,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "fsd50k",
+     "label": "Male_speech_and_man_speaking",
+     "probe": 0.2105,
+     "zero_shot": 0.2368
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Female_speech_and_woman_speaking",
+     "probe": 0.3333,
+     "zero_shot": 0.0833
+    }
+   ],
+   "probe_mean": 0.2719,
+   "zero_shot_mean": 0.16,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "dramatic storytelling about a murder",
+   "listening_yes": 3,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "cremad",
+     "label": "FEA",
+     "probe": 0.44610542879622345,
+     "zero_shot": 0.006048387096774193
+    }
+   ],
+   "probe_mean": 0.4461,
+   "zero_shot_mean": 0.006,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "rain and nature sounds, no talking",
+   "listening_yes": 1,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "esc50",
+     "label": "rain",
+     "probe": 0.7812,
+     "zero_shot": 0.0312
+    },
+    {
+     "dataset": "esc50",
+     "label": "wind",
+     "probe": 0.7812,
+     "zero_shot": 0.625
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Rain",
+     "probe": 0.5625,
+     "zero_shot": 0.0
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Stream",
+     "probe": 0.6207,
+     "zero_shot": 0.0
+    }
+   ],
+   "probe_mean": 0.6864,
+   "zero_shot_mean": 0.1641,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "upbeat music and singing",
+   "listening_yes": 2,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "fsd50k",
+     "label": "Singing",
+     "probe": 0.5676,
+     "zero_shot": 0.5135
+    }
+   ],
+   "probe_mean": 0.5676,
+   "zero_shot_mean": 0.5135,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "thoughtful slow interview about life",
+   "listening_yes": 3,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "cremad",
+     "label": "NEU",
+     "probe": 0.68721251149954,
+     "zero_shot": 0.9551886792452831
+    }
+   ],
+   "probe_mean": 0.6872,
+   "zero_shot_mean": 0.9552,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "kids story with funny voices",
+   "listening_yes": 4,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "fsd50k",
+     "label": "Child_speech_and_kid_speaking",
+     "probe": 0.3125,
+     "zero_shot": 0.125
+    }
+   ],
+   "probe_mean": 0.3125,
+   "zero_shot_mean": 0.125,
+   "verdict": "weak area of the space"
+  },
+  {
+   "query": "relaxed chat between comedians, lots of laughs",
+   "listening_yes": 3,
+   "listening_of": 4,
+   "classes": [
+    {
+     "dataset": "esc50",
+     "label": "laughing",
+     "probe": 0.9688,
+     "zero_shot": 1.0
+    },
+    {
+     "dataset": "vocalsound",
+     "label": "laughter",
+     "probe": 0.9512,
+     "zero_shot": 1.0
+    },
+    {
+     "dataset": "fsd50k",
+     "label": "Giggle",
+     "probe": 0.7419,
+     "zero_shot": 0.9032
+    }
+   ],
+   "probe_mean": 0.8873,
+   "zero_shot_mean": 0.9677,
+   "verdict": "space and words fine here: likely a podcast-corpus data gap"
+  }
+ ]
+}

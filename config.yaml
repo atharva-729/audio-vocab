@@ -15,7 +15,7 @@ models:
 
 analysis:
   seed: 0
-  probe_C: 1.0            # fixed logistic-regression regularisation (not tuned)
+  probe_C: nested         # C chosen per outer fold from {0.001, 0.01, 0.1, 1} inside the training folds (decision 21); pairwise probes use C = 0.01
   knn_k: 10
   bootstrap: 1000
   pairwise_threshold: 0.70  # "told apart" for effective vocabulary size

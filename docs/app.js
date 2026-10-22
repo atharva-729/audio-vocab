@@ -20,7 +20,12 @@
     yaxis: { gridcolor: 'rgba(0,0,0,0)', automargin: true },
   }, extra || {});
   const cfg = { displayModeBar: false, responsive: true };
-  const plot = (id, data, layout) => { if ($(id) && window.Plotly) Plotly.newPlot(id, data, base(layout), cfg); };
+  const plot = (id, data, layout) => {
+    if (!$(id) || !window.Plotly) return;
+    const L = base(layout);
+    ['xaxis', 'yaxis'].forEach(a => { L[a] = Object.assign({ automargin: true }, L[a]); });  // per-chart axis overrides keep labels visible
+    Plotly.newPlot(id, data, L, cfg);
+  };
   const legend = (id, items) => { if ($(id)) $(id).innerHTML = items.map(([n, c, shape]) => `<span><i style="background:${c};${shape === 'ring' ? 'background:none;border:2px solid ' + c : ''}"></i>${esc(n)}</span>`).join(''); };
   const bullets = (id, arr) => { if ($(id)) $(id).innerHTML = (arr || []).map(b => `<li>${b}</li>`).join(''); };
   const text = (id, s) => { if ($(id) && s != null) $(id).innerHTML = s; };
@@ -203,15 +208,19 @@
       text('wm-title', `What makes ${esc(g)} sound "${esc(g)}" to the model?`);
       text('wm-lead', (T.wm_lead || {})[g]);
       const r = W8.gemma[g], rc = W8.clap && W8.clap[g], names = Object.keys(r.perturbations.delta);
-      const nice = n => (W8.perturbations[n] || n);
-      const tr = [['gemma', r, 'members'], ['clap', rc, 'members']].filter(x => x[1]).map(([m, rr]) => ({ type: 'scatter', mode: 'markers', name: m,
-        y: names.map(nice), x: names.map(n => rr.perturbations.delta[n].members.mean),
-        error_x: { type: 'data', symmetric: false, array: names.map(n => rr.perturbations.delta[n].members.hi - rr.perturbations.delta[n].members.mean), arrayminus: names.map(n => rr.perturbations.delta[n].members.mean - rr.perturbations.delta[n].members.lo), color: C[m], thickness: 1.5, width: 0 },
-        marker: { size: 10, color: C[m], line: { color: '#141922', width: 2 } }, hovertemplate: '%{y}<br>' + m + ' change in ' + g + ' score for ' + g + ' tracks: %{x:.3f}<extra></extra>' }));
-      plot('ch-pert', tr, { xaxis: { tickformat: '.3f', gridcolor: C.rule, zerolinecolor: C.mut, title: { text: 'change in genre score (genre members; 95% CI)', font: { size: 11 } } }, yaxis: { autorange: 'reversed', automargin: true }, height: 420 });
+      const nice = n => ((T.pert_names || {})[n] || W8.perturbations[n] || n);
+      // each model's change as a share of its own genre gap (members' score minus others'); raw change if no gap
+      const scale = rr => { const P = rr.perturbations, gp = P.member_score_mean - P.non_member_score_mean; return gp > 0 ? gp : null; };
+      const sg = scale(r), byShare = sg && (!rc || scale(rc));
+      const tr = [['gemma', r], ['clap', rc]].filter(x => x[1]).map(([m, rr]) => { const s = byShare ? scale(rr) : 1, D8 = rr.perturbations.delta; return { type: 'scatter', mode: 'markers', name: m,
+        y: names.map(nice), x: names.map(n => D8[n].members.mean / s),
+        error_x: { type: 'data', symmetric: false, array: names.map(n => (D8[n].members.hi - D8[n].members.mean) / s), arrayminus: names.map(n => (D8[n].members.mean - D8[n].members.lo) / s), color: C[m], thickness: 1.5, width: 0 },
+        marker: { size: 10, color: C[m], line: { color: '#141922', width: 2 } }, hovertemplate: '%{y}<br>' + m + (byShare ? ': %{x:.0%} of the gap' : ': %{x:.3f}') + '<extra></extra>' }; });
+      plot('ch-pert', tr, { xaxis: { tickformat: byShare ? '.0%' : '.3f', gridcolor: C.rule, zerolinecolor: C.mut, zerolinewidth: 2,
+        title: { text: byShare ? `share of the ${g}-vs-rest gap (−100% = erased)` : `change in ${g} score (no gap to scale by)`, font: { size: 11 } } }, yaxis: { autorange: 'reversed' }, height: 420 });
       legend('lg-pert', [['EmbeddingGemma 2', C.gemma], ['CLAP', C.clap]]);
       const fe = r.features.spearman, fk = Object.keys(fe).sort((a, b) => Math.abs(fe[b].across) - Math.abs(fe[a].across));
-      plot('ch-feat', [{ type: 'bar', orientation: 'h', y: fk, x: fk.map(k => fe[k].across), marker: { color: fk.map(k => fe[k].across >= 0 ? C.gemma : css('--s5')) }, hovertemplate: '%{y}: ρ = %{x:.2f}<extra></extra>' }],
+      plot('ch-feat', [{ type: 'bar', orientation: 'h', y: fk.map(k => (T.feat_names || {})[k] || k), x: fk.map(k => fe[k].across), marker: { color: fk.map(k => fe[k].across >= 0 ? C.gemma : css('--s5')) }, hovertemplate: '%{y}: ρ = %{x:.2f}<extra></extra>' }],
         { xaxis: { range: [-1, 1], tickformat: '.1f', gridcolor: C.rule, zerolinecolor: C.mut }, yaxis: { autorange: 'reversed' } });
       const I = r.instrument_fixed || {};
       $('wm-inst').innerHTML = Object.keys(I).length ? `<table><tr><th>Instrument</th><th class="n">AUC (95% CI)</th><th class="n">tracks</th></tr>` + Object.keys(I).map(k => `<tr><td>${k}</td><td class="n">${I[k].auc != null ? f2(I[k].auc) + ` (${f2(I[k].auc_ci[0])}–${f2(I[k].auc_ci[1])})` : '<span class="pill">too few</span>'}</td><td class="n">${I[k].members} vs ${I[k].non_members}</td></tr>`).join('') + '</table>' + `<p class="mut" style="font-size:12.5px">${(T.inst_note || {})[g] || ''}</p>` : '<p class="mut">No MTG-Jamendo tag for this genre.</p>';
@@ -234,17 +243,22 @@
   // ---------- how ----------
   bullets('how-proto', T.protocol); bullets('how-limits', T.limits); bullets('how-repro', T.repro);
   const U = D.umap;
+  const view = (xs, ys) => {  // 1st-99th percentile window, so a few far outliers don't squash the map
+    const q = (a, p) => { const s = a.slice().sort((m, n) => m - n); return s[Math.floor(p * (s.length - 1))]; };
+    const pad = (lo, hi) => [lo - 0.05 * (hi - lo), hi + 0.05 * (hi - lo)];
+    return { xaxis: { visible: false, range: pad(q(xs, .01), q(xs, .99)) }, yaxis: { visible: false, range: pad(q(ys, .01), q(ys, .99)) } };
+  };
   if (U && U.audio) {
     const fams = D.families.filter(f => U.audio.family.includes(f));
     plot('ch-umap', fams.map(f => { const ix = U.audio.family.map((x, i) => x === f ? i : -1).filter(i => i >= 0);
       return { type: 'scattergl', mode: 'markers', name: FN(f), x: ix.map(i => U.audio.x[i]), y: ix.map(i => U.audio.y[i]), text: ix.map(i => lab(U.audio.label[i]) + ' · ' + DS[U.audio.dataset[i]]),
         marker: { size: 4, color: FAMC[f], opacity: .7 }, hovertemplate: '%{text}<extra></extra>' }; }),
-      { showlegend: true, legend: { orientation: 'h', y: -0.05, font: { size: 11 } }, xaxis: { visible: false }, yaxis: { visible: false }, margin: { l: 4, r: 4, t: 4, b: 4 } });
+      Object.assign({ showlegend: true, legend: { orientation: 'h', y: -0.05, font: { size: 11 } }, margin: { l: 4, r: 4, t: 4, b: 4 } }, view(U.audio.x, U.audio.y)));
     const J = U.joint, ti = J.is_text.map((t, i) => t ? i : -1).filter(i => i >= 0), ci = J.is_text.map((t, i) => t ? -1 : i).filter(i => i >= 0);
     plot('ch-joint', [
       { type: 'scattergl', mode: 'markers', x: ci.map(i => J.x[i]), y: ci.map(i => J.y[i]), marker: { size: 3, color: ci.map(i => FAMC[J.family[i]] || C.mut), opacity: .5 }, text: ci.map(i => lab(J.label[i])), hovertemplate: '%{text}<extra></extra>' },
       { type: 'scatter', mode: 'markers', x: ti.map(i => J.x[i]), y: ti.map(i => J.y[i]), marker: { size: 8, color: 'rgba(0,0,0,0)', line: { color: C.hl, width: 1.5 } }, text: ti.map(i => J.label[i]), hovertemplate: 'text: %{text}<extra></extra>' }],
-      { xaxis: { visible: false }, yaxis: { visible: false }, margin: { l: 4, r: 4, t: 4, b: 4 } });
+      Object.assign({ margin: { l: 4, r: 4, t: 4, b: 4 } }, view(J.x, J.y)));
     text('joint-note', T.joint_note);
   }
   if ($('tbl-sanity') && D.sanity) {

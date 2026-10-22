@@ -1,6 +1,6 @@
 {
  "protocol": {
-  "probe_C": 1.0,
+  "probe_C": "nested",
   "knn_k": 10,
   "tune_fold": 1,
   "bootstrap": 1000,
@@ -9,8 +9,8 @@
  "gemma": {
   "prefix": "SearchQuery",
   "prefix_tune_scores": {
-   "SearchQuery": 0.24041297935103245,
-   "none": 0.21091445427728614
+   "SearchQuery": 0.20932277924362358,
+   "none": 0.19700967458223395
   },
   "datasets": {
    "esc50": {
@@ -18,10 +18,10 @@
     "n_classes": 50,
     "chance": 0.02,
     "probe": {
-     "acc": 0.8237,
+     "acc": 0.8256,
      "ci": [
-      0.8005,
-      0.844
+      0.8028,
+      0.8464
      ],
      "n": 1600,
      "groups": 1213
@@ -69,7 +69,7 @@
      "breathing": {
       "family": "human_vocal",
       "n": 40,
-      "probe": 0.8438,
+      "probe": 0.875,
       "knn": 0.875,
       "zero_shot": 0.0938,
       "zero_shot_centred": 0.2812,
@@ -105,7 +105,7 @@
      "car_horn": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.8438,
+      "probe": 0.875,
       "knn": 0.75,
       "zero_shot": 0.5938,
       "zero_shot_centred": 0.625,
@@ -141,7 +141,7 @@
      "chirping_birds": {
       "family": "animal",
       "n": 40,
-      "probe": 0.9062,
+      "probe": 0.9375,
       "knn": 0.9062,
       "zero_shot": 0.9375,
       "zero_shot_centred": 0.9688,
@@ -165,7 +165,7 @@
      "clapping": {
       "family": "human_activity",
       "n": 40,
-      "probe": 0.875,
+      "probe": 0.8438,
       "knn": 0.7812,
       "zero_shot": 0.6875,
       "zero_shot_centred": 0.875,
@@ -225,7 +225,7 @@
      "crackling_fire": {
       "family": "nature",
       "n": 40,
-      "probe": 0.75,
+      "probe": 0.7188,
       "knn": 0.8125,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0,
@@ -237,7 +237,7 @@
      "crickets": {
       "family": "animal",
       "n": 40,
-      "probe": 0.7188,
+      "probe": 0.75,
       "knn": 0.625,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0312,
@@ -249,7 +249,7 @@
      "crow": {
       "family": "animal",
       "n": 40,
-      "probe": 0.7188,
+      "probe": 0.75,
       "knn": 0.6875,
       "zero_shot": 0.0312,
       "zero_shot_centred": 0.0,
@@ -261,7 +261,7 @@
      "crying_baby": {
       "family": "human_vocal",
       "n": 40,
-      "probe": 0.9688,
+      "probe": 0.9375,
       "knn": 0.9688,
       "zero_shot": 0.9062,
       "zero_shot_centred": 0.9375,
@@ -309,7 +309,7 @@
      "drinking_sipping": {
       "family": "human_activity",
       "n": 40,
-      "probe": 0.6875,
+      "probe": 0.7188,
       "knn": 0.5938,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0312,
@@ -381,7 +381,7 @@
      "hand_saw": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.875,
+      "probe": 0.8125,
       "knn": 0.7188,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.1562,
@@ -393,7 +393,7 @@
      "helicopter": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.3125,
+      "probe": 0.3438,
       "knn": 0.25,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0312,
@@ -417,7 +417,7 @@
      "insects": {
       "family": "animal",
       "n": 40,
-      "probe": 0.7812,
+      "probe": 0.8125,
       "knn": 0.8125,
       "zero_shot": 0.5938,
       "zero_shot_centred": 0.125,
@@ -453,7 +453,7 @@
      "mouse_click": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.6875,
+      "probe": 0.8125,
       "knn": 0.6875,
       "zero_shot": 0.0938,
       "zero_shot_centred": 0.6562,
@@ -489,7 +489,7 @@
      "rain": {
       "family": "nature",
       "n": 40,
-      "probe": 0.8438,
+      "probe": 0.7812,
       "knn": 0.8438,
       "zero_shot": 0.0312,
       "zero_shot_centred": 0.2188,
@@ -501,7 +501,7 @@
      "rooster": {
       "family": "animal",
       "n": 40,
-      "probe": 0.875,
+      "probe": 0.9062,
       "knn": 0.9062,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0,
@@ -513,7 +513,7 @@
      "sea_waves": {
       "family": "nature",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9062,
       "knn": 0.875,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0,
@@ -549,7 +549,7 @@
      "sneezing": {
       "family": "human_vocal",
       "n": 40,
-      "probe": 0.9062,
+      "probe": 0.875,
       "knn": 0.6875,
       "zero_shot": 0.1875,
       "zero_shot_centred": 0.1562,
@@ -633,7 +633,7 @@
      "water_drops": {
       "family": "nature",
       "n": 40,
-      "probe": 0.7812,
+      "probe": 0.75,
       "knn": 0.625,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0,
@@ -673,10 +673,10 @@
       ],
       "chance": 0.0833,
       "probe": {
-       "acc": 0.8802,
+       "acc": 0.875,
        "ci": [
-        0.84,
-        0.9136
+        0.8351,
+        0.9096
        ],
        "n": 384,
        "groups": 263
@@ -710,11 +710,11 @@
       },
       "per_class": {
        "cat": {
-        "probe": 0.875,
+        "probe": 0.9062,
         "zero_shot": 0.375
        },
        "chirping_birds": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.9375
        },
        "cow": {
@@ -726,15 +726,15 @@
         "zero_shot": 0.0
        },
        "crow": {
-        "probe": 0.7812,
+        "probe": 0.8125,
         "zero_shot": 0.0312
        },
        "dog": {
-        "probe": 0.9375,
+        "probe": 0.9062,
         "zero_shot": 1.0
        },
        "frog": {
-        "probe": 0.8125,
+        "probe": 0.7812,
         "zero_shot": 0.0
        },
        "hen": {
@@ -746,7 +746,7 @@
         "zero_shot": 0.8125
        },
        "pig": {
-        "probe": 0.8125,
+        "probe": 0.7812,
         "zero_shot": 0.0
        },
        "rooster": {
@@ -776,7 +776,7 @@
         "sheep"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9786,
+       "pairwise_mean": 0.9771,
        "pairs_below": []
       }
      },
@@ -789,10 +789,10 @@
       ],
       "chance": 0.25,
       "probe": {
-       "acc": 0.9766,
+       "acc": 0.9688,
        "ci": [
-        0.9461,
-        1.0
+        0.9344,
+        0.9924
        ],
        "n": 128,
        "groups": 104
@@ -834,7 +834,7 @@
         "zero_shot": 1.0
        },
        "drinking_sipping": {
-        "probe": 0.9375,
+        "probe": 0.9062,
         "zero_shot": 0.5
        },
        "footsteps": {
@@ -867,10 +867,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.9531,
+       "acc": 0.9375,
        "ci": [
-        0.92,
-        0.9798
+        0.8989,
+        0.9691
        ],
        "n": 192,
        "groups": 158
@@ -904,7 +904,7 @@
       },
       "per_class": {
        "breathing": {
-        "probe": 0.9375,
+        "probe": 0.9062,
         "zero_shot": 0.2188
        },
        "coughing": {
@@ -920,7 +920,7 @@
         "zero_shot": 1.0
        },
        "sneezing": {
-        "probe": 0.9062,
+        "probe": 0.8438,
         "zero_shot": 0.4688
        },
        "snoring": {
@@ -940,7 +940,7 @@
         "snoring"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.985,
+       "pairwise_mean": 0.9792,
        "pairs_below": []
       }
      },
@@ -971,10 +971,10 @@
       ],
       "chance": 0.0455,
       "probe": {
-       "acc": 0.8366,
+       "acc": 0.8509,
        "ci": [
-        0.8075,
-        0.8682
+        0.8234,
+        0.8793
        ],
        "n": 704,
        "groups": 548
@@ -1016,7 +1016,7 @@
         "zero_shot": 0.0938
        },
        "car_horn": {
-        "probe": 0.8438,
+        "probe": 0.875,
         "zero_shot": 0.5938
        },
        "chainsaw": {
@@ -1024,7 +1024,7 @@
         "zero_shot": 0.0
        },
        "church_bells": {
-        "probe": 0.9375,
+        "probe": 0.9688,
         "zero_shot": 0.875
        },
        "clock_alarm": {
@@ -1032,11 +1032,11 @@
         "zero_shot": 0.4375
        },
        "clock_tick": {
-        "probe": 0.8125,
+        "probe": 0.8438,
         "zero_shot": 0.5
        },
        "door_wood_creaks": {
-        "probe": 0.7812,
+        "probe": 0.8125,
         "zero_shot": 0.0
        },
        "door_wood_knock": {
@@ -1060,11 +1060,11 @@
         "zero_shot": 0.0
        },
        "helicopter": {
-        "probe": 0.3125,
+        "probe": 0.4375,
         "zero_shot": 0.0
        },
        "keyboard_typing": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.8438
        },
        "mouse_click": {
@@ -1088,11 +1088,11 @@
         "zero_shot": 0.0
        },
        "vacuum_cleaner": {
-        "probe": 0.8438,
+        "probe": 0.875,
         "zero_shot": 0.0
        },
        "washing_machine": {
-        "probe": 0.5938,
+        "probe": 0.6562,
         "zero_shot": 0.0
        }
       },
@@ -1124,7 +1124,7 @@
         "washing_machine"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.985,
+       "pairwise_mean": 0.9843,
        "pairs_below": []
       }
      },
@@ -1139,10 +1139,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.9427,
+       "acc": 0.9375,
        "ci": [
-        0.9037,
-        0.9745
+        0.901,
+        0.9705
        ],
        "n": 192,
        "groups": 140
@@ -1180,7 +1180,7 @@
         "zero_shot": 0.25
        },
        "rain": {
-        "probe": 0.875,
+        "probe": 0.8438,
         "zero_shot": 0.125
        },
        "sea_waves": {
@@ -1212,7 +1212,7 @@
         "wind"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9767,
+       "pairwise_mean": 0.9742,
        "pairs_below": []
       }
      }
@@ -1280,10 +1280,10 @@
       ],
       "chance": 0.25,
       "probe": {
-       "acc": 0.9531,
+       "acc": 0.9453,
        "ci": [
-        0.9098,
-        0.9922
+        0.9016,
+        0.985
        ],
        "n": 128,
        "groups": 93
@@ -1321,7 +1321,7 @@
         "zero_shot": 0.9375
        },
        "crow": {
-        "probe": 0.9375,
+        "probe": 0.875,
         "zero_shot": 0.0312
        },
        "hen": {
@@ -1329,7 +1329,7 @@
         "zero_shot": 0.9375
        },
        "rooster": {
-        "probe": 0.9375,
+        "probe": 0.9688,
         "zero_shot": 0.125
        }
       }
@@ -1345,10 +1345,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.9531,
+       "acc": 0.9375,
        "ci": [
-        0.92,
-        0.9798
+        0.8989,
+        0.9691
        ],
        "n": 192,
        "groups": 158
@@ -1382,7 +1382,7 @@
       },
       "per_class": {
        "breathing": {
-        "probe": 0.9375,
+        "probe": 0.9062,
         "zero_shot": 0.2188
        },
        "coughing": {
@@ -1398,7 +1398,7 @@
         "zero_shot": 1.0
        },
        "sneezing": {
-        "probe": 0.9062,
+        "probe": 0.8438,
         "zero_shot": 0.4688
        },
        "snoring": {
@@ -1472,10 +1472,10 @@
       ],
       "chance": 0.5,
       "probe": {
-       "acc": 0.9219,
+       "acc": 0.9375,
        "ci": [
-        0.8529,
-        0.9839
+        0.873,
+        0.9848
        ],
        "n": 64,
        "groups": 60
@@ -1513,7 +1513,7 @@
         "zero_shot": 0.8438
        },
        "mouse_click": {
-        "probe": 0.875,
+        "probe": 0.9062,
         "zero_shot": 0.1562
        }
       }
@@ -1583,8 +1583,8 @@
       "probe": {
        "acc": 0.8938,
        "ci": [
-        0.8333,
-        0.9464
+        0.828,
+        0.9455
        ],
        "n": 160,
        "groups": 99
@@ -1626,11 +1626,11 @@
         "zero_shot": 0.9375
        },
        "pig": {
-        "probe": 0.8438,
+        "probe": 0.8125,
         "zero_shot": 0.0
        },
        "rooster": {
-        "probe": 0.9375,
+        "probe": 0.9688,
         "zero_shot": 0.0625
        },
        "sheep": {
@@ -1758,8 +1758,8 @@
       "probe": {
        "acc": 0.776,
        "ci": [
-        0.7042,
-        0.8441
+        0.7071,
+        0.8477
        ],
        "n": 192,
        "groups": 143
@@ -1793,7 +1793,7 @@
       },
       "per_class": {
        "airplane": {
-        "probe": 0.7188,
+        "probe": 0.75,
         "zero_shot": 0.0
        },
        "car_horn": {
@@ -1801,11 +1801,11 @@
         "zero_shot": 0.5938
        },
        "engine": {
-        "probe": 0.75,
+        "probe": 0.7812,
         "zero_shot": 1.0
        },
        "helicopter": {
-        "probe": 0.4688,
+        "probe": 0.4375,
         "zero_shot": 0.0
        },
        "siren": {
@@ -1813,7 +1813,7 @@
         "zero_shot": 0.9375
        },
        "train": {
-        "probe": 0.9062,
+        "probe": 0.875,
         "zero_shot": 0.0
        }
       }
@@ -1830,8 +1830,8 @@
       "probe": {
        "acc": 0.9437,
        "ci": [
-        0.9062,
-        0.9758
+        0.9074,
+        0.9763
        ],
        "n": 160,
        "groups": 134
@@ -1873,15 +1873,15 @@
         "zero_shot": 0.9688
        },
        "sea_waves": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.0
        },
        "toilet_flush": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.125
        },
        "water_drops": {
-        "probe": 0.9062,
+        "probe": 0.9688,
         "zero_shot": 0.5938
        }
       }
@@ -1896,7 +1896,7 @@
       "probe": {
        "acc": 0.9896,
        "ci": [
-        0.967,
+        0.9663,
         1.0
        ],
        "n": 96,
@@ -1946,15 +1946,2325 @@
      }
     }
    },
+   "fsd50k": {
+    "n_clips": 2399,
+    "n_classes": 62,
+    "chance": 0.0161,
+    "probe": {
+     "acc": 0.4814,
+     "ci": [
+      0.4546,
+      0.5083
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "knn": {
+     "acc": 0.4258,
+     "ci": [
+      0.4012,
+      0.4528
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "zero_shot": {
+     "acc": 0.1918,
+     "ci": [
+      0.1702,
+      0.2108
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "zero_shot_centred": {
+     "acc": 0.201,
+     "ci": [
+      0.1811,
+      0.222
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "classes": {
+     "Bark": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.6552,
+      "knn": 0.5862,
+      "zero_shot": 0.3103,
+      "zero_shot_centred": 0.2759,
+      "within": 0.843,
+      "nearest_other": 0.8411,
+      "nearest_class": "Zipper_(clothing)",
+      "tightness": 0.0018
+     },
+     "Bicycle_bell": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6562,
+      "knn": 0.7188,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8925,
+      "nearest_other": 0.8796,
+      "nearest_class": "Ringtone",
+      "tightness": 0.0129
+     },
+     "Boiling": {
+      "family": "machine_domestic",
+      "n": 29,
+      "probe": 0.5,
+      "knn": 0.4,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8965,
+      "nearest_other": 0.897,
+      "nearest_class": "Rain",
+      "tightness": -0.0005
+     },
+     "Breathing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.4167,
+      "knn": 0.3611,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0556,
+      "within": 0.8587,
+      "nearest_other": 0.8592,
+      "nearest_class": "Sigh",
+      "tightness": -0.0005
+     },
+     "Burping_and_eructation": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.8571,
+      "knn": 0.8,
+      "zero_shot": 0.1714,
+      "zero_shot_centred": 0.1429,
+      "within": 0.8986,
+      "nearest_other": 0.8578,
+      "nearest_class": "Sigh",
+      "tightness": 0.0408
+     },
+     "Bus": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.2424,
+      "knn": 0.0606,
+      "zero_shot": 0.0606,
+      "zero_shot_centred": 0.0,
+      "within": 0.8255,
+      "nearest_other": 0.8461,
+      "nearest_class": "Rain",
+      "tightness": -0.0206
+     },
+     "Car": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.0571,
+      "knn": 0.0857,
+      "zero_shot": 0.2571,
+      "zero_shot_centred": 0.2286,
+      "within": 0.8663,
+      "nearest_other": 0.8672,
+      "nearest_class": "Rain",
+      "tightness": -0.0009
+     },
+     "Chewing_and_mastication": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.7667,
+      "knn": 0.6667,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0333,
+      "within": 0.894,
+      "nearest_other": 0.8891,
+      "nearest_class": "Scissors",
+      "tightness": 0.0049
+     },
+     "Child_speech_and_kid_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.3125,
+      "knn": 0.0625,
+      "zero_shot": 0.125,
+      "zero_shot_centred": 0.4688,
+      "within": 0.7512,
+      "nearest_other": 0.7725,
+      "nearest_class": "Zipper_(clothing)",
+      "tightness": -0.0214
+     },
+     "Chirp_and_tweet": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.3448,
+      "knn": 0.2414,
+      "zero_shot": 0.4828,
+      "zero_shot_centred": 0.3793,
+      "within": 0.8507,
+      "nearest_other": 0.851,
+      "nearest_class": "Thunder",
+      "tightness": -0.0002
+     },
+     "Chuckle_and_chortle": {
+      "family": "human_vocal",
+      "n": 30,
+      "probe": 0.1071,
+      "knn": 0.1071,
+      "zero_shot": 0.1071,
+      "zero_shot_centred": 0.0,
+      "within": 0.8205,
+      "nearest_other": 0.8392,
+      "nearest_class": "Giggle",
+      "tightness": -0.0188
+     },
+     "Clapping": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.4667,
+      "knn": 0.4,
+      "zero_shot": 0.5,
+      "zero_shot_centred": 0.5,
+      "within": 0.8171,
+      "nearest_other": 0.8259,
+      "nearest_class": "Finger_snapping",
+      "tightness": -0.0089
+     },
+     "Coin_(dropping)": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.3793,
+      "knn": 0.3103,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8861,
+      "nearest_other": 0.8819,
+      "nearest_class": "Scissors",
+      "tightness": 0.0042
+     },
+     "Cough": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.75,
+      "knn": 0.6875,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8615,
+      "nearest_other": 0.8561,
+      "nearest_class": "Giggle",
+      "tightness": 0.0054
+     },
+     "Crash_cymbal": {
+      "family": "music",
+      "n": 40,
+      "probe": 0.9091,
+      "knn": 0.8788,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.1515,
+      "within": 0.9066,
+      "nearest_other": 0.8715,
+      "nearest_class": "Doorbell",
+      "tightness": 0.0351
+     },
+     "Cricket": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.2917,
+      "knn": 0.2917,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8528,
+      "nearest_other": 0.8571,
+      "nearest_class": "Thunder",
+      "tightness": -0.0043
+     },
+     "Crying_and_sobbing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.4815,
+      "knn": 0.4815,
+      "zero_shot": 0.1481,
+      "zero_shot_centred": 0.3704,
+      "within": 0.8441,
+      "nearest_other": 0.8392,
+      "nearest_class": "Meow",
+      "tightness": 0.005
+     },
+     "Cutlery_and_silverware": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.2812,
+      "knn": 0.1562,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.1562,
+      "within": 0.8625,
+      "nearest_other": 0.8705,
+      "nearest_class": "Scissors",
+      "tightness": -0.008
+     },
+     "Dishes_and_pots_and_pans": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.3429,
+      "knn": 0.4,
+      "zero_shot": 0.1429,
+      "zero_shot_centred": 0.1714,
+      "within": 0.8528,
+      "nearest_other": 0.8571,
+      "nearest_class": "Bicycle_bell",
+      "tightness": -0.0043
+     },
+     "Doorbell": {
+      "family": "machine_domestic",
+      "n": 34,
+      "probe": 0.2759,
+      "knn": 0.4483,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8685,
+      "nearest_other": 0.8746,
+      "nearest_class": "Ringtone",
+      "tightness": -0.006
+     },
+     "Drill": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.4483,
+      "knn": 0.2759,
+      "zero_shot": 0.1724,
+      "zero_shot_centred": 0.2069,
+      "within": 0.873,
+      "nearest_other": 0.864,
+      "nearest_class": "Sawing",
+      "tightness": 0.009
+     },
+     "Drip": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.2647,
+      "knn": 0.1176,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0882,
+      "within": 0.8775,
+      "nearest_other": 0.8779,
+      "nearest_class": "Scissors",
+      "tightness": -0.0004
+     },
+     "Female_speech_and_woman_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.3333,
+      "knn": 0.1111,
+      "zero_shot": 0.0833,
+      "zero_shot_centred": 0.1667,
+      "within": 0.711,
+      "nearest_other": 0.7515,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": -0.0405
+     },
+     "Finger_snapping": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.6471,
+      "knn": 0.7059,
+      "zero_shot": 0.0882,
+      "zero_shot_centred": 0.2647,
+      "within": 0.891,
+      "nearest_other": 0.8864,
+      "nearest_class": "Scissors",
+      "tightness": 0.0045
+     },
+     "Fire": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.2258,
+      "knn": 0.2258,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8818,
+      "nearest_other": 0.8814,
+      "nearest_class": "Scissors",
+      "tightness": 0.0004
+     },
+     "Frog": {
+      "family": "animal",
+      "n": 38,
+      "probe": 0.2581,
+      "knn": 0.2258,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8412,
+      "nearest_other": 0.8454,
+      "nearest_class": "Zipper_(clothing)",
+      "tightness": -0.0041
+     },
+     "Frying_(food)": {
+      "family": "machine_domestic",
+      "n": 38,
+      "probe": 0.625,
+      "knn": 0.6875,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0312,
+      "within": 0.9189,
+      "nearest_other": 0.8999,
+      "nearest_class": "Rain",
+      "tightness": 0.0189
+     },
+     "Giggle": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.7419,
+      "knn": 0.8387,
+      "zero_shot": 0.9032,
+      "zero_shot_centred": 0.871,
+      "within": 0.8803,
+      "nearest_other": 0.8561,
+      "nearest_class": "Cough",
+      "tightness": 0.0242
+     },
+     "Growling": {
+      "family": "animal",
+      "n": 28,
+      "probe": 0.32,
+      "knn": 0.28,
+      "zero_shot": 0.16,
+      "zero_shot_centred": 0.12,
+      "within": 0.8452,
+      "nearest_other": 0.8535,
+      "nearest_class": "Zipper_(clothing)",
+      "tightness": -0.0083
+     },
+     "Gull_and_seagull": {
+      "family": "animal",
+      "n": 29,
+      "probe": 0.16,
+      "knn": 0.16,
+      "zero_shot": 0.04,
+      "zero_shot_centred": 0.08,
+      "within": 0.8402,
+      "nearest_other": 0.8533,
+      "nearest_class": "Thunder",
+      "tightness": -0.0131
+     },
+     "Hammer": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.5455,
+      "knn": 0.4545,
+      "zero_shot": 0.4242,
+      "zero_shot_centred": 0.303,
+      "within": 0.8727,
+      "nearest_other": 0.869,
+      "nearest_class": "Coin_(dropping)",
+      "tightness": 0.0037
+     },
+     "Hiss": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.25,
+      "knn": 0.0938,
+      "zero_shot": 0.4062,
+      "zero_shot_centred": 0.0938,
+      "within": 0.8471,
+      "nearest_other": 0.8597,
+      "nearest_class": "Fire",
+      "tightness": -0.0127
+     },
+     "Keys_jangling": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.4,
+      "knn": 0.3667,
+      "zero_shot": 0.0667,
+      "zero_shot_centred": 0.1333,
+      "within": 0.871,
+      "nearest_other": 0.8832,
+      "nearest_class": "Scissors",
+      "tightness": -0.0122
+     },
+     "Male_speech_and_man_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.2105,
+      "knn": 0.0263,
+      "zero_shot": 0.2368,
+      "zero_shot_centred": 0.3947,
+      "within": 0.7164,
+      "nearest_other": 0.7536,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": -0.0372
+     },
+     "Meow": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.7714,
+      "knn": 0.6571,
+      "zero_shot": 0.5429,
+      "zero_shot_centred": 0.4,
+      "within": 0.869,
+      "nearest_other": 0.8519,
+      "nearest_class": "Screaming",
+      "tightness": 0.0171
+     },
+     "Microwave_oven": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.4857,
+      "knn": 0.2857,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8693,
+      "nearest_other": 0.8631,
+      "nearest_class": "Coin_(dropping)",
+      "tightness": 0.0062
+     },
+     "Motorcycle": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.4,
+      "knn": 0.2,
+      "zero_shot": 0.36,
+      "zero_shot_centred": 0.56,
+      "within": 0.871,
+      "nearest_other": 0.867,
+      "nearest_class": "Car",
+      "tightness": 0.004
+     },
+     "Printer": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6176,
+      "knn": 0.5588,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8915,
+      "nearest_other": 0.8804,
+      "nearest_class": "Rain",
+      "tightness": 0.0111
+     },
+     "Purr": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.8485,
+      "knn": 0.8788,
+      "zero_shot": 0.2121,
+      "zero_shot_centred": 0.0606,
+      "within": 0.9072,
+      "nearest_other": 0.8723,
+      "nearest_class": "Thunder",
+      "tightness": 0.0349
+     },
+     "Rain": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.5625,
+      "knn": 0.5312,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0938,
+      "within": 0.9158,
+      "nearest_other": 0.8999,
+      "nearest_class": "Frying_(food)",
+      "tightness": 0.0158
+     },
+     "Ringtone": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6571,
+      "knn": 0.4571,
+      "zero_shot": 0.9143,
+      "zero_shot_centred": 0.9143,
+      "within": 0.8907,
+      "nearest_other": 0.8796,
+      "nearest_class": "Bicycle_bell",
+      "tightness": 0.0111
+     },
+     "Sawing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.1818,
+      "knn": 0.4545,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0303,
+      "within": 0.8613,
+      "nearest_other": 0.864,
+      "nearest_class": "Drill",
+      "tightness": -0.0026
+     },
+     "Scissors": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.5152,
+      "knn": 0.5455,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0303,
+      "within": 0.9048,
+      "nearest_other": 0.8891,
+      "nearest_class": "Chewing_and_mastication",
+      "tightness": 0.0157
+     },
+     "Screaming": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.7778,
+      "knn": 0.8333,
+      "zero_shot": 0.8333,
+      "zero_shot_centred": 0.5833,
+      "within": 0.8792,
+      "nearest_other": 0.8519,
+      "nearest_class": "Meow",
+      "tightness": 0.0274
+     },
+     "Shout": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.4118,
+      "knn": 0.2941,
+      "zero_shot": 0.4412,
+      "zero_shot_centred": 0.3235,
+      "within": 0.7724,
+      "nearest_other": 0.7957,
+      "nearest_class": "Screaming",
+      "tightness": -0.0233
+     },
+     "Sigh": {
+      "family": "human_vocal",
+      "n": 29,
+      "probe": 0.5,
+      "knn": 0.3077,
+      "zero_shot": 0.1154,
+      "zero_shot_centred": 0.0385,
+      "within": 0.8702,
+      "nearest_other": 0.8592,
+      "nearest_class": "Breathing",
+      "tightness": 0.0109
+     },
+     "Singing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.5676,
+      "knn": 0.4595,
+      "zero_shot": 0.5135,
+      "zero_shot_centred": 0.5405,
+      "within": 0.7534,
+      "nearest_other": 0.7735,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": -0.0201
+     },
+     "Siren": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.5667,
+      "knn": 0.4,
+      "zero_shot": 0.3667,
+      "zero_shot_centred": 0.4667,
+      "within": 0.8476,
+      "nearest_other": 0.8358,
+      "nearest_class": "Ringtone",
+      "tightness": 0.0119
+     },
+     "Sneeze": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.6562,
+      "knn": 0.5,
+      "zero_shot": 0.0312,
+      "zero_shot_centred": 0.0312,
+      "within": 0.8464,
+      "nearest_other": 0.8433,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": 0.0031
+     },
+     "Stream": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.6207,
+      "knn": 0.7586,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.898,
+      "nearest_other": 0.8952,
+      "nearest_class": "Waves_and_surf",
+      "tightness": 0.0028
+     },
+     "Thunder": {
+      "family": "nature",
+      "n": 25,
+      "probe": 0.75,
+      "knn": 0.75,
+      "zero_shot": 0.4375,
+      "zero_shot_centred": 0.3125,
+      "within": 0.9178,
+      "nearest_other": 0.8905,
+      "nearest_class": "Waves_and_surf",
+      "tightness": 0.0273
+     },
+     "Toilet_flush": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.75,
+      "knn": 0.8056,
+      "zero_shot": 0.0278,
+      "zero_shot_centred": 0.1667,
+      "within": 0.9177,
+      "nearest_other": 0.8938,
+      "nearest_class": "Trickle_and_dribble",
+      "tightness": 0.0238
+     },
+     "Train": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.2188,
+      "knn": 0.25,
+      "zero_shot": 0.0312,
+      "zero_shot_centred": 0.0938,
+      "within": 0.8571,
+      "nearest_other": 0.8652,
+      "nearest_class": "Thunder",
+      "tightness": -0.008
+     },
+     "Trickle_and_dribble": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.4138,
+      "knn": 0.3793,
+      "zero_shot": 0.4828,
+      "zero_shot_centred": 0.4138,
+      "within": 0.8945,
+      "nearest_other": 0.8938,
+      "nearest_class": "Toilet_flush",
+      "tightness": 0.0007
+     },
+     "Truck": {
+      "family": "machine_domestic",
+      "n": 39,
+      "probe": 0.1935,
+      "knn": 0.1935,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.843,
+      "nearest_other": 0.8528,
+      "nearest_class": "Thunder",
+      "tightness": -0.0097
+     },
+     "Typing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.7941,
+      "knn": 0.7059,
+      "zero_shot": 0.7647,
+      "zero_shot_centred": 0.8235,
+      "within": 0.8952,
+      "nearest_other": 0.8699,
+      "nearest_class": "Coin_(dropping)",
+      "tightness": 0.0253
+     },
+     "Vehicle_horn_and_car_horn_and_honking": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.4194,
+      "knn": 0.3226,
+      "zero_shot": 0.4194,
+      "zero_shot_centred": 0.3226,
+      "within": 0.8214,
+      "nearest_other": 0.8361,
+      "nearest_class": "Crash_cymbal",
+      "tightness": -0.0147
+     },
+     "Waves_and_surf": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.5455,
+      "knn": 0.5152,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.902,
+      "nearest_other": 0.8996,
+      "nearest_class": "Rain",
+      "tightness": 0.0023
+     },
+     "Whispering": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.3939,
+      "knn": 0.2121,
+      "zero_shot": 0.0303,
+      "zero_shot_centred": 0.0,
+      "within": 0.7375,
+      "nearest_other": 0.7696,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": -0.032
+     },
+     "Wind": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.1875,
+      "knn": 0.1562,
+      "zero_shot": 0.3125,
+      "zero_shot_centred": 0.3438,
+      "within": 0.8608,
+      "nearest_other": 0.88,
+      "nearest_class": "Rain",
+      "tightness": -0.0192
+     },
+     "Writing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6333,
+      "knn": 0.6667,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.883,
+      "nearest_other": 0.8813,
+      "nearest_class": "Scissors",
+      "tightness": 0.0017
+     },
+     "Zipper_(clothing)": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.7273,
+      "knn": 0.5152,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0,
+      "within": 0.8837,
+      "nearest_other": 0.8623,
+      "nearest_class": "Purr",
+      "tightness": 0.0215
+     }
+    },
+    "families": {
+     "animal": {
+      "classes": [
+       "Bark",
+       "Chirp_and_tweet",
+       "Cricket",
+       "Frog",
+       "Growling",
+       "Gull_and_seagull",
+       "Hiss",
+       "Meow",
+       "Purr"
+      ],
+      "chance": 0.1111,
+      "probe": {
+       "acc": 0.6274,
+       "ci": [
+        0.5598,
+        0.6967
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "knn": {
+       "acc": 0.597,
+       "ci": [
+        0.5279,
+        0.6705
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "zero_shot": {
+       "acc": 0.3992,
+       "ci": [
+        0.3411,
+        0.4622
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "zero_shot_centred": {
+       "acc": 0.4677,
+       "ci": [
+        0.3977,
+        0.541
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "per_class": {
+       "Bark": {
+        "probe": 0.7586,
+        "zero_shot": 0.3103
+       },
+       "Chirp_and_tweet": {
+        "probe": 0.5172,
+        "zero_shot": 0.7241
+       },
+       "Cricket": {
+        "probe": 0.5417,
+        "zero_shot": 0.0417
+       },
+       "Frog": {
+        "probe": 0.3548,
+        "zero_shot": 0.0
+       },
+       "Growling": {
+        "probe": 0.52,
+        "zero_shot": 0.56
+       },
+       "Gull_and_seagull": {
+        "probe": 0.32,
+        "zero_shot": 0.04
+       },
+       "Hiss": {
+        "probe": 0.7188,
+        "zero_shot": 0.7812
+       },
+       "Meow": {
+        "probe": 0.8857,
+        "zero_shot": 0.6571
+       },
+       "Purr": {
+        "probe": 0.8788,
+        "zero_shot": 0.3333
+       }
+      },
+      "effective_vocabulary": {
+       "size": 8,
+       "of": 9,
+       "classes": [
+        "Bark",
+        "Cricket",
+        "Frog",
+        "Growling",
+        "Gull_and_seagull",
+        "Hiss",
+        "Meow",
+        "Purr"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.8752,
+       "pairs_below": [
+        [
+         "Chirp_and_tweet",
+         "Gull_and_seagull",
+         0.667
+        ]
+       ]
+      }
+     },
+     "human_activity": {
+      "classes": [
+       "Chewing_and_mastication",
+       "Clapping",
+       "Finger_snapping"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.9362,
+       "ci": [
+        0.883,
+        0.9787
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "knn": {
+       "acc": 0.8617,
+       "ci": [
+        0.7812,
+        0.928
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "zero_shot": {
+       "acc": 0.6064,
+       "ci": [
+        0.5148,
+        0.7
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "zero_shot_centred": {
+       "acc": 0.5319,
+       "ci": [
+        0.4361,
+        0.6305
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "per_class": {
+       "Chewing_and_mastication": {
+        "probe": 0.9333,
+        "zero_shot": 0.5667
+       },
+       "Clapping": {
+        "probe": 0.9667,
+        "zero_shot": 0.8333
+       },
+       "Finger_snapping": {
+        "probe": 0.9118,
+        "zero_shot": 0.4412
+       }
+      },
+      "effective_vocabulary": {
+       "size": 3,
+       "of": 3,
+       "classes": [
+        "Chewing_and_mastication",
+        "Clapping",
+        "Finger_snapping"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9375,
+       "pairs_below": []
+      }
+     },
+     "human_vocal": {
+      "classes": [
+       "Breathing",
+       "Burping_and_eructation",
+       "Child_speech_and_kid_speaking",
+       "Chuckle_and_chortle",
+       "Cough",
+       "Crying_and_sobbing",
+       "Female_speech_and_woman_speaking",
+       "Giggle",
+       "Male_speech_and_man_speaking",
+       "Screaming",
+       "Shout",
+       "Sigh",
+       "Singing",
+       "Sneeze",
+       "Whispering"
+      ],
+      "chance": 0.0667,
+      "probe": {
+       "acc": 0.572,
+       "ci": [
+        0.5243,
+        0.6224
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "knn": {
+       "acc": 0.4848,
+       "ci": [
+        0.4335,
+        0.5346
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "zero_shot": {
+       "acc": 0.3002,
+       "ci": [
+        0.2578,
+        0.3472
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "zero_shot_centred": {
+       "acc": 0.3164,
+       "ci": [
+        0.268,
+        0.3659
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "per_class": {
+       "Breathing": {
+        "probe": 0.5556,
+        "zero_shot": 0.0556
+       },
+       "Burping_and_eructation": {
+        "probe": 0.9143,
+        "zero_shot": 0.1714
+       },
+       "Child_speech_and_kid_speaking": {
+        "probe": 0.4062,
+        "zero_shot": 0.125
+       },
+       "Chuckle_and_chortle": {
+        "probe": 0.2143,
+        "zero_shot": 0.2857
+       },
+       "Cough": {
+        "probe": 0.75,
+        "zero_shot": 0.0
+       },
+       "Crying_and_sobbing": {
+        "probe": 0.5185,
+        "zero_shot": 0.1852
+       },
+       "Female_speech_and_woman_speaking": {
+        "probe": 0.3333,
+        "zero_shot": 0.1111
+       },
+       "Giggle": {
+        "probe": 0.7097,
+        "zero_shot": 0.9032
+       },
+       "Male_speech_and_man_speaking": {
+        "probe": 0.3684,
+        "zero_shot": 0.3158
+       },
+       "Screaming": {
+        "probe": 0.8056,
+        "zero_shot": 0.8333
+       },
+       "Shout": {
+        "probe": 0.5294,
+        "zero_shot": 0.5588
+       },
+       "Sigh": {
+        "probe": 0.6154,
+        "zero_shot": 0.1154
+       },
+       "Singing": {
+        "probe": 0.6757,
+        "zero_shot": 0.6216
+       },
+       "Sneeze": {
+        "probe": 0.6875,
+        "zero_shot": 0.0312
+       },
+       "Whispering": {
+        "probe": 0.4545,
+        "zero_shot": 0.0909
+       }
+      },
+      "effective_vocabulary": {
+       "size": 13,
+       "of": 15,
+       "classes": [
+        "Burping_and_eructation",
+        "Child_speech_and_kid_speaking",
+        "Chuckle_and_chortle",
+        "Cough",
+        "Crying_and_sobbing",
+        "Giggle",
+        "Male_speech_and_man_speaking",
+        "Screaming",
+        "Shout",
+        "Sigh",
+        "Singing",
+        "Sneeze",
+        "Whispering"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9044,
+       "pairs_below": [
+        [
+         "Breathing",
+         "Sigh",
+         0.681
+        ],
+        [
+         "Female_speech_and_woman_speaking",
+         "Male_speech_and_man_speaking",
+         0.625
+        ],
+        [
+         "Female_speech_and_woman_speaking",
+         "Whispering",
+         0.625
+        ]
+       ]
+      }
+     },
+     "machine_domestic": {
+      "classes": [
+       "Bicycle_bell",
+       "Boiling",
+       "Bus",
+       "Car",
+       "Coin_(dropping)",
+       "Cutlery_and_silverware",
+       "Dishes_and_pots_and_pans",
+       "Doorbell",
+       "Drill",
+       "Frying_(food)",
+       "Hammer",
+       "Keys_jangling",
+       "Microwave_oven",
+       "Motorcycle",
+       "Printer",
+       "Ringtone",
+       "Sawing",
+       "Scissors",
+       "Siren",
+       "Toilet_flush",
+       "Train",
+       "Truck",
+       "Typing",
+       "Vehicle_horn_and_car_horn_and_honking",
+       "Writing",
+       "Zipper_(clothing)"
+      ],
+      "chance": 0.0385,
+      "probe": {
+       "acc": 0.5298,
+       "ci": [
+        0.492,
+        0.5703
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "knn": {
+       "acc": 0.4714,
+       "ci": [
+        0.4344,
+        0.5138
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "zero_shot": {
+       "acc": 0.2144,
+       "ci": [
+        0.1821,
+        0.2488
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "zero_shot_centred": {
+       "acc": 0.2314,
+       "ci": [
+        0.1985,
+        0.2634
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "per_class": {
+       "Bicycle_bell": {
+        "probe": 0.7188,
+        "zero_shot": 0.0
+       },
+       "Boiling": {
+        "probe": 0.65,
+        "zero_shot": 0.15
+       },
+       "Bus": {
+        "probe": 0.3636,
+        "zero_shot": 0.1515
+       },
+       "Car": {
+        "probe": 0.1714,
+        "zero_shot": 0.4571
+       },
+       "Coin_(dropping)": {
+        "probe": 0.3448,
+        "zero_shot": 0.0
+       },
+       "Cutlery_and_silverware": {
+        "probe": 0.2812,
+        "zero_shot": 0.0
+       },
+       "Dishes_and_pots_and_pans": {
+        "probe": 0.4571,
+        "zero_shot": 0.3143
+       },
+       "Doorbell": {
+        "probe": 0.3448,
+        "zero_shot": 0.0
+       },
+       "Drill": {
+        "probe": 0.4828,
+        "zero_shot": 0.2414
+       },
+       "Frying_(food)": {
+        "probe": 0.7812,
+        "zero_shot": 0.0
+       },
+       "Hammer": {
+        "probe": 0.6061,
+        "zero_shot": 0.5152
+       },
+       "Keys_jangling": {
+        "probe": 0.5,
+        "zero_shot": 0.1
+       },
+       "Microwave_oven": {
+        "probe": 0.5143,
+        "zero_shot": 0.0286
+       },
+       "Motorcycle": {
+        "probe": 0.4,
+        "zero_shot": 0.44
+       },
+       "Printer": {
+        "probe": 0.6765,
+        "zero_shot": 0.0
+       },
+       "Ringtone": {
+        "probe": 0.6286,
+        "zero_shot": 0.9429
+       },
+       "Sawing": {
+        "probe": 0.303,
+        "zero_shot": 0.0
+       },
+       "Scissors": {
+        "probe": 0.5758,
+        "zero_shot": 0.0909
+       },
+       "Siren": {
+        "probe": 0.6667,
+        "zero_shot": 0.6333
+       },
+       "Toilet_flush": {
+        "probe": 0.8611,
+        "zero_shot": 0.0556
+       },
+       "Train": {
+        "probe": 0.3438,
+        "zero_shot": 0.0938
+       },
+       "Truck": {
+        "probe": 0.129,
+        "zero_shot": 0.0323
+       },
+       "Typing": {
+        "probe": 0.7941,
+        "zero_shot": 0.7941
+       },
+       "Vehicle_horn_and_car_horn_and_honking": {
+        "probe": 0.5161,
+        "zero_shot": 0.4516
+       },
+       "Writing": {
+        "probe": 0.6667,
+        "zero_shot": 0.0
+       },
+       "Zipper_(clothing)": {
+        "probe": 0.9394,
+        "zero_shot": 0.0
+       }
+      },
+      "effective_vocabulary": {
+       "size": 22,
+       "of": 26,
+       "classes": [
+        "Bicycle_bell",
+        "Boiling",
+        "Bus",
+        "Coin_(dropping)",
+        "Cutlery_and_silverware",
+        "Dishes_and_pots_and_pans",
+        "Frying_(food)",
+        "Hammer",
+        "Keys_jangling",
+        "Microwave_oven",
+        "Motorcycle",
+        "Printer",
+        "Ringtone",
+        "Sawing",
+        "Scissors",
+        "Siren",
+        "Toilet_flush",
+        "Train",
+        "Typing",
+        "Vehicle_horn_and_car_horn_and_honking",
+        "Writing",
+        "Zipper_(clothing)"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9063,
+       "pairs_below": [
+        [
+         "Bus",
+         "Car",
+         0.675
+        ],
+        [
+         "Bus",
+         "Truck",
+         0.633
+        ],
+        [
+         "Car",
+         "Motorcycle",
+         0.512
+        ],
+        [
+         "Car",
+         "Truck",
+         0.582
+        ],
+        [
+         "Doorbell",
+         "Ringtone",
+         0.676
+        ],
+        [
+         "Drill",
+         "Sawing",
+         0.637
+        ],
+        [
+         "Motorcycle",
+         "Truck",
+         0.684
+        ],
+        [
+         "Train",
+         "Truck",
+         0.62
+        ],
+        [
+         "Truck",
+         "Vehicle_horn_and_car_horn_and_honking",
+         0.684
+        ]
+       ]
+      }
+     },
+     "nature": {
+      "classes": [
+       "Drip",
+       "Fire",
+       "Rain",
+       "Stream",
+       "Thunder",
+       "Trickle_and_dribble",
+       "Waves_and_surf",
+       "Wind"
+      ],
+      "chance": 0.125,
+      "probe": {
+       "acc": 0.6441,
+       "ci": [
+        0.5837,
+        0.7087
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "knn": {
+       "acc": 0.5975,
+       "ci": [
+        0.531,
+        0.664
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "zero_shot": {
+       "acc": 0.2034,
+       "ci": [
+        0.1535,
+        0.2611
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "zero_shot_centred": {
+       "acc": 0.2627,
+       "ci": [
+        0.2091,
+        0.3195
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "per_class": {
+       "Drip": {
+        "probe": 0.5882,
+        "zero_shot": 0.0882
+       },
+       "Fire": {
+        "probe": 0.6774,
+        "zero_shot": 0.0645
+       },
+       "Rain": {
+        "probe": 0.6875,
+        "zero_shot": 0.0
+       },
+       "Stream": {
+        "probe": 0.6897,
+        "zero_shot": 0.0345
+       },
+       "Thunder": {
+        "probe": 0.875,
+        "zero_shot": 0.4375
+       },
+       "Trickle_and_dribble": {
+        "probe": 0.7241,
+        "zero_shot": 0.7931
+       },
+       "Waves_and_surf": {
+        "probe": 0.6364,
+        "zero_shot": 0.0
+       },
+       "Wind": {
+        "probe": 0.4062,
+        "zero_shot": 0.375
+       }
+      },
+      "effective_vocabulary": {
+       "size": 8,
+       "of": 8,
+       "classes": [
+        "Drip",
+        "Fire",
+        "Rain",
+        "Stream",
+        "Thunder",
+        "Trickle_and_dribble",
+        "Waves_and_surf",
+        "Wind"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.8828,
+       "pairs_below": []
+      }
+     }
+    },
+    "sibling_groups": {
+     "cat_sounds": {
+      "classes": [
+       "Hiss",
+       "Meow",
+       "Purr"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.96,
+       "ci": [
+        0.9159,
+        1.0
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "knn": {
+       "acc": 0.94,
+       "ci": [
+        0.8889,
+        0.981
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "zero_shot": {
+       "acc": 0.79,
+       "ci": [
+        0.7052,
+        0.8673
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "zero_shot_centred": {
+       "acc": 0.9,
+       "ci": [
+        0.8367,
+        0.95
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "per_class": {
+       "Hiss": {
+        "probe": 0.9375,
+        "zero_shot": 0.9688
+       },
+       "Meow": {
+        "probe": 1.0,
+        "zero_shot": 0.9429
+       },
+       "Purr": {
+        "probe": 0.9394,
+        "zero_shot": 0.4545
+       }
+      }
+     },
+     "dog_sounds": {
+      "classes": [
+       "Bark",
+       "Growling"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.8704,
+       "ci": [
+        0.7704,
+        0.9615
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "knn": {
+       "acc": 0.963,
+       "ci": [
+        0.9074,
+        1.0
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "zero_shot": {
+       "acc": 0.6481,
+       "ci": [
+        0.5094,
+        0.7756
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "zero_shot_centred": {
+       "acc": 0.6481,
+       "ci": [
+        0.5,
+        0.7778
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "per_class": {
+       "Bark": {
+        "probe": 0.931,
+        "zero_shot": 0.4138
+       },
+       "Growling": {
+        "probe": 0.8,
+        "zero_shot": 0.92
+       }
+      }
+     },
+     "fsd_birds": {
+      "classes": [
+       "Chirp_and_tweet",
+       "Gull_and_seagull"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.6852,
+       "ci": [
+        0.54,
+        0.8197
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "knn": {
+       "acc": 0.7037,
+       "ci": [
+        0.5576,
+        0.8334
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "zero_shot": {
+       "acc": 0.5926,
+       "ci": [
+        0.46,
+        0.7255
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "zero_shot_centred": {
+       "acc": 0.7593,
+       "ci": [
+        0.62,
+        0.8689
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "per_class": {
+       "Chirp_and_tweet": {
+        "probe": 0.8621,
+        "zero_shot": 0.9655
+       },
+       "Gull_and_seagull": {
+        "probe": 0.48,
+        "zero_shot": 0.16
+       }
+      }
+     },
+     "fsd_body": {
+      "classes": [
+       "Breathing",
+       "Burping_and_eructation",
+       "Cough",
+       "Sigh",
+       "Sneeze"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.7702,
+       "ci": [
+        0.6894,
+        0.8494
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "knn": {
+       "acc": 0.7391,
+       "ci": [
+        0.6689,
+        0.808
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "zero_shot": {
+       "acc": 0.3665,
+       "ci": [
+        0.2837,
+        0.4518
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "zero_shot_centred": {
+       "acc": 0.354,
+       "ci": [
+        0.2774,
+        0.4337
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "per_class": {
+       "Breathing": {
+        "probe": 0.6111,
+        "zero_shot": 0.0833
+       },
+       "Burping_and_eructation": {
+        "probe": 0.9429,
+        "zero_shot": 0.4571
+       },
+       "Cough": {
+        "probe": 0.9062,
+        "zero_shot": 0.0
+       },
+       "Sigh": {
+        "probe": 0.5769,
+        "zero_shot": 0.6154
+       },
+       "Sneeze": {
+        "probe": 0.7812,
+        "zero_shot": 0.75
+       }
+      }
+     },
+     "fsd_water": {
+      "classes": [
+       "Drip",
+       "Stream",
+       "Trickle_and_dribble",
+       "Waves_and_surf"
+      ],
+      "chance": 0.25,
+      "probe": {
+       "acc": 0.664,
+       "ci": [
+        0.576,
+        0.7481
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "knn": {
+       "acc": 0.704,
+       "ci": [
+        0.6083,
+        0.7951
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "zero_shot": {
+       "acc": 0.336,
+       "ci": [
+        0.2598,
+        0.4149
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "zero_shot_centred": {
+       "acc": 0.496,
+       "ci": [
+        0.4083,
+        0.5872
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "per_class": {
+       "Drip": {
+        "probe": 0.7059,
+        "zero_shot": 0.2059
+       },
+       "Stream": {
+        "probe": 0.7241,
+        "zero_shot": 0.2759
+       },
+       "Trickle_and_dribble": {
+        "probe": 0.6207,
+        "zero_shot": 0.8966
+       },
+       "Waves_and_surf": {
+        "probe": 0.6061,
+        "zero_shot": 0.0303
+       }
+      }
+     },
+     "fsd_weather": {
+      "classes": [
+       "Rain",
+       "Thunder",
+       "Wind"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.7125,
+       "ci": [
+        0.5999,
+        0.8203
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.675,
+       "ci": [
+        0.5625,
+        0.7831
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.2875,
+       "ci": [
+        0.1944,
+        0.3867
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.3625,
+       "ci": [
+        0.2469,
+        0.4699
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "per_class": {
+       "Rain": {
+        "probe": 0.7812,
+        "zero_shot": 0.0
+       },
+       "Thunder": {
+        "probe": 0.75,
+        "zero_shot": 0.5
+       },
+       "Wind": {
+        "probe": 0.625,
+        "zero_shot": 0.4688
+       }
+      }
+     },
+     "kitchen": {
+      "classes": [
+       "Boiling",
+       "Cutlery_and_silverware",
+       "Dishes_and_pots_and_pans",
+       "Frying_(food)",
+       "Microwave_oven"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.7403,
+       "ci": [
+        0.6645,
+        0.8138
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "knn": {
+       "acc": 0.7468,
+       "ci": [
+        0.6708,
+        0.8169
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "zero_shot": {
+       "acc": 0.3377,
+       "ci": [
+        0.2517,
+        0.4152
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "zero_shot_centred": {
+       "acc": 0.3377,
+       "ci": [
+        0.2595,
+        0.4063
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "per_class": {
+       "Boiling": {
+        "probe": 0.85,
+        "zero_shot": 0.2
+       },
+       "Cutlery_and_silverware": {
+        "probe": 0.6562,
+        "zero_shot": 0.0
+       },
+       "Dishes_and_pots_and_pans": {
+        "probe": 0.5143,
+        "zero_shot": 0.8857
+       },
+       "Frying_(food)": {
+        "probe": 0.8438,
+        "zero_shot": 0.0312
+       },
+       "Microwave_oven": {
+        "probe": 0.8857,
+        "zero_shot": 0.4571
+       }
+      }
+     },
+     "laughter_types": {
+      "classes": [
+       "Chuckle_and_chortle",
+       "Giggle"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.6949,
+       "ci": [
+        0.5613,
+        0.8215
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "knn": {
+       "acc": 0.6441,
+       "ci": [
+        0.5088,
+        0.7705
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "zero_shot": {
+       "acc": 0.678,
+       "ci": [
+        0.5517,
+        0.8036
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "zero_shot_centred": {
+       "acc": 0.6102,
+       "ci": [
+        0.4754,
+        0.7407
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "per_class": {
+       "Chuckle_and_chortle": {
+        "probe": 0.6071,
+        "zero_shot": 0.4286
+       },
+       "Giggle": {
+        "probe": 0.7742,
+        "zero_shot": 0.9032
+       }
+      }
+     },
+     "loud_voice": {
+      "classes": [
+       "Screaming",
+       "Shout"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.8429,
+       "ci": [
+        0.7429,
+        0.9296
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.7143,
+       "ci": [
+        0.589,
+        0.8235
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.8429,
+       "ci": [
+        0.7465,
+        0.9286
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.8143,
+       "ci": [
+        0.7206,
+        0.9028
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "per_class": {
+       "Screaming": {
+        "probe": 0.8611,
+        "zero_shot": 0.8611
+       },
+       "Shout": {
+        "probe": 0.8235,
+        "zero_shot": 0.8235
+       }
+      }
+     },
+     "road_vehicles": {
+      "classes": [
+       "Bus",
+       "Car",
+       "Motorcycle",
+       "Truck"
+      ],
+      "chance": 0.25,
+      "probe": {
+       "acc": 0.4435,
+       "ci": [
+        0.3588,
+        0.5397
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "knn": {
+       "acc": 0.2984,
+       "ci": [
+        0.2167,
+        0.3871
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "zero_shot": {
+       "acc": 0.3226,
+       "ci": [
+        0.24,
+        0.4159
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "zero_shot_centred": {
+       "acc": 0.3468,
+       "ci": [
+        0.2656,
+        0.4366
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "per_class": {
+       "Bus": {
+        "probe": 0.5152,
+        "zero_shot": 0.2121
+       },
+       "Car": {
+        "probe": 0.2571,
+        "zero_shot": 0.5714
+       },
+       "Motorcycle": {
+        "probe": 0.6,
+        "zero_shot": 0.48
+       },
+       "Truck": {
+        "probe": 0.4516,
+        "zero_shot": 0.0323
+       }
+      }
+     },
+     "signals": {
+      "classes": [
+       "Bicycle_bell",
+       "Doorbell",
+       "Ringtone",
+       "Siren",
+       "Vehicle_horn_and_car_horn_and_honking"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.6879,
+       "ci": [
+        0.6104,
+        0.7587
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "knn": {
+       "acc": 0.6624,
+       "ci": [
+        0.5867,
+        0.7322
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "zero_shot": {
+       "acc": 0.4713,
+       "ci": [
+        0.3803,
+        0.5641
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "zero_shot_centred": {
+       "acc": 0.465,
+       "ci": [
+        0.3725,
+        0.5541
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "per_class": {
+       "Bicycle_bell": {
+        "probe": 0.8125,
+        "zero_shot": 0.0
+       },
+       "Doorbell": {
+        "probe": 0.5172,
+        "zero_shot": 0.0
+       },
+       "Ringtone": {
+        "probe": 0.6,
+        "zero_shot": 1.0
+       },
+       "Siren": {
+        "probe": 0.7667,
+        "zero_shot": 0.6333
+       },
+       "Vehicle_horn_and_car_horn_and_honking": {
+        "probe": 0.7419,
+        "zero_shot": 0.6452
+       }
+      }
+     },
+     "speakers": {
+      "classes": [
+       "Child_speech_and_kid_speaking",
+       "Female_speech_and_woman_speaking",
+       "Male_speech_and_man_speaking"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.5943,
+       "ci": [
+        0.495,
+        0.6898
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "knn": {
+       "acc": 0.434,
+       "ci": [
+        0.3333,
+        0.5313
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "zero_shot": {
+       "acc": 0.5094,
+       "ci": [
+        0.402,
+        0.6068
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "zero_shot_centred": {
+       "acc": 0.566,
+       "ci": [
+        0.4433,
+        0.6796
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "per_class": {
+       "Child_speech_and_kid_speaking": {
+        "probe": 0.625,
+        "zero_shot": 0.375
+       },
+       "Female_speech_and_woman_speaking": {
+        "probe": 0.5556,
+        "zero_shot": 0.2778
+       },
+       "Male_speech_and_man_speaking": {
+        "probe": 0.6053,
+        "zero_shot": 0.8421
+       }
+      }
+     },
+     "tools": {
+      "classes": [
+       "Drill",
+       "Hammer",
+       "Sawing"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.7368,
+       "ci": [
+        0.6153,
+        0.8384
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.7789,
+       "ci": [
+        0.6707,
+        0.87
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.4842,
+       "ci": [
+        0.3666,
+        0.6071
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.5368,
+       "ci": [
+        0.4305,
+        0.6429
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "per_class": {
+       "Drill": {
+        "probe": 0.5862,
+        "zero_shot": 0.7241
+       },
+       "Hammer": {
+        "probe": 0.9394,
+        "zero_shot": 0.7273
+       },
+       "Sawing": {
+        "probe": 0.6667,
+        "zero_shot": 0.0303
+       }
+      }
+     },
+     "voice_kinds": {
+      "classes": [
+       "Crying_and_sobbing",
+       "Singing",
+       "Whispering"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.8144,
+       "ci": [
+        0.7416,
+        0.8911
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "knn": {
+       "acc": 0.701,
+       "ci": [
+        0.5895,
+        0.8085
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "zero_shot": {
+       "acc": 0.7835,
+       "ci": [
+        0.6947,
+        0.871
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "zero_shot_centred": {
+       "acc": 0.7423,
+       "ci": [
+        0.6346,
+        0.828
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "per_class": {
+       "Crying_and_sobbing": {
+        "probe": 0.8889,
+        "zero_shot": 0.7407
+       },
+       "Singing": {
+        "probe": 0.7568,
+        "zero_shot": 0.9459
+       },
+       "Whispering": {
+        "probe": 0.8182,
+        "zero_shot": 0.6364
+       }
+      }
+     }
+    }
+   },
    "vocalsound": {
     "n_clips": 600,
     "n_classes": 6,
     "chance": 0.1667,
     "probe": {
-     "acc": 0.8257,
+     "acc": 0.8423,
      "ci": [
-      0.7925,
-      0.8589
+      0.8112,
+      0.8755
      ],
      "n": 482,
      "groups": 482
@@ -1990,7 +4300,7 @@
      "cough": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.7381,
+      "probe": 0.7738,
       "knn": 0.7381,
       "zero_shot": 0.0238,
       "zero_shot_centred": 0.0119,
@@ -2014,7 +4324,7 @@
      "sigh": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.8571,
+      "probe": 0.8929,
       "knn": 0.869,
       "zero_shot": 0.2738,
       "zero_shot_centred": 0.6071,
@@ -2026,7 +4336,7 @@
      "sneeze": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.84,
+      "probe": 0.8,
       "knn": 0.7067,
       "zero_shot": 0.32,
       "zero_shot_centred": 0.1067,
@@ -2038,7 +4348,7 @@
      "sniff": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.8289,
+      "probe": 0.8816,
       "knn": 0.9079,
       "zero_shot": 0.4605,
       "zero_shot_centred": 0.5395,
@@ -2050,7 +4360,7 @@
      "throatclearing": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.7407,
+      "probe": 0.7531,
       "knn": 0.6667,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.2963,
@@ -2072,10 +4382,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.8257,
+       "acc": 0.8423,
        "ci": [
-        0.7925,
-        0.8589
+        0.8112,
+        0.8755
        ],
        "n": 482,
        "groups": 482
@@ -2109,7 +4419,7 @@
       },
       "per_class": {
        "cough": {
-        "probe": 0.7381,
+        "probe": 0.7738,
         "zero_shot": 0.0238
        },
        "laughter": {
@@ -2117,19 +4427,19 @@
         "zero_shot": 1.0
        },
        "sigh": {
-        "probe": 0.8571,
+        "probe": 0.8929,
         "zero_shot": 0.2738
        },
        "sneeze": {
-        "probe": 0.84,
+        "probe": 0.8,
         "zero_shot": 0.32
        },
        "sniff": {
-        "probe": 0.8289,
+        "probe": 0.8816,
         "zero_shot": 0.4605
        },
        "throatclearing": {
-        "probe": 0.7407,
+        "probe": 0.7531,
         "zero_shot": 0.0
        }
       },
@@ -2145,7 +4455,7 @@
         "throatclearing"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9317,
+       "pairwise_mean": 0.9337,
        "pairs_below": []
       }
      }
@@ -2162,10 +4472,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.8257,
+       "acc": 0.8423,
        "ci": [
-        0.7925,
-        0.8589
+        0.8112,
+        0.8755
        ],
        "n": 482,
        "groups": 482
@@ -2199,7 +4509,7 @@
       },
       "per_class": {
        "cough": {
-        "probe": 0.7381,
+        "probe": 0.7738,
         "zero_shot": 0.0238
        },
        "laughter": {
@@ -2207,19 +4517,19 @@
         "zero_shot": 1.0
        },
        "sigh": {
-        "probe": 0.8571,
+        "probe": 0.8929,
         "zero_shot": 0.2738
        },
        "sneeze": {
-        "probe": 0.84,
+        "probe": 0.8,
         "zero_shot": 0.32
        },
        "sniff": {
-        "probe": 0.8289,
+        "probe": 0.8816,
         "zero_shot": 0.4605
        },
        "throatclearing": {
-        "probe": 0.7407,
+        "probe": 0.7531,
         "zero_shot": 0.0
        }
       }
@@ -2231,10 +4541,10 @@
     "n_classes": 17,
     "chance": 0.0588,
     "probe": {
-     "acc": 0.6596,
+     "acc": 0.6654,
      "ci": [
-      0.6218,
-      0.6987
+      0.625,
+      0.7057
      ],
      "n": 520,
      "groups": 243
@@ -2330,7 +4640,7 @@
      "common nightingale": {
       "family": "animal",
       "n": 40,
-      "probe": 0.6333,
+      "probe": 0.6667,
       "knn": 0.6,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0667,
@@ -2366,7 +4676,7 @@
      "eurasian eagle-owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.5455,
+      "probe": 0.5758,
       "knn": 0.4848,
       "zero_shot": 0.1212,
       "zero_shot_centred": 0.0909,
@@ -2390,7 +4700,7 @@
      "eurasian magpie": {
       "family": "animal",
       "n": 40,
-      "probe": 0.7778,
+      "probe": 0.8148,
       "knn": 0.7778,
       "zero_shot": 0.4444,
       "zero_shot_centred": 0.1481,
@@ -2495,10 +4805,10 @@
       ],
       "chance": 0.0588,
       "probe": {
-       "acc": 0.6596,
+       "acc": 0.6654,
        "ci": [
-        0.6218,
-        0.6987
+        0.625,
+        0.7057
        ],
        "n": 520,
        "groups": 243
@@ -2552,7 +4862,7 @@
         "zero_shot": 0.2812
        },
        "common nightingale": {
-        "probe": 0.6333,
+        "probe": 0.6667,
         "zero_shot": 0.0
        },
        "common wood pigeon": {
@@ -2564,7 +4874,7 @@
         "zero_shot": 0.0
        },
        "eurasian eagle-owl": {
-        "probe": 0.5455,
+        "probe": 0.5758,
         "zero_shot": 0.1212
        },
        "eurasian hoopoe": {
@@ -2572,7 +4882,7 @@
         "zero_shot": 0.0
        },
        "eurasian magpie": {
-        "probe": 0.7778,
+        "probe": 0.8148,
         "zero_shot": 0.4444
        },
        "eurasian scops owl": {
@@ -2623,7 +4933,7 @@
         "tawny owl"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9299,
+       "pairwise_mean": 0.93,
        "pairs_below": []
       }
      }
@@ -2694,10 +5004,10 @@
       ],
       "chance": 0.1429,
       "probe": {
-       "acc": 0.7209,
+       "acc": 0.7349,
        "ci": [
-        0.657,
-        0.7857
+        0.6721,
+        0.799
        ],
        "n": 215,
        "groups": 147
@@ -2739,7 +5049,7 @@
         "zero_shot": 0.3125
        },
        "eurasian eagle-owl": {
-        "probe": 0.6667,
+        "probe": 0.697,
         "zero_shot": 0.1515
        },
        "eurasian scops owl": {
@@ -2747,7 +5057,7 @@
         "zero_shot": 0.625
        },
        "little owl": {
-        "probe": 0.75,
+        "probe": 0.7857,
         "zero_shot": 0.0
        },
        "long-eared owl": {
@@ -2755,7 +5065,7 @@
         "zero_shot": 0.1786
        },
        "tawny owl": {
-        "probe": 0.6364,
+        "probe": 0.6667,
         "zero_shot": 0.0
        }
       }
@@ -2771,10 +5081,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.6983,
+       "acc": 0.7039,
        "ci": [
-        0.628,
-        0.7719
+        0.6341,
+        0.7816
        ],
        "n": 179,
        "groups": 116
@@ -2816,7 +5126,7 @@
         "zero_shot": 0.5926
        },
        "eurasian collared dove": {
-        "probe": 0.7,
+        "probe": 0.7333,
         "zero_shot": 0.0333
        },
        "eurasian hoopoe": {
@@ -2824,11 +5134,11 @@
         "zero_shot": 0.0
        },
        "long-eared owl": {
-        "probe": 0.6429,
+        "probe": 0.5714,
         "zero_shot": 0.6429
        },
        "tawny owl": {
-        "probe": 0.697,
+        "probe": 0.7576,
         "zero_shot": 0.0303
        }
       }
@@ -2844,10 +5154,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.7268,
+       "acc": 0.7213,
        "ci": [
-        0.665,
-        0.7857
+        0.6584,
+        0.7806
        ],
        "n": 183,
        "groups": 126
@@ -2897,7 +5207,7 @@
         "zero_shot": 0.0
        },
        "long-eared owl": {
-        "probe": 0.5714,
+        "probe": 0.5357,
         "zero_shot": 0.2143
        },
        "tawny owl": {
@@ -2987,10 +5297,10 @@
     "n_classes": 50,
     "chance": 0.02,
     "probe": {
-     "acc": 0.9725,
+     "acc": 0.9731,
      "ci": [
-      0.9637,
-      0.9805
+      0.9644,
+      0.981
      ],
      "n": 1600,
      "groups": 1213
@@ -3110,7 +5420,7 @@
      "chirping_birds": {
       "family": "animal",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9688,
       "knn": 0.9375,
       "zero_shot": 0.75,
       "zero_shot_centred": 0.9375,
@@ -3254,7 +5564,7 @@
      "door_wood_creaks": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9688,
       "knn": 0.9375,
       "zero_shot": 0.875,
       "zero_shot_centred": 0.9375,
@@ -3278,7 +5588,7 @@
      "drinking_sipping": {
       "family": "human_activity",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9062,
       "knn": 0.8438,
       "zero_shot": 0.7188,
       "zero_shot_centred": 0.9375,
@@ -3290,7 +5600,7 @@
      "engine": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.9062,
+      "probe": 0.9375,
       "knn": 0.9375,
       "zero_shot": 0.625,
       "zero_shot_centred": 0.9062,
@@ -3350,7 +5660,7 @@
      "hand_saw": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.9688,
+      "probe": 1.0,
       "knn": 1.0,
       "zero_shot": 1.0,
       "zero_shot_centred": 1.0,
@@ -3362,7 +5672,7 @@
      "helicopter": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.7812,
+      "probe": 0.8125,
       "knn": 0.75,
       "zero_shot": 0.7812,
       "zero_shot_centred": 0.4688,
@@ -3374,7 +5684,7 @@
      "hen": {
       "family": "animal",
       "n": 40,
-      "probe": 0.9688,
+      "probe": 0.9375,
       "knn": 0.9062,
       "zero_shot": 0.7188,
       "zero_shot_centred": 0.5625,
@@ -3398,7 +5708,7 @@
      "keyboard_typing": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 1.0,
+      "probe": 0.9688,
       "knn": 1.0,
       "zero_shot": 1.0,
       "zero_shot_centred": 1.0,
@@ -3422,7 +5732,7 @@
      "mouse_click": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.875,
+      "probe": 0.9688,
       "knn": 0.9688,
       "zero_shot": 0.75,
       "zero_shot_centred": 0.875,
@@ -3458,7 +5768,7 @@
      "rain": {
       "family": "nature",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9688,
       "knn": 0.9688,
       "zero_shot": 0.9688,
       "zero_shot_centred": 0.9062,
@@ -3482,7 +5792,7 @@
      "sea_waves": {
       "family": "nature",
       "n": 40,
-      "probe": 0.9688,
+      "probe": 0.9375,
       "knn": 0.9375,
       "zero_shot": 0.9375,
       "zero_shot_centred": 0.9375,
@@ -3494,7 +5804,7 @@
      "sheep": {
       "family": "animal",
       "n": 40,
-      "probe": 1.0,
+      "probe": 0.9688,
       "knn": 0.9688,
       "zero_shot": 0.9062,
       "zero_shot_centred": 0.9062,
@@ -3530,7 +5840,7 @@
      "snoring": {
       "family": "human_vocal",
       "n": 40,
-      "probe": 0.9375,
+      "probe": 0.9688,
       "knn": 1.0,
       "zero_shot": 0.9688,
       "zero_shot_centred": 1.0,
@@ -3578,7 +5888,7 @@
      "vacuum_cleaner": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.9688,
+      "probe": 0.9375,
       "knn": 1.0,
       "zero_shot": 0.9375,
       "zero_shot_centred": 0.9062,
@@ -3590,7 +5900,7 @@
      "washing_machine": {
       "family": "machine_domestic",
       "n": 40,
-      "probe": 0.9062,
+      "probe": 0.8438,
       "knn": 0.9062,
       "zero_shot": 0.6562,
       "zero_shot_centred": 0.5625,
@@ -3614,7 +5924,7 @@
      "wind": {
       "family": "nature",
       "n": 40,
-      "probe": 1.0,
+      "probe": 0.9688,
       "knn": 0.9062,
       "zero_shot": 0.7188,
       "zero_shot_centred": 0.7188,
@@ -3642,10 +5952,10 @@
       ],
       "chance": 0.0833,
       "probe": {
-       "acc": 0.9922,
+       "acc": 0.987,
        "ci": [
-        0.9818,
-        1.0
+        0.9738,
+        0.9974
        ],
        "n": 384,
        "groups": 263
@@ -3707,7 +6017,7 @@
         "zero_shot": 1.0
        },
        "hen": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.7188
        },
        "insects": {
@@ -3723,7 +6033,7 @@
         "zero_shot": 0.9688
        },
        "sheep": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.9062
        }
       },
@@ -3745,7 +6055,7 @@
         "sheep"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9991,
+       "pairwise_mean": 0.9989,
        "pairs_below": []
       }
      },
@@ -3821,7 +6131,7 @@
         "footsteps"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9958,
+       "pairwise_mean": 0.9979,
        "pairs_below": []
       }
      },
@@ -3836,10 +6146,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.974,
+       "acc": 0.9792,
        "ci": [
-        0.9456,
-        0.9951
+        0.9511,
+        1.0
        ],
        "n": 192,
        "groups": 158
@@ -3873,7 +6183,7 @@
       },
       "per_class": {
        "breathing": {
-        "probe": 0.9688,
+        "probe": 1.0,
         "zero_shot": 1.0
        },
        "coughing": {
@@ -3885,11 +6195,11 @@
         "zero_shot": 1.0
        },
        "laughing": {
-        "probe": 0.9062,
+        "probe": 0.9375,
         "zero_shot": 0.875
        },
        "sneezing": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.9375
        },
        "snoring": {
@@ -3909,7 +6219,7 @@
         "snoring"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9925,
+       "pairwise_mean": 0.9958,
        "pairs_below": []
       }
      },
@@ -3940,10 +6250,10 @@
       ],
       "chance": 0.0455,
       "probe": {
-       "acc": 0.9673,
+       "acc": 0.9716,
        "ci": [
-        0.9522,
-        0.9814
+        0.959,
+        0.9831
        ],
        "n": 704,
        "groups": 548
@@ -4005,7 +6315,7 @@
         "zero_shot": 0.8438
        },
        "door_wood_creaks": {
-        "probe": 0.9688,
+        "probe": 1.0,
         "zero_shot": 0.9062
        },
        "door_wood_knock": {
@@ -4013,7 +6323,7 @@
         "zero_shot": 1.0
        },
        "engine": {
-        "probe": 0.9062,
+        "probe": 0.9375,
         "zero_shot": 0.625
        },
        "fireworks": {
@@ -4025,7 +6335,7 @@
         "zero_shot": 1.0
        },
        "hand_saw": {
-        "probe": 0.9688,
+        "probe": 1.0,
         "zero_shot": 1.0
        },
        "helicopter": {
@@ -4037,7 +6347,7 @@
         "zero_shot": 1.0
        },
        "mouse_click": {
-        "probe": 0.9062,
+        "probe": 0.9688,
         "zero_shot": 0.75
        },
        "pouring_water": {
@@ -4061,7 +6371,7 @@
         "zero_shot": 0.9375
        },
        "washing_machine": {
-        "probe": 0.9062,
+        "probe": 0.8438,
         "zero_shot": 0.6562
        }
       },
@@ -4093,7 +6403,7 @@
         "washing_machine"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9986,
+       "pairwise_mean": 0.9985,
        "pairs_below": []
       }
      },
@@ -4110,7 +6420,7 @@
       "probe": {
        "acc": 0.9844,
        "ci": [
-        0.9649,
+        0.9592,
         1.0
        ],
        "n": 192,
@@ -4181,7 +6491,7 @@
         "wind"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9958,
+       "pairwise_mean": 0.995,
        "pairs_below": []
       }
      }
@@ -4194,9 +6504,9 @@
       ],
       "chance": 0.5,
       "probe": {
-       "acc": 1.0,
+       "acc": 0.9844,
        "ci": [
-        1.0,
+        0.9444,
         1.0
        ],
        "n": 64,
@@ -4231,7 +6541,7 @@
       },
       "per_class": {
        "vacuum_cleaner": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.9375
        },
        "washing_machine": {
@@ -4251,7 +6561,7 @@
       "probe": {
        "acc": 0.9922,
        "ci": [
-        0.9748,
+        0.9752,
         1.0
        ],
        "n": 128,
@@ -4286,7 +6596,7 @@
       },
       "per_class": {
        "chirping_birds": {
-        "probe": 0.9688,
+        "probe": 1.0,
         "zero_shot": 0.8438
        },
        "crow": {
@@ -4294,7 +6604,7 @@
         "zero_shot": 1.0
        },
        "hen": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.75
        },
        "rooster": {
@@ -4314,10 +6624,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.974,
+       "acc": 0.9792,
        "ci": [
-        0.9456,
-        0.9951
+        0.9511,
+        1.0
        ],
        "n": 192,
        "groups": 158
@@ -4351,7 +6661,7 @@
       },
       "per_class": {
        "breathing": {
-        "probe": 0.9688,
+        "probe": 1.0,
         "zero_shot": 1.0
        },
        "coughing": {
@@ -4363,11 +6673,11 @@
         "zero_shot": 1.0
        },
        "laughing": {
-        "probe": 0.9062,
+        "probe": 0.9375,
         "zero_shot": 0.875
        },
        "sneezing": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.9375
        },
        "snoring": {
@@ -4441,9 +6751,9 @@
       ],
       "chance": 0.5,
       "probe": {
-       "acc": 1.0,
+       "acc": 0.9844,
        "ci": [
-        1.0,
+        0.942,
         1.0
        ],
        "n": 64,
@@ -4478,7 +6788,7 @@
       },
       "per_class": {
        "keyboard_typing": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 1.0
        },
        "mouse_click": {
@@ -4550,10 +6860,10 @@
       ],
       "chance": 0.2,
       "probe": {
-       "acc": 0.9875,
+       "acc": 0.975,
        "ci": [
-        0.9675,
-        1.0
+        0.9487,
+        0.9942
        ],
        "n": 160,
        "groups": 99
@@ -4591,7 +6901,7 @@
         "zero_shot": 0.9688
        },
        "hen": {
-        "probe": 0.9688,
+        "probe": 0.9375,
         "zero_shot": 0.7188
        },
        "pig": {
@@ -4603,7 +6913,7 @@
         "zero_shot": 0.9688
        },
        "sheep": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.9062
        }
       }
@@ -4725,10 +7035,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.9583,
+       "acc": 0.9531,
        "ci": [
-        0.9274,
-        0.9839
+        0.9235,
+        0.9788
        ],
        "n": 192,
        "groups": 143
@@ -4774,7 +7084,7 @@
         "zero_shot": 0.7812
        },
        "helicopter": {
-        "probe": 0.8438,
+        "probe": 0.8125,
         "zero_shot": 0.7812
        },
        "siren": {
@@ -4863,9 +7173,9 @@
       ],
       "chance": 0.3333,
       "probe": {
-       "acc": 1.0,
+       "acc": 0.9896,
        "ci": [
-        1.0,
+        0.9651,
         1.0
        ],
        "n": 96,
@@ -4900,7 +7210,7 @@
       },
       "per_class": {
        "rain": {
-        "probe": 1.0,
+        "probe": 0.9688,
         "zero_shot": 0.9688
        },
        "thunderstorm": {
@@ -4915,15 +7225,2274 @@
      }
     }
    },
+   "fsd50k": {
+    "n_clips": 2399,
+    "n_classes": 62,
+    "chance": 0.0161,
+    "probe": {
+     "acc": 0.75,
+     "ci": [
+      0.7269,
+      0.7737
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "knn": {
+     "acc": 0.7423,
+     "ci": [
+      0.7197,
+      0.7648
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "zero_shot": {
+     "acc": 0.6665,
+     "ci": [
+      0.6442,
+      0.6916
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "zero_shot_centred": {
+     "acc": 0.684,
+     "ci": [
+      0.661,
+      0.7075
+     ],
+     "n": 1940,
+     "groups": 911
+    },
+    "classes": {
+     "Bark": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.8276,
+      "knn": 0.8621,
+      "zero_shot": 0.8621,
+      "zero_shot_centred": 0.8621,
+      "within": 0.4841,
+      "nearest_other": 0.2634,
+      "nearest_class": "Growling",
+      "tightness": 0.2207
+     },
+     "Bicycle_bell": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9688,
+      "knn": 0.9688,
+      "zero_shot": 0.9375,
+      "zero_shot_centred": 0.9688,
+      "within": 0.6335,
+      "nearest_other": 0.3316,
+      "nearest_class": "Doorbell",
+      "tightness": 0.3019
+     },
+     "Boiling": {
+      "family": "machine_domestic",
+      "n": 29,
+      "probe": 0.85,
+      "knn": 0.9,
+      "zero_shot": 0.8,
+      "zero_shot_centred": 0.8,
+      "within": 0.5275,
+      "nearest_other": 0.4048,
+      "nearest_class": "Frying_(food)",
+      "tightness": 0.1227
+     },
+     "Breathing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.6389,
+      "knn": 0.6944,
+      "zero_shot": 0.1667,
+      "zero_shot_centred": 0.1667,
+      "within": 0.3973,
+      "nearest_other": 0.3767,
+      "nearest_class": "Sigh",
+      "tightness": 0.0206
+     },
+     "Burping_and_eructation": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 1.0,
+      "knn": 1.0,
+      "zero_shot": 1.0,
+      "zero_shot_centred": 1.0,
+      "within": 0.7227,
+      "nearest_other": 0.2977,
+      "nearest_class": "Cough",
+      "tightness": 0.425
+     },
+     "Bus": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6061,
+      "knn": 0.5455,
+      "zero_shot": 0.6364,
+      "zero_shot_centred": 0.5455,
+      "within": 0.3551,
+      "nearest_other": 0.2534,
+      "nearest_class": "Train",
+      "tightness": 0.1017
+     },
+     "Car": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.3429,
+      "knn": 0.3143,
+      "zero_shot": 0.1714,
+      "zero_shot_centred": 0.2,
+      "within": 0.287,
+      "nearest_other": 0.275,
+      "nearest_class": "Motorcycle",
+      "tightness": 0.012
+     },
+     "Chewing_and_mastication": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.9,
+      "knn": 0.9,
+      "zero_shot": 0.9333,
+      "zero_shot_centred": 0.9,
+      "within": 0.5246,
+      "nearest_other": 0.23,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": 0.2946
+     },
+     "Child_speech_and_kid_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.6562,
+      "knn": 0.625,
+      "zero_shot": 0.5,
+      "zero_shot_centred": 0.6562,
+      "within": 0.3759,
+      "nearest_other": 0.1953,
+      "nearest_class": "Female_speech_and_woman_speaking",
+      "tightness": 0.1806
+     },
+     "Chirp_and_tweet": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.5172,
+      "knn": 0.4483,
+      "zero_shot": 0.2069,
+      "zero_shot_centred": 0.3448,
+      "within": 0.2677,
+      "nearest_other": 0.2142,
+      "nearest_class": "Gull_and_seagull",
+      "tightness": 0.0534
+     },
+     "Chuckle_and_chortle": {
+      "family": "human_vocal",
+      "n": 30,
+      "probe": 0.2857,
+      "knn": 0.1429,
+      "zero_shot": 0.0,
+      "zero_shot_centred": 0.0714,
+      "within": 0.2829,
+      "nearest_other": 0.3577,
+      "nearest_class": "Giggle",
+      "tightness": -0.0748
+     },
+     "Clapping": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.6667,
+      "knn": 0.7333,
+      "zero_shot": 0.8,
+      "zero_shot_centred": 0.8,
+      "within": 0.4228,
+      "nearest_other": 0.2789,
+      "nearest_class": "Finger_snapping",
+      "tightness": 0.1439
+     },
+     "Coin_(dropping)": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.8966,
+      "knn": 0.8621,
+      "zero_shot": 0.8966,
+      "zero_shot_centred": 0.8276,
+      "within": 0.5748,
+      "nearest_other": 0.2476,
+      "nearest_class": "Bicycle_bell",
+      "tightness": 0.3272
+     },
+     "Cough": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.8125,
+      "knn": 0.7812,
+      "zero_shot": 0.7812,
+      "zero_shot_centred": 0.7812,
+      "within": 0.4771,
+      "nearest_other": 0.3676,
+      "nearest_class": "Sneeze",
+      "tightness": 0.1095
+     },
+     "Crash_cymbal": {
+      "family": "music",
+      "n": 40,
+      "probe": 0.9697,
+      "knn": 0.9697,
+      "zero_shot": 0.8788,
+      "zero_shot_centred": 0.8788,
+      "within": 0.5323,
+      "nearest_other": 0.2271,
+      "nearest_class": "Sneeze",
+      "tightness": 0.3052
+     },
+     "Cricket": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.7917,
+      "knn": 0.75,
+      "zero_shot": 0.625,
+      "zero_shot_centred": 0.8333,
+      "within": 0.3938,
+      "nearest_other": 0.3382,
+      "nearest_class": "Frog",
+      "tightness": 0.0556
+     },
+     "Crying_and_sobbing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.6296,
+      "knn": 0.5185,
+      "zero_shot": 0.3333,
+      "zero_shot_centred": 0.4444,
+      "within": 0.3175,
+      "nearest_other": 0.2625,
+      "nearest_class": "Screaming",
+      "tightness": 0.055
+     },
+     "Cutlery_and_silverware": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.5938,
+      "knn": 0.5625,
+      "zero_shot": 0.2812,
+      "zero_shot_centred": 0.3125,
+      "within": 0.3002,
+      "nearest_other": 0.236,
+      "nearest_class": "Keys_jangling",
+      "tightness": 0.0643
+     },
+     "Dishes_and_pots_and_pans": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6571,
+      "knn": 0.5714,
+      "zero_shot": 0.4571,
+      "zero_shot_centred": 0.3714,
+      "within": 0.2834,
+      "nearest_other": 0.2057,
+      "nearest_class": "Burping_and_eructation",
+      "tightness": 0.0777
+     },
+     "Doorbell": {
+      "family": "machine_domestic",
+      "n": 34,
+      "probe": 0.6207,
+      "knn": 0.5517,
+      "zero_shot": 0.7586,
+      "zero_shot_centred": 0.7241,
+      "within": 0.3477,
+      "nearest_other": 0.3316,
+      "nearest_class": "Bicycle_bell",
+      "tightness": 0.016
+     },
+     "Drill": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.7931,
+      "knn": 0.7931,
+      "zero_shot": 0.7931,
+      "zero_shot_centred": 0.8276,
+      "within": 0.4749,
+      "nearest_other": 0.3021,
+      "nearest_class": "Sawing",
+      "tightness": 0.1728
+     },
+     "Drip": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.6176,
+      "knn": 0.5294,
+      "zero_shot": 0.5,
+      "zero_shot_centred": 0.5588,
+      "within": 0.3369,
+      "nearest_other": 0.3189,
+      "nearest_class": "Trickle_and_dribble",
+      "tightness": 0.018
+     },
+     "Female_speech_and_woman_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.5556,
+      "knn": 0.5,
+      "zero_shot": 0.25,
+      "zero_shot_centred": 0.4722,
+      "within": 0.2494,
+      "nearest_other": 0.1953,
+      "nearest_class": "Child_speech_and_kid_speaking",
+      "tightness": 0.0541
+     },
+     "Finger_snapping": {
+      "family": "human_activity",
+      "n": 40,
+      "probe": 0.9412,
+      "knn": 0.9706,
+      "zero_shot": 0.9706,
+      "zero_shot_centred": 0.9118,
+      "within": 0.5786,
+      "nearest_other": 0.2789,
+      "nearest_class": "Clapping",
+      "tightness": 0.2997
+     },
+     "Fire": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.871,
+      "knn": 0.7742,
+      "zero_shot": 0.4194,
+      "zero_shot_centred": 0.5484,
+      "within": 0.4167,
+      "nearest_other": 0.3167,
+      "nearest_class": "Frying_(food)",
+      "tightness": 0.0999
+     },
+     "Frog": {
+      "family": "animal",
+      "n": 38,
+      "probe": 0.7419,
+      "knn": 0.8065,
+      "zero_shot": 0.871,
+      "zero_shot_centred": 0.7742,
+      "within": 0.5195,
+      "nearest_other": 0.3382,
+      "nearest_class": "Cricket",
+      "tightness": 0.1813
+     },
+     "Frying_(food)": {
+      "family": "machine_domestic",
+      "n": 38,
+      "probe": 0.75,
+      "knn": 0.7812,
+      "zero_shot": 0.9375,
+      "zero_shot_centred": 0.9375,
+      "within": 0.5462,
+      "nearest_other": 0.4048,
+      "nearest_class": "Boiling",
+      "tightness": 0.1414
+     },
+     "Giggle": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.7742,
+      "knn": 0.7419,
+      "zero_shot": 0.9032,
+      "zero_shot_centred": 0.9032,
+      "within": 0.4973,
+      "nearest_other": 0.3577,
+      "nearest_class": "Chuckle_and_chortle",
+      "tightness": 0.1396
+     },
+     "Growling": {
+      "family": "animal",
+      "n": 28,
+      "probe": 0.84,
+      "knn": 0.68,
+      "zero_shot": 0.64,
+      "zero_shot_centred": 0.84,
+      "within": 0.429,
+      "nearest_other": 0.3516,
+      "nearest_class": "Purr",
+      "tightness": 0.0774
+     },
+     "Gull_and_seagull": {
+      "family": "animal",
+      "n": 29,
+      "probe": 0.56,
+      "knn": 0.4,
+      "zero_shot": 0.44,
+      "zero_shot_centred": 0.52,
+      "within": 0.3554,
+      "nearest_other": 0.2935,
+      "nearest_class": "Waves_and_surf",
+      "tightness": 0.062
+     },
+     "Hammer": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9091,
+      "knn": 0.9091,
+      "zero_shot": 0.9394,
+      "zero_shot_centred": 0.9394,
+      "within": 0.4273,
+      "nearest_other": 0.2142,
+      "nearest_class": "Sawing",
+      "tightness": 0.2132
+     },
+     "Hiss": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.5312,
+      "knn": 0.4375,
+      "zero_shot": 0.4688,
+      "zero_shot_centred": 0.4062,
+      "within": 0.2357,
+      "nearest_other": 0.1936,
+      "nearest_class": "Boiling",
+      "tightness": 0.042
+     },
+     "Keys_jangling": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.8667,
+      "knn": 0.8667,
+      "zero_shot": 0.9,
+      "zero_shot_centred": 0.8333,
+      "within": 0.4853,
+      "nearest_other": 0.2524,
+      "nearest_class": "Bicycle_bell",
+      "tightness": 0.2329
+     },
+     "Male_speech_and_man_speaking": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.4737,
+      "knn": 0.3947,
+      "zero_shot": 0.1316,
+      "zero_shot_centred": 0.4737,
+      "within": 0.1683,
+      "nearest_other": 0.1582,
+      "nearest_class": "Singing",
+      "tightness": 0.0101
+     },
+     "Meow": {
+      "family": "animal",
+      "n": 40,
+      "probe": 0.9143,
+      "knn": 1.0,
+      "zero_shot": 1.0,
+      "zero_shot_centred": 0.9714,
+      "within": 0.6563,
+      "nearest_other": 0.4342,
+      "nearest_class": "Purr",
+      "tightness": 0.2221
+     },
+     "Microwave_oven": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9429,
+      "knn": 0.9714,
+      "zero_shot": 0.9429,
+      "zero_shot_centred": 0.9429,
+      "within": 0.5052,
+      "nearest_other": 0.2674,
+      "nearest_class": "Toilet_flush",
+      "tightness": 0.2379
+     },
+     "Motorcycle": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.68,
+      "knn": 0.72,
+      "zero_shot": 0.88,
+      "zero_shot_centred": 0.8,
+      "within": 0.3629,
+      "nearest_other": 0.275,
+      "nearest_class": "Car",
+      "tightness": 0.0878
+     },
+     "Printer": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9706,
+      "knn": 0.9706,
+      "zero_shot": 0.9412,
+      "zero_shot_centred": 0.9118,
+      "within": 0.5413,
+      "nearest_other": 0.267,
+      "nearest_class": "Typing",
+      "tightness": 0.2743
+     },
+     "Purr": {
+      "family": "animal",
+      "n": 40,
+      "probe": 1.0,
+      "knn": 1.0,
+      "zero_shot": 1.0,
+      "zero_shot_centred": 1.0,
+      "within": 0.7696,
+      "nearest_other": 0.4342,
+      "nearest_class": "Meow",
+      "tightness": 0.3355
+     },
+     "Rain": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.75,
+      "knn": 0.8438,
+      "zero_shot": 0.5938,
+      "zero_shot_centred": 0.6562,
+      "within": 0.4643,
+      "nearest_other": 0.2959,
+      "nearest_class": "Stream",
+      "tightness": 0.1684
+     },
+     "Ringtone": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9429,
+      "knn": 0.9429,
+      "zero_shot": 0.4571,
+      "zero_shot_centred": 0.4857,
+      "within": 0.4144,
+      "nearest_other": 0.2644,
+      "nearest_class": "Doorbell",
+      "tightness": 0.1501
+     },
+     "Sawing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.8182,
+      "knn": 0.7879,
+      "zero_shot": 0.8788,
+      "zero_shot_centred": 0.7879,
+      "within": 0.451,
+      "nearest_other": 0.3021,
+      "nearest_class": "Drill",
+      "tightness": 0.1489
+     },
+     "Scissors": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6667,
+      "knn": 0.697,
+      "zero_shot": 0.6364,
+      "zero_shot_centred": 0.5455,
+      "within": 0.4013,
+      "nearest_other": 0.2811,
+      "nearest_class": "Zipper_(clothing)",
+      "tightness": 0.1203
+     },
+     "Screaming": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.75,
+      "knn": 0.8333,
+      "zero_shot": 0.9167,
+      "zero_shot_centred": 0.8333,
+      "within": 0.5295,
+      "nearest_other": 0.2872,
+      "nearest_class": "Shout",
+      "tightness": 0.2424
+     },
+     "Shout": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.5588,
+      "knn": 0.6176,
+      "zero_shot": 0.4118,
+      "zero_shot_centred": 0.3824,
+      "within": 0.3077,
+      "nearest_other": 0.2872,
+      "nearest_class": "Screaming",
+      "tightness": 0.0206
+     },
+     "Sigh": {
+      "family": "human_vocal",
+      "n": 29,
+      "probe": 0.5385,
+      "knn": 0.3846,
+      "zero_shot": 0.8077,
+      "zero_shot_centred": 0.8462,
+      "within": 0.4011,
+      "nearest_other": 0.3767,
+      "nearest_class": "Breathing",
+      "tightness": 0.0243
+     },
+     "Singing": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.8378,
+      "knn": 0.9189,
+      "zero_shot": 0.7027,
+      "zero_shot_centred": 0.5676,
+      "within": 0.3901,
+      "nearest_other": 0.2012,
+      "nearest_class": "Shout",
+      "tightness": 0.1889
+     },
+     "Siren": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.8333,
+      "knn": 0.8667,
+      "zero_shot": 0.8667,
+      "zero_shot_centred": 0.8333,
+      "within": 0.4103,
+      "nearest_other": 0.2283,
+      "nearest_class": "Vehicle_horn_and_car_horn_and_honking",
+      "tightness": 0.1819
+     },
+     "Sneeze": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.9062,
+      "knn": 0.9062,
+      "zero_shot": 0.9062,
+      "zero_shot_centred": 0.9062,
+      "within": 0.6565,
+      "nearest_other": 0.3676,
+      "nearest_class": "Cough",
+      "tightness": 0.2889
+     },
+     "Stream": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.7241,
+      "knn": 0.7586,
+      "zero_shot": 0.6897,
+      "zero_shot_centred": 0.6897,
+      "within": 0.4497,
+      "nearest_other": 0.2959,
+      "nearest_class": "Rain",
+      "tightness": 0.1538
+     },
+     "Thunder": {
+      "family": "nature",
+      "n": 25,
+      "probe": 0.75,
+      "knn": 0.9375,
+      "zero_shot": 0.9375,
+      "zero_shot_centred": 1.0,
+      "within": 0.6649,
+      "nearest_other": 0.2414,
+      "nearest_class": "Rain",
+      "tightness": 0.4236
+     },
+     "Toilet_flush": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9444,
+      "knn": 1.0,
+      "zero_shot": 1.0,
+      "zero_shot_centred": 0.9722,
+      "within": 0.7667,
+      "nearest_other": 0.4353,
+      "nearest_class": "Trickle_and_dribble",
+      "tightness": 0.3314
+     },
+     "Train": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.7812,
+      "knn": 0.75,
+      "zero_shot": 0.5625,
+      "zero_shot_centred": 0.625,
+      "within": 0.3877,
+      "nearest_other": 0.2534,
+      "nearest_class": "Bus",
+      "tightness": 0.1343
+     },
+     "Trickle_and_dribble": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.6897,
+      "knn": 0.7931,
+      "zero_shot": 0.069,
+      "zero_shot_centred": 0.1379,
+      "within": 0.5036,
+      "nearest_other": 0.4353,
+      "nearest_class": "Toilet_flush",
+      "tightness": 0.0683
+     },
+     "Truck": {
+      "family": "machine_domestic",
+      "n": 39,
+      "probe": 0.3548,
+      "knn": 0.2903,
+      "zero_shot": 0.1613,
+      "zero_shot_centred": 0.3548,
+      "within": 0.235,
+      "nearest_other": 0.25,
+      "nearest_class": "Vehicle_horn_and_car_horn_and_honking",
+      "tightness": -0.0151
+     },
+     "Typing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9118,
+      "knn": 0.9118,
+      "zero_shot": 0.6176,
+      "zero_shot_centred": 0.6765,
+      "within": 0.5009,
+      "nearest_other": 0.2855,
+      "nearest_class": "Writing",
+      "tightness": 0.2154
+     },
+     "Vehicle_horn_and_car_horn_and_honking": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.6129,
+      "knn": 0.6129,
+      "zero_shot": 0.6774,
+      "zero_shot_centred": 0.6774,
+      "within": 0.4031,
+      "nearest_other": 0.25,
+      "nearest_class": "Truck",
+      "tightness": 0.153
+     },
+     "Waves_and_surf": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.8485,
+      "knn": 0.8788,
+      "zero_shot": 0.8182,
+      "zero_shot_centred": 0.7273,
+      "within": 0.4303,
+      "nearest_other": 0.2935,
+      "nearest_class": "Gull_and_seagull",
+      "tightness": 0.1369
+     },
+     "Whispering": {
+      "family": "human_vocal",
+      "n": 40,
+      "probe": 0.7576,
+      "knn": 0.7879,
+      "zero_shot": 0.6667,
+      "zero_shot_centred": 0.7273,
+      "within": 0.4622,
+      "nearest_other": 0.2595,
+      "nearest_class": "Sigh",
+      "tightness": 0.2027
+     },
+     "Wind": {
+      "family": "nature",
+      "n": 40,
+      "probe": 0.5625,
+      "knn": 0.4688,
+      "zero_shot": 0.2188,
+      "zero_shot_centred": 0.25,
+      "within": 0.2461,
+      "nearest_other": 0.1937,
+      "nearest_class": "Waves_and_surf",
+      "tightness": 0.0524
+     },
+     "Writing": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9,
+      "knn": 0.9667,
+      "zero_shot": 0.9667,
+      "zero_shot_centred": 0.9667,
+      "within": 0.6352,
+      "nearest_other": 0.2855,
+      "nearest_class": "Typing",
+      "tightness": 0.3497
+     },
+     "Zipper_(clothing)": {
+      "family": "machine_domestic",
+      "n": 40,
+      "probe": 0.9697,
+      "knn": 0.9697,
+      "zero_shot": 0.9697,
+      "zero_shot_centred": 0.9697,
+      "within": 0.6808,
+      "nearest_other": 0.2811,
+      "nearest_class": "Scissors",
+      "tightness": 0.3998
+     }
+    },
+    "families": {
+     "animal": {
+      "classes": [
+       "Bark",
+       "Chirp_and_tweet",
+       "Cricket",
+       "Frog",
+       "Growling",
+       "Gull_and_seagull",
+       "Hiss",
+       "Meow",
+       "Purr"
+      ],
+      "chance": 0.1111,
+      "probe": {
+       "acc": 0.8593,
+       "ci": [
+        0.8212,
+        0.8988
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "knn": {
+       "acc": 0.8403,
+       "ci": [
+        0.7928,
+        0.8854
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "zero_shot": {
+       "acc": 0.7909,
+       "ci": [
+        0.7398,
+        0.8417
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "zero_shot_centred": {
+       "acc": 0.8251,
+       "ci": [
+        0.7819,
+        0.8687
+       ],
+       "n": 263,
+       "groups": 199
+      },
+      "per_class": {
+       "Bark": {
+        "probe": 0.8276,
+        "zero_shot": 0.8966
+       },
+       "Chirp_and_tweet": {
+        "probe": 0.7241,
+        "zero_shot": 0.2414
+       },
+       "Cricket": {
+        "probe": 0.75,
+        "zero_shot": 0.7083
+       },
+       "Frog": {
+        "probe": 0.7419,
+        "zero_shot": 0.9032
+       },
+       "Growling": {
+        "probe": 0.8,
+        "zero_shot": 0.64
+       },
+       "Gull_and_seagull": {
+        "probe": 0.88,
+        "zero_shot": 0.84
+       },
+       "Hiss": {
+        "probe": 1.0,
+        "zero_shot": 0.7812
+       },
+       "Meow": {
+        "probe": 0.9429,
+        "zero_shot": 1.0
+       },
+       "Purr": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       }
+      },
+      "effective_vocabulary": {
+       "size": 9,
+       "of": 9,
+       "classes": [
+        "Bark",
+        "Chirp_and_tweet",
+        "Cricket",
+        "Frog",
+        "Growling",
+        "Gull_and_seagull",
+        "Hiss",
+        "Meow",
+        "Purr"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9685,
+       "pairs_below": []
+      }
+     },
+     "human_activity": {
+      "classes": [
+       "Chewing_and_mastication",
+       "Clapping",
+       "Finger_snapping"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.9787,
+       "ci": [
+        0.9444,
+        1.0
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "knn": {
+       "acc": 0.9787,
+       "ci": [
+        0.9457,
+        1.0
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "zero_shot": {
+       "acc": 0.9681,
+       "ci": [
+        0.9263,
+        1.0
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "zero_shot_centred": {
+       "acc": 0.9574,
+       "ci": [
+        0.914,
+        0.9898
+       ],
+       "n": 94,
+       "groups": 83
+      },
+      "per_class": {
+       "Chewing_and_mastication": {
+        "probe": 0.9667,
+        "zero_shot": 1.0
+       },
+       "Clapping": {
+        "probe": 1.0,
+        "zero_shot": 0.9333
+       },
+       "Finger_snapping": {
+        "probe": 0.9706,
+        "zero_shot": 0.9706
+       }
+      },
+      "effective_vocabulary": {
+       "size": 3,
+       "of": 3,
+       "classes": [
+        "Chewing_and_mastication",
+        "Clapping",
+        "Finger_snapping"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9875,
+       "pairs_below": []
+      }
+     },
+     "human_vocal": {
+      "classes": [
+       "Breathing",
+       "Burping_and_eructation",
+       "Child_speech_and_kid_speaking",
+       "Chuckle_and_chortle",
+       "Cough",
+       "Crying_and_sobbing",
+       "Female_speech_and_woman_speaking",
+       "Giggle",
+       "Male_speech_and_man_speaking",
+       "Screaming",
+       "Shout",
+       "Sigh",
+       "Singing",
+       "Sneeze",
+       "Whispering"
+      ],
+      "chance": 0.0667,
+      "probe": {
+       "acc": 0.7099,
+       "ci": [
+        0.6607,
+        0.7542
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "knn": {
+       "acc": 0.7018,
+       "ci": [
+        0.6529,
+        0.7494
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "zero_shot": {
+       "acc": 0.6105,
+       "ci": [
+        0.5618,
+        0.6575
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "zero_shot_centred": {
+       "acc": 0.6613,
+       "ci": [
+        0.6114,
+        0.7058
+       ],
+       "n": 493,
+       "groups": 316
+      },
+      "per_class": {
+       "Breathing": {
+        "probe": 0.6389,
+        "zero_shot": 0.1944
+       },
+       "Burping_and_eructation": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       },
+       "Child_speech_and_kid_speaking": {
+        "probe": 0.6562,
+        "zero_shot": 0.5625
+       },
+       "Chuckle_and_chortle": {
+        "probe": 0.3214,
+        "zero_shot": 0.0
+       },
+       "Cough": {
+        "probe": 0.8125,
+        "zero_shot": 0.7812
+       },
+       "Crying_and_sobbing": {
+        "probe": 0.6296,
+        "zero_shot": 0.3704
+       },
+       "Female_speech_and_woman_speaking": {
+        "probe": 0.5833,
+        "zero_shot": 0.4444
+       },
+       "Giggle": {
+        "probe": 0.7419,
+        "zero_shot": 0.9032
+       },
+       "Male_speech_and_man_speaking": {
+        "probe": 0.5789,
+        "zero_shot": 0.2895
+       },
+       "Screaming": {
+        "probe": 0.7778,
+        "zero_shot": 0.9444
+       },
+       "Shout": {
+        "probe": 0.6765,
+        "zero_shot": 0.4412
+       },
+       "Sigh": {
+        "probe": 0.6538,
+        "zero_shot": 0.8077
+       },
+       "Singing": {
+        "probe": 0.8108,
+        "zero_shot": 0.7838
+       },
+       "Sneeze": {
+        "probe": 0.9062,
+        "zero_shot": 0.9062
+       },
+       "Whispering": {
+        "probe": 0.7879,
+        "zero_shot": 0.697
+       }
+      },
+      "effective_vocabulary": {
+       "size": 14,
+       "of": 15,
+       "classes": [
+        "Burping_and_eructation",
+        "Child_speech_and_kid_speaking",
+        "Chuckle_and_chortle",
+        "Cough",
+        "Crying_and_sobbing",
+        "Female_speech_and_woman_speaking",
+        "Giggle",
+        "Male_speech_and_man_speaking",
+        "Screaming",
+        "Shout",
+        "Sigh",
+        "Singing",
+        "Sneeze",
+        "Whispering"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9318,
+       "pairs_below": [
+        [
+         "Breathing",
+         "Sigh",
+         0.681
+        ]
+       ]
+      }
+     },
+     "machine_domestic": {
+      "classes": [
+       "Bicycle_bell",
+       "Boiling",
+       "Bus",
+       "Car",
+       "Coin_(dropping)",
+       "Cutlery_and_silverware",
+       "Dishes_and_pots_and_pans",
+       "Doorbell",
+       "Drill",
+       "Frying_(food)",
+       "Hammer",
+       "Keys_jangling",
+       "Microwave_oven",
+       "Motorcycle",
+       "Printer",
+       "Ringtone",
+       "Sawing",
+       "Scissors",
+       "Siren",
+       "Toilet_flush",
+       "Train",
+       "Truck",
+       "Typing",
+       "Vehicle_horn_and_car_horn_and_honking",
+       "Writing",
+       "Zipper_(clothing)"
+      ],
+      "chance": 0.0385,
+      "probe": {
+       "acc": 0.81,
+       "ci": [
+        0.7762,
+        0.838
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "knn": {
+       "acc": 0.7929,
+       "ci": [
+        0.762,
+        0.8218
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "zero_shot": {
+       "acc": 0.7381,
+       "ci": [
+        0.7018,
+        0.771
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "zero_shot_centred": {
+       "acc": 0.7418,
+       "ci": [
+        0.7044,
+        0.7757
+       ],
+       "n": 821,
+       "groups": 480
+      },
+      "per_class": {
+       "Bicycle_bell": {
+        "probe": 0.9688,
+        "zero_shot": 0.9375
+       },
+       "Boiling": {
+        "probe": 0.85,
+        "zero_shot": 0.8
+       },
+       "Bus": {
+        "probe": 0.6061,
+        "zero_shot": 0.6364
+       },
+       "Car": {
+        "probe": 0.4286,
+        "zero_shot": 0.1714
+       },
+       "Coin_(dropping)": {
+        "probe": 0.8966,
+        "zero_shot": 0.8966
+       },
+       "Cutlery_and_silverware": {
+        "probe": 0.625,
+        "zero_shot": 0.3125
+       },
+       "Dishes_and_pots_and_pans": {
+        "probe": 0.7143,
+        "zero_shot": 0.4857
+       },
+       "Doorbell": {
+        "probe": 0.6552,
+        "zero_shot": 0.7931
+       },
+       "Drill": {
+        "probe": 0.7931,
+        "zero_shot": 0.7931
+       },
+       "Frying_(food)": {
+        "probe": 0.9062,
+        "zero_shot": 0.9688
+       },
+       "Hammer": {
+        "probe": 0.9091,
+        "zero_shot": 0.9394
+       },
+       "Keys_jangling": {
+        "probe": 0.9,
+        "zero_shot": 0.9
+       },
+       "Microwave_oven": {
+        "probe": 0.9429,
+        "zero_shot": 0.9429
+       },
+       "Motorcycle": {
+        "probe": 0.64,
+        "zero_shot": 0.88
+       },
+       "Printer": {
+        "probe": 0.9706,
+        "zero_shot": 0.9412
+       },
+       "Ringtone": {
+        "probe": 0.9429,
+        "zero_shot": 0.4857
+       },
+       "Sawing": {
+        "probe": 0.8182,
+        "zero_shot": 0.8788
+       },
+       "Scissors": {
+        "probe": 0.8485,
+        "zero_shot": 0.697
+       },
+       "Siren": {
+        "probe": 0.8667,
+        "zero_shot": 0.8667
+       },
+       "Toilet_flush": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       },
+       "Train": {
+        "probe": 0.8125,
+        "zero_shot": 0.5938
+       },
+       "Truck": {
+        "probe": 0.4516,
+        "zero_shot": 0.1613
+       },
+       "Typing": {
+        "probe": 0.9118,
+        "zero_shot": 0.6176
+       },
+       "Vehicle_horn_and_car_horn_and_honking": {
+        "probe": 0.6452,
+        "zero_shot": 0.6774
+       },
+       "Writing": {
+        "probe": 0.9333,
+        "zero_shot": 0.9667
+       },
+       "Zipper_(clothing)": {
+        "probe": 0.9697,
+        "zero_shot": 0.9697
+       }
+      },
+      "effective_vocabulary": {
+       "size": 25,
+       "of": 26,
+       "classes": [
+        "Bicycle_bell",
+        "Boiling",
+        "Bus",
+        "Coin_(dropping)",
+        "Cutlery_and_silverware",
+        "Dishes_and_pots_and_pans",
+        "Doorbell",
+        "Drill",
+        "Frying_(food)",
+        "Hammer",
+        "Keys_jangling",
+        "Microwave_oven",
+        "Motorcycle",
+        "Printer",
+        "Ringtone",
+        "Sawing",
+        "Scissors",
+        "Siren",
+        "Toilet_flush",
+        "Train",
+        "Truck",
+        "Typing",
+        "Vehicle_horn_and_car_horn_and_honking",
+        "Writing",
+        "Zipper_(clothing)"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9769,
+       "pairs_below": [
+        [
+         "Car",
+         "Motorcycle",
+         0.65
+        ]
+       ]
+      }
+     },
+     "nature": {
+      "classes": [
+       "Drip",
+       "Fire",
+       "Rain",
+       "Stream",
+       "Thunder",
+       "Trickle_and_dribble",
+       "Waves_and_surf",
+       "Wind"
+      ],
+      "chance": 0.125,
+      "probe": {
+       "acc": 0.8517,
+       "ci": [
+        0.7974,
+        0.8954
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "knn": {
+       "acc": 0.822,
+       "ci": [
+        0.7667,
+        0.873
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "zero_shot": {
+       "acc": 0.678,
+       "ci": [
+        0.6138,
+        0.7398
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "zero_shot_centred": {
+       "acc": 0.6907,
+       "ci": [
+        0.6311,
+        0.748
+       ],
+       "n": 236,
+       "groups": 166
+      },
+      "per_class": {
+       "Drip": {
+        "probe": 0.7647,
+        "zero_shot": 0.7059
+       },
+       "Fire": {
+        "probe": 0.9677,
+        "zero_shot": 0.871
+       },
+       "Rain": {
+        "probe": 0.8125,
+        "zero_shot": 0.625
+       },
+       "Stream": {
+        "probe": 0.8276,
+        "zero_shot": 0.7241
+       },
+       "Thunder": {
+        "probe": 0.9375,
+        "zero_shot": 0.9375
+       },
+       "Trickle_and_dribble": {
+        "probe": 0.7931,
+        "zero_shot": 0.3448
+       },
+       "Waves_and_surf": {
+        "probe": 0.9697,
+        "zero_shot": 0.8788
+       },
+       "Wind": {
+        "probe": 0.7812,
+        "zero_shot": 0.4375
+       }
+      },
+      "effective_vocabulary": {
+       "size": 8,
+       "of": 8,
+       "classes": [
+        "Drip",
+        "Fire",
+        "Rain",
+        "Stream",
+        "Thunder",
+        "Trickle_and_dribble",
+        "Waves_and_surf",
+        "Wind"
+       ],
+       "threshold": 0.7,
+       "pairwise_mean": 0.9633,
+       "pairs_below": []
+      }
+     }
+    },
+    "sibling_groups": {
+     "cat_sounds": {
+      "classes": [
+       "Hiss",
+       "Meow",
+       "Purr"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 1.0,
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "knn": {
+       "acc": 1.0,
+       "ci": [
+        1.0,
+        1.0
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "zero_shot": {
+       "acc": 0.98,
+       "ci": [
+        0.9474,
+        1.0
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "zero_shot_centred": {
+       "acc": 0.95,
+       "ci": [
+        0.9042,
+        0.9899
+       ],
+       "n": 100,
+       "groups": 93
+      },
+      "per_class": {
+       "Hiss": {
+        "probe": 1.0,
+        "zero_shot": 0.9375
+       },
+       "Meow": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       },
+       "Purr": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       }
+      }
+     },
+     "dog_sounds": {
+      "classes": [
+       "Bark",
+       "Growling"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.963,
+       "ci": [
+        0.9074,
+        1.0
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "knn": {
+       "acc": 0.963,
+       "ci": [
+        0.9074,
+        1.0
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "zero_shot": {
+       "acc": 0.9444,
+       "ci": [
+        0.8793,
+        1.0
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "zero_shot_centred": {
+       "acc": 0.963,
+       "ci": [
+        0.9038,
+        1.0
+       ],
+       "n": 54,
+       "groups": 48
+      },
+      "per_class": {
+       "Bark": {
+        "probe": 0.9655,
+        "zero_shot": 0.9655
+       },
+       "Growling": {
+        "probe": 0.96,
+        "zero_shot": 0.92
+       }
+      }
+     },
+     "fsd_birds": {
+      "classes": [
+       "Chirp_and_tweet",
+       "Gull_and_seagull"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.9074,
+       "ci": [
+        0.84,
+        0.9787
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "knn": {
+       "acc": 0.8333,
+       "ci": [
+        0.7346,
+        0.9273
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "zero_shot": {
+       "acc": 0.7593,
+       "ci": [
+        0.6415,
+        0.8667
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "zero_shot_centred": {
+       "acc": 0.8519,
+       "ci": [
+        0.7586,
+        0.9412
+       ],
+       "n": 54,
+       "groups": 45
+      },
+      "per_class": {
+       "Chirp_and_tweet": {
+        "probe": 0.931,
+        "zero_shot": 0.5517
+       },
+       "Gull_and_seagull": {
+        "probe": 0.88,
+        "zero_shot": 1.0
+       }
+      }
+     },
+     "fsd_body": {
+      "classes": [
+       "Breathing",
+       "Burping_and_eructation",
+       "Cough",
+       "Sigh",
+       "Sneeze"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.8261,
+       "ci": [
+        0.7592,
+        0.891
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "knn": {
+       "acc": 0.8385,
+       "ci": [
+        0.7711,
+        0.8968
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "zero_shot": {
+       "acc": 0.764,
+       "ci": [
+        0.6962,
+        0.8375
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "zero_shot_centred": {
+       "acc": 0.7702,
+       "ci": [
+        0.7051,
+        0.8397
+       ],
+       "n": 161,
+       "groups": 125
+      },
+      "per_class": {
+       "Breathing": {
+        "probe": 0.6389,
+        "zero_shot": 0.25
+       },
+       "Burping_and_eructation": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       },
+       "Cough": {
+        "probe": 0.875,
+        "zero_shot": 0.875
+       },
+       "Sigh": {
+        "probe": 0.6538,
+        "zero_shot": 0.8077
+       },
+       "Sneeze": {
+        "probe": 0.9375,
+        "zero_shot": 0.9375
+       }
+      }
+     },
+     "fsd_water": {
+      "classes": [
+       "Drip",
+       "Stream",
+       "Trickle_and_dribble",
+       "Waves_and_surf"
+      ],
+      "chance": 0.25,
+      "probe": {
+       "acc": 0.872,
+       "ci": [
+        0.808,
+        0.9237
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "knn": {
+       "acc": 0.848,
+       "ci": [
+        0.7752,
+        0.916
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "zero_shot": {
+       "acc": 0.696,
+       "ci": [
+        0.6206,
+        0.7705
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "zero_shot_centred": {
+       "acc": 0.704,
+       "ci": [
+        0.625,
+        0.783
+       ],
+       "n": 125,
+       "groups": 98
+      },
+      "per_class": {
+       "Drip": {
+        "probe": 0.7941,
+        "zero_shot": 0.7059
+       },
+       "Stream": {
+        "probe": 0.8966,
+        "zero_shot": 0.7586
+       },
+       "Trickle_and_dribble": {
+        "probe": 0.8276,
+        "zero_shot": 0.3448
+       },
+       "Waves_and_surf": {
+        "probe": 0.9697,
+        "zero_shot": 0.9394
+       }
+      }
+     },
+     "fsd_weather": {
+      "classes": [
+       "Rain",
+       "Thunder",
+       "Wind"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.9625,
+       "ci": [
+        0.9186,
+        1.0
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.9,
+       "ci": [
+        0.8293,
+        0.9615
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.925,
+       "ci": [
+        0.8659,
+        0.9759
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.9,
+       "ci": [
+        0.8243,
+        0.9634
+       ],
+       "n": 80,
+       "groups": 62
+      },
+      "per_class": {
+       "Rain": {
+        "probe": 0.9375,
+        "zero_shot": 0.9375
+       },
+       "Thunder": {
+        "probe": 0.9375,
+        "zero_shot": 0.9375
+       },
+       "Wind": {
+        "probe": 1.0,
+        "zero_shot": 0.9062
+       }
+      }
+     },
+     "kitchen": {
+      "classes": [
+       "Boiling",
+       "Cutlery_and_silverware",
+       "Dishes_and_pots_and_pans",
+       "Frying_(food)",
+       "Microwave_oven"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.8506,
+       "ci": [
+        0.782,
+        0.9103
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "knn": {
+       "acc": 0.8442,
+       "ci": [
+        0.7792,
+        0.9045
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "zero_shot": {
+       "acc": 0.8701,
+       "ci": [
+        0.8129,
+        0.9245
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "zero_shot_centred": {
+       "acc": 0.8442,
+       "ci": [
+        0.7792,
+        0.9032
+       ],
+       "n": 154,
+       "groups": 125
+      },
+      "per_class": {
+       "Boiling": {
+        "probe": 0.9,
+        "zero_shot": 0.85
+       },
+       "Cutlery_and_silverware": {
+        "probe": 0.75,
+        "zero_shot": 0.8125
+       },
+       "Dishes_and_pots_and_pans": {
+        "probe": 0.7714,
+        "zero_shot": 0.6857
+       },
+       "Frying_(food)": {
+        "probe": 0.9062,
+        "zero_shot": 1.0
+       },
+       "Microwave_oven": {
+        "probe": 0.9429,
+        "zero_shot": 1.0
+       }
+      }
+     },
+     "laughter_types": {
+      "classes": [
+       "Chuckle_and_chortle",
+       "Giggle"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.6949,
+       "ci": [
+        0.5741,
+        0.8001
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "knn": {
+       "acc": 0.5763,
+       "ci": [
+        0.4561,
+        0.6965
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "zero_shot": {
+       "acc": 0.5593,
+       "ci": [
+        0.4285,
+        0.7
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "zero_shot_centred": {
+       "acc": 0.6271,
+       "ci": [
+        0.4915,
+        0.7548
+       ],
+       "n": 59,
+       "groups": 48
+      },
+      "per_class": {
+       "Chuckle_and_chortle": {
+        "probe": 0.5714,
+        "zero_shot": 0.1071
+       },
+       "Giggle": {
+        "probe": 0.8065,
+        "zero_shot": 0.9677
+       }
+      }
+     },
+     "loud_voice": {
+      "classes": [
+       "Screaming",
+       "Shout"
+      ],
+      "chance": 0.5,
+      "probe": {
+       "acc": 0.8857,
+       "ci": [
+        0.8028,
+        0.9577
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.8714,
+       "ci": [
+        0.776,
+        0.9445
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.8714,
+       "ci": [
+        0.7857,
+        0.942
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.8857,
+       "ci": [
+        0.8051,
+        0.9546
+       ],
+       "n": 70,
+       "groups": 62
+      },
+      "per_class": {
+       "Screaming": {
+        "probe": 0.8611,
+        "zero_shot": 0.9722
+       },
+       "Shout": {
+        "probe": 0.9118,
+        "zero_shot": 0.7647
+       }
+      }
+     },
+     "road_vehicles": {
+      "classes": [
+       "Bus",
+       "Car",
+       "Motorcycle",
+       "Truck"
+      ],
+      "chance": 0.25,
+      "probe": {
+       "acc": 0.5887,
+       "ci": [
+        0.4914,
+        0.6825
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "knn": {
+       "acc": 0.5968,
+       "ci": [
+        0.5116,
+        0.6885
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "zero_shot": {
+       "acc": 0.5161,
+       "ci": [
+        0.4299,
+        0.6063
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "zero_shot_centred": {
+       "acc": 0.6452,
+       "ci": [
+        0.5581,
+        0.7339
+       ],
+       "n": 124,
+       "groups": 88
+      },
+      "per_class": {
+       "Bus": {
+        "probe": 0.6667,
+        "zero_shot": 0.8182
+       },
+       "Car": {
+        "probe": 0.4857,
+        "zero_shot": 0.2571
+       },
+       "Motorcycle": {
+        "probe": 0.68,
+        "zero_shot": 0.88
+       },
+       "Truck": {
+        "probe": 0.5484,
+        "zero_shot": 0.1935
+       }
+      }
+     },
+     "signals": {
+      "classes": [
+       "Bicycle_bell",
+       "Doorbell",
+       "Ringtone",
+       "Siren",
+       "Vehicle_horn_and_car_horn_and_honking"
+      ],
+      "chance": 0.2,
+      "probe": {
+       "acc": 0.8535,
+       "ci": [
+        0.7917,
+        0.908
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "knn": {
+       "acc": 0.8726,
+       "ci": [
+        0.8143,
+        0.9236
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "zero_shot": {
+       "acc": 0.7771,
+       "ci": [
+        0.6918,
+        0.8534
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "zero_shot_centred": {
+       "acc": 0.7834,
+       "ci": [
+        0.6954,
+        0.8581
+       ],
+       "n": 157,
+       "groups": 110
+      },
+      "per_class": {
+       "Bicycle_bell": {
+        "probe": 0.9375,
+        "zero_shot": 0.9688
+       },
+       "Doorbell": {
+        "probe": 0.6552,
+        "zero_shot": 0.7931
+       },
+       "Ringtone": {
+        "probe": 0.8857,
+        "zero_shot": 0.5143
+       },
+       "Siren": {
+        "probe": 0.8667,
+        "zero_shot": 0.8667
+       },
+       "Vehicle_horn_and_car_horn_and_honking": {
+        "probe": 0.9032,
+        "zero_shot": 0.7742
+       }
+      }
+     },
+     "speakers": {
+      "classes": [
+       "Child_speech_and_kid_speaking",
+       "Female_speech_and_woman_speaking",
+       "Male_speech_and_man_speaking"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.7075,
+       "ci": [
+        0.596,
+        0.7959
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "knn": {
+       "acc": 0.7075,
+       "ci": [
+        0.6023,
+        0.7983
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "zero_shot": {
+       "acc": 0.7453,
+       "ci": [
+        0.6509,
+        0.8318
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "zero_shot_centred": {
+       "acc": 0.7925,
+       "ci": [
+        0.7053,
+        0.8641
+       ],
+       "n": 106,
+       "groups": 72
+      },
+      "per_class": {
+       "Child_speech_and_kid_speaking": {
+        "probe": 0.6875,
+        "zero_shot": 0.8438
+       },
+       "Female_speech_and_woman_speaking": {
+        "probe": 0.7222,
+        "zero_shot": 0.6389
+       },
+       "Male_speech_and_man_speaking": {
+        "probe": 0.7105,
+        "zero_shot": 0.7632
+       }
+      }
+     },
+     "tools": {
+      "classes": [
+       "Drill",
+       "Hammer",
+       "Sawing"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.9263,
+       "ci": [
+        0.8604,
+        0.9727
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "knn": {
+       "acc": 0.9158,
+       "ci": [
+        0.8518,
+        0.9663
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "zero_shot": {
+       "acc": 0.9579,
+       "ci": [
+        0.9158,
+        0.9906
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "zero_shot_centred": {
+       "acc": 0.9579,
+       "ci": [
+        0.9158,
+        0.9906
+       ],
+       "n": 95,
+       "groups": 62
+      },
+      "per_class": {
+       "Drill": {
+        "probe": 0.8276,
+        "zero_shot": 0.931
+       },
+       "Hammer": {
+        "probe": 1.0,
+        "zero_shot": 1.0
+       },
+       "Sawing": {
+        "probe": 0.9394,
+        "zero_shot": 0.9394
+       }
+      }
+     },
+     "voice_kinds": {
+      "classes": [
+       "Crying_and_sobbing",
+       "Singing",
+       "Whispering"
+      ],
+      "chance": 0.3333,
+      "probe": {
+       "acc": 0.9072,
+       "ci": [
+        0.8352,
+        0.9671
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "knn": {
+       "acc": 0.9072,
+       "ci": [
+        0.8444,
+        0.9596
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "zero_shot": {
+       "acc": 0.9072,
+       "ci": [
+        0.8453,
+        0.9612
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "zero_shot_centred": {
+       "acc": 0.9175,
+       "ci": [
+        0.8627,
+        0.9663
+       ],
+       "n": 97,
+       "groups": 75
+      },
+      "per_class": {
+       "Crying_and_sobbing": {
+        "probe": 0.8519,
+        "zero_shot": 0.8889
+       },
+       "Singing": {
+        "probe": 0.973,
+        "zero_shot": 1.0
+       },
+       "Whispering": {
+        "probe": 0.8788,
+        "zero_shot": 0.8182
+       }
+      }
+     }
+    }
+   },
    "vocalsound": {
     "n_clips": 600,
     "n_classes": 6,
     "chance": 0.1667,
     "probe": {
-     "acc": 0.8112,
+     "acc": 0.8216,
      "ci": [
-      0.778,
-      0.8485
+      0.7884,
+      0.8548
      ],
      "n": 482,
      "groups": 482
@@ -4959,7 +9528,7 @@
      "cough": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.75,
+      "probe": 0.7619,
       "knn": 0.7381,
       "zero_shot": 0.8571,
       "zero_shot_centred": 0.8571,
@@ -4971,7 +9540,7 @@
      "laughter": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.9512,
+      "probe": 0.939,
       "knn": 0.9268,
       "zero_shot": 0.9756,
       "zero_shot_centred": 1.0,
@@ -4983,7 +9552,7 @@
      "sigh": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.8571,
+      "probe": 0.881,
       "knn": 0.8571,
       "zero_shot": 0.8452,
       "zero_shot_centred": 0.8571,
@@ -4995,7 +9564,7 @@
      "sneeze": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.8267,
+      "probe": 0.84,
       "knn": 0.7867,
       "zero_shot": 0.88,
       "zero_shot_centred": 0.7467,
@@ -5007,7 +9576,7 @@
      "sniff": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.8026,
+      "probe": 0.8421,
       "knn": 0.9474,
       "zero_shot": 0.7763,
       "zero_shot_centred": 0.8947,
@@ -5019,7 +9588,7 @@
      "throatclearing": {
       "family": "human_vocal",
       "n": 100,
-      "probe": 0.679,
+      "probe": 0.6667,
       "knn": 0.5802,
       "zero_shot": 0.2222,
       "zero_shot_centred": 0.3086,
@@ -5041,10 +9610,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.8112,
+       "acc": 0.8216,
        "ci": [
-        0.778,
-        0.8485
+        0.7884,
+        0.8548
        ],
        "n": 482,
        "groups": 482
@@ -5078,27 +9647,27 @@
       },
       "per_class": {
        "cough": {
-        "probe": 0.75,
+        "probe": 0.7619,
         "zero_shot": 0.8571
        },
        "laughter": {
-        "probe": 0.9512,
+        "probe": 0.939,
         "zero_shot": 0.9756
        },
        "sigh": {
-        "probe": 0.8571,
+        "probe": 0.881,
         "zero_shot": 0.8452
        },
        "sneeze": {
-        "probe": 0.8267,
+        "probe": 0.84,
         "zero_shot": 0.88
        },
        "sniff": {
-        "probe": 0.8026,
+        "probe": 0.8421,
         "zero_shot": 0.7763
        },
        "throatclearing": {
-        "probe": 0.679,
+        "probe": 0.6667,
         "zero_shot": 0.2222
        }
       },
@@ -5114,7 +9683,7 @@
         "throatclearing"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.942,
+       "pairwise_mean": 0.948,
        "pairs_below": []
       }
      }
@@ -5131,10 +9700,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.8112,
+       "acc": 0.8216,
        "ci": [
-        0.778,
-        0.8485
+        0.7884,
+        0.8548
        ],
        "n": 482,
        "groups": 482
@@ -5168,27 +9737,27 @@
       },
       "per_class": {
        "cough": {
-        "probe": 0.75,
+        "probe": 0.7619,
         "zero_shot": 0.8571
        },
        "laughter": {
-        "probe": 0.9512,
+        "probe": 0.939,
         "zero_shot": 0.9756
        },
        "sigh": {
-        "probe": 0.8571,
+        "probe": 0.881,
         "zero_shot": 0.8452
        },
        "sneeze": {
-        "probe": 0.8267,
+        "probe": 0.84,
         "zero_shot": 0.88
        },
        "sniff": {
-        "probe": 0.8026,
+        "probe": 0.8421,
         "zero_shot": 0.7763
        },
        "throatclearing": {
-        "probe": 0.679,
+        "probe": 0.6667,
         "zero_shot": 0.2222
        }
       }
@@ -5200,10 +9769,10 @@
     "n_classes": 17,
     "chance": 0.0588,
     "probe": {
-     "acc": 0.6654,
+     "acc": 0.6596,
      "ci": [
-      0.6307,
-      0.7046
+      0.6212,
+      0.6983
      ],
      "n": 520,
      "groups": 243
@@ -5239,7 +9808,7 @@
      "barn owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.8276,
+      "probe": 0.8621,
       "knn": 0.931,
       "zero_shot": 0.1034,
       "zero_shot_centred": 0.3448,
@@ -5275,7 +9844,7 @@
      "common chaffinch": {
       "family": "animal",
       "n": 40,
-      "probe": 0.6452,
+      "probe": 0.6129,
       "knn": 0.4839,
       "zero_shot": 0.5806,
       "zero_shot_centred": 0.6129,
@@ -5311,7 +9880,7 @@
      "common wood pigeon": {
       "family": "animal",
       "n": 40,
-      "probe": 0.7037,
+      "probe": 0.7407,
       "knn": 0.7407,
       "zero_shot": 0.2222,
       "zero_shot_centred": 0.7778,
@@ -5323,7 +9892,7 @@
      "eurasian collared dove": {
       "family": "animal",
       "n": 40,
-      "probe": 0.6,
+      "probe": 0.5667,
       "knn": 0.7,
       "zero_shot": 0.0333,
       "zero_shot_centred": 0.1667,
@@ -5335,7 +9904,7 @@
      "eurasian eagle-owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.6667,
+      "probe": 0.697,
       "knn": 0.5758,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0606,
@@ -5347,7 +9916,7 @@
      "eurasian hoopoe": {
       "family": "animal",
       "n": 40,
-      "probe": 0.5862,
+      "probe": 0.5517,
       "knn": 0.3103,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.0345,
@@ -5383,7 +9952,7 @@
      "eurasian wren": {
       "family": "animal",
       "n": 40,
-      "probe": 0.8857,
+      "probe": 0.8286,
       "knn": 0.8,
       "zero_shot": 0.1429,
       "zero_shot_centred": 0.1143,
@@ -5395,7 +9964,7 @@
      "great tit": {
       "family": "animal",
       "n": 40,
-      "probe": 0.4118,
+      "probe": 0.4412,
       "knn": 0.2059,
       "zero_shot": 0.3529,
       "zero_shot_centred": 0.2353,
@@ -5407,7 +9976,7 @@
      "little owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.5714,
+      "probe": 0.6071,
       "knn": 0.6429,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.1786,
@@ -5419,7 +9988,7 @@
      "long-eared owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.3929,
+      "probe": 0.3571,
       "knn": 0.4286,
       "zero_shot": 0.0,
       "zero_shot_centred": 0.1429,
@@ -5431,7 +10000,7 @@
      "tawny owl": {
       "family": "animal",
       "n": 40,
-      "probe": 0.6061,
+      "probe": 0.5455,
       "knn": 0.5152,
       "zero_shot": 0.1515,
       "zero_shot_centred": 0.0606,
@@ -5464,10 +10033,10 @@
       ],
       "chance": 0.0588,
       "probe": {
-       "acc": 0.6654,
+       "acc": 0.6596,
        "ci": [
-        0.6307,
-        0.7046
+        0.6212,
+        0.6983
        ],
        "n": 520,
        "groups": 243
@@ -5501,7 +10070,7 @@
       },
       "per_class": {
        "barn owl": {
-        "probe": 0.8276,
+        "probe": 0.8621,
         "zero_shot": 0.1034
        },
        "carrion crow": {
@@ -5513,7 +10082,7 @@
         "zero_shot": 0.5667
        },
        "common chaffinch": {
-        "probe": 0.6452,
+        "probe": 0.6129,
         "zero_shot": 0.5806
        },
        "common cuckoo": {
@@ -5525,19 +10094,19 @@
         "zero_shot": 0.2667
        },
        "common wood pigeon": {
-        "probe": 0.7037,
+        "probe": 0.7407,
         "zero_shot": 0.2222
        },
        "eurasian collared dove": {
-        "probe": 0.6,
+        "probe": 0.5667,
         "zero_shot": 0.0333
        },
        "eurasian eagle-owl": {
-        "probe": 0.6667,
+        "probe": 0.697,
         "zero_shot": 0.0
        },
        "eurasian hoopoe": {
-        "probe": 0.5862,
+        "probe": 0.5517,
         "zero_shot": 0.0
        },
        "eurasian magpie": {
@@ -5549,23 +10118,23 @@
         "zero_shot": 0.1875
        },
        "eurasian wren": {
-        "probe": 0.8857,
+        "probe": 0.8286,
         "zero_shot": 0.1429
        },
        "great tit": {
-        "probe": 0.4118,
+        "probe": 0.4412,
         "zero_shot": 0.3529
        },
        "little owl": {
-        "probe": 0.5714,
+        "probe": 0.6071,
         "zero_shot": 0.0
        },
        "long-eared owl": {
-        "probe": 0.3929,
+        "probe": 0.3571,
         "zero_shot": 0.0
        },
        "tawny owl": {
-        "probe": 0.6061,
+        "probe": 0.5455,
         "zero_shot": 0.1515
        }
       },
@@ -5592,7 +10161,7 @@
         "tawny owl"
        ],
        "threshold": 0.7,
-       "pairwise_mean": 0.9367,
+       "pairwise_mean": 0.9381,
        "pairs_below": []
       }
      }
@@ -5605,10 +10174,10 @@
       ],
       "chance": 0.5,
       "probe": {
-       "acc": 0.9661,
+       "acc": 0.9322,
        "ci": [
-        0.9138,
-        1.0
+        0.8627,
+        0.9841
        ],
        "n": 59,
        "groups": 41
@@ -5642,7 +10211,7 @@
       },
       "per_class": {
        "carrion crow": {
-        "probe": 0.9375,
+        "probe": 0.875,
         "zero_shot": 0.8125
        },
        "eurasian magpie": {
@@ -5663,10 +10232,10 @@
       ],
       "chance": 0.1429,
       "probe": {
-       "acc": 0.7395,
+       "acc": 0.7442,
        "ci": [
-        0.6792,
-        0.806
+        0.6898,
+        0.8042
        ],
        "n": 215,
        "groups": 147
@@ -5700,7 +10269,7 @@
       },
       "per_class": {
        "barn owl": {
-        "probe": 0.8966,
+        "probe": 0.8621,
         "zero_shot": 0.1034
        },
        "common cuckoo": {
@@ -5708,11 +10277,11 @@
         "zero_shot": 0.9375
        },
        "eurasian eagle-owl": {
-        "probe": 0.697,
+        "probe": 0.7273,
         "zero_shot": 0.0303
        },
        "eurasian scops owl": {
-        "probe": 0.8438,
+        "probe": 0.9062,
         "zero_shot": 0.5938
        },
        "little owl": {
@@ -5720,11 +10289,11 @@
         "zero_shot": 0.0
        },
        "long-eared owl": {
-        "probe": 0.4643,
+        "probe": 0.5,
         "zero_shot": 0.0357
        },
        "tawny owl": {
-        "probe": 0.6667,
+        "probe": 0.6061,
         "zero_shot": 0.1515
        }
       }
@@ -5740,10 +10309,10 @@
       ],
       "chance": 0.1667,
       "probe": {
-       "acc": 0.6648,
+       "acc": 0.6872,
        "ci": [
-        0.5879,
-        0.7392
+        0.6199,
+        0.75
        ],
        "n": 179,
        "groups": 116
@@ -5785,11 +10354,11 @@
         "zero_shot": 0.3333
        },
        "eurasian collared dove": {
-        "probe": 0.5333,
+        "probe": 0.6333,
         "zero_shot": 0.0333
        },
        "eurasian hoopoe": {
-        "probe": 0.6207,
+        "probe": 0.6552,
         "zero_shot": 0.1379
        },
        "long-eared owl": {
@@ -5815,8 +10384,8 @@
       "probe": {
        "acc": 0.7104,
        "ci": [
-        0.6379,
-        0.7778
+        0.6455,
+        0.7764
        ],
        "n": 183,
        "groups": 126
@@ -5854,7 +10423,7 @@
         "zero_shot": 0.1034
        },
        "eurasian eagle-owl": {
-        "probe": 0.7273,
+        "probe": 0.7576,
         "zero_shot": 0.0606
        },
        "eurasian scops owl": {
@@ -5866,11 +10435,11 @@
         "zero_shot": 0.0
        },
        "long-eared owl": {
-        "probe": 0.4643,
+        "probe": 0.5,
         "zero_shot": 0.0357
        },
        "tawny owl": {
-        "probe": 0.6667,
+        "probe": 0.6061,
         "zero_shot": 0.1818
        }
       }
