@@ -64,3 +64,20 @@ Entries are append-only.
     all 1,135. MTG's missing voice tag can't stand in for "instrumental": only 31 of 1,135 tracks carry a voice/vocals
     tag, and 563 carry no instrument tag at all, so tags are present-when-noticed, not complete. Whisper order:
     calibration set first (it fixes the threshold), then FMA, then the MTG piano tracks.
+
+19. **Vocal detection counts all transcribed words, as chosen by the calibration set.** The pre-set rule (count only
+    words in confident segments) caught only 37% of the held-out vocal-tagged tracks at its best threshold. The
+    calibration step now chooses the count (confident-only or all words) as well as T, by balanced accuracy on the
+    200 held-out calibration tracks, which are never analysed. It chose all words with T = 1: vocal recall 0.61,
+    instrumental recall 0.92. Several "vocal"-tagged calibration tracks have no words at all in the 20 s window
+    (likely instrumental passages), so true vocal recall is probably higher. Residual vocals are a stated limit.
+20. **Phase 7/8 rerun.** The first Phase 7/8 run started before Whisper had finished: the chain's process check fell
+    in the seconds between stopping and restarting Whisper (decision 18). Its results were discarded and rerun on
+    the complete Whisper output.
+21. **Probe regularisation chosen by nested cross-validation.** A single fixed C (1.0) gave contradictory results on
+    the small music sets: Gemma's genre probe (26%) scored below zero-shot (27%), and classical recall fell from
+    0.71 zero-shot to 0.29 by probe. On the tuning fold, C = 0.001 gave 0.39 vs 0.28 at C = 1, so the fixed C was
+    overfitting 768 standardised dimensions on ~150 tracks per genre. Each probe now picks C from
+    {0.001, 0.01, 0.1, 1} per outer fold, by leave-one-fold-out over up to 3 of its training folds. Reported folds
+    never influence the choice; the chosen C per fold is reproducible. Pairwise probes (thousands of binary
+    problems for the effective vocabulary) use a fixed C = 0.01. Phases 3, 4, 6 and 7 were rerun with this.

@@ -56,7 +56,7 @@ def static_text(D):
             "text with Gemma's search-query prefix (chosen on the tuning fold) or no prefix for CLAP.",
             f"<b>Grouped splits everywhere:</b> ESC-50's official folds; elsewhere 5 folds by a hash of source recording, speaker, recordist, uploader or artist. "
             f"Fold {p4.get('tune_fold', '–')} tunes choices (prefix, centring strength, word form); every reported number uses the other folds.",
-            f"<b>Probe</b> = logistic regression, fixed C = {p4.get('probe_C', '–')}. <b>kNN</b> = {p4.get('knn_k', '–')} neighbours, never from the clip's own source. "
+            f"<b>Probe</b> = logistic regression on standardised features; C chosen per fold from {{0.001, 0.01, 0.1, 1}} by cross-validation inside the training folds only. <b>kNN</b> = {p4.get('knn_k', '–')} neighbours, never from the clip's own source. "
             "<b>Zero-shot</b> = nearest class text (class name + 2 descriptions, averaged).",
             f"<b>Uncertainty:</b> 95% cluster-bootstrap intervals over groups ({p4.get('bootstrap', '–')} resamples). "
             f"\"Told apart\" = pairwise probe accuracy ≥ {pct(p4.get('pairwise_threshold'))}; effective vocabulary = the largest set of classes all told apart (a maximum clique).",

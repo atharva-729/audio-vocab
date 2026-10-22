@@ -20,22 +20,48 @@ def knn_predict(X, y, groups, k=10):
     return pred
 
 
-def probe_predict(X, y, fold, C=1.0, seed=0):
-    """Grouped cross-validated linear probe: each fold is predicted by a model trained on the others.
-    Features are standardised on the training folds first: Gemma's unit vectors sit in a narrow cone (per-dimension
-    std ~0.015), where a fixed C would mostly measure regularisation, not separability."""
+C_GRID = (0.001, 0.01, 0.1, 1.0)
+
+
+def _fit(X, y, C, seed):
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import StandardScaler
+    return make_pipeline(StandardScaler(), LogisticRegression(C=C, max_iter=3000, random_state=seed)).fit(X, y)
+
+
+def choose_C(X, y, fold, grid=C_GRID, seed=0, max_inner=3):
+    """Pick C by leave-one-fold-out over (up to `max_inner` of) the folds given; folds are group-disjoint."""
+    inner = np.unique(fold)[:max_inner]
+    if len(inner) < 2:
+        return 1.0
+    scores = {}
+    for C in grid:
+        acc = []
+        for k in inner:
+            tr, va = fold != k, fold == k
+            if len(np.unique(y[tr])) < 2:
+                continue
+            acc.append(np.mean(_fit(X[tr], y[tr], C, seed).predict(X[va]) == y[va]))
+        scores[C] = np.mean(acc) if acc else 0.0
+    return max(grid, key=lambda C: (scores[C], -C))
+
+
+def probe_predict(X, y, fold, C="nested", seed=0, return_C=False):
+    """Grouped cross-validated linear probe: each fold is predicted by a model trained on the others.
+    Features are standardised on the training folds (Gemma's unit vectors sit in a narrow cone, per-dimension std
+    ~0.015). C="nested" picks C per outer fold by cross-validation inside its training folds only (decision 21):
+    one fixed C can't suit both 2,000-clip sound sets and ~150-track genres."""
     pred = np.empty(len(y), dtype=y.dtype)
+    chosen = {}
     for f in np.unique(fold):
         tr, te = fold != f, fold == f
         if len(np.unique(y[tr])) < 2:
             pred[te] = y[tr][0]
             continue
-        m = make_pipeline(StandardScaler(), LogisticRegression(C=C, max_iter=3000, random_state=seed))
-        m.fit(X[tr], y[tr])
-        pred[te] = m.predict(X[te])
-    return pred
+        c = choose_C(X[tr], y[tr], fold[tr], seed=seed) if C == "nested" else C
+        chosen[int(f)] = c
+        pred[te] = _fit(X[tr], y[tr], c, seed).predict(X[te])
+    return (pred, chosen) if return_C else pred
 
 
 def zero_shot_predict(X, T, names):
@@ -98,7 +124,7 @@ def pairwise_accuracy(X, y, fold, C=1.0):
             m = (y == labels[a]) | (y == labels[b])
             if len(np.unique(fold[m])) < 2:
                 continue
-            p = probe_predict(X[m], y[m], fold[m], C=C)
+            p = probe_predict(X[m], y[m], fold[m], C=C if C != "nested" else 0.01)  # fixed: thousands of pairs
             M[a, b] = M[b, a] = float(np.mean(p == y[m]))
     return labels, M
 

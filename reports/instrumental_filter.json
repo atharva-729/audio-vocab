@@ -10,131 +10,292 @@
   "n_vocal": 100,
   "grid": [
    {
+    "count": "words_conf",
     "T": 1,
     "vocal_recall": 0.37,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.675
    },
    {
+    "count": "words_conf",
     "T": 2,
     "vocal_recall": 0.37,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.675
    },
    {
+    "count": "words_conf",
     "T": 3,
     "vocal_recall": 0.35,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.665
    },
    {
+    "count": "words_conf",
     "T": 4,
     "vocal_recall": 0.35,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.665
    },
    {
+    "count": "words_conf",
     "T": 5,
     "vocal_recall": 0.34,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.66
    },
    {
+    "count": "words_conf",
     "T": 6,
     "vocal_recall": 0.32,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.65
    },
    {
+    "count": "words_conf",
     "T": 7,
     "vocal_recall": 0.31,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.645
    },
    {
+    "count": "words_conf",
     "T": 8,
     "vocal_recall": 0.27,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.625
    },
    {
+    "count": "words_conf",
     "T": 9,
     "vocal_recall": 0.25,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.615
    },
    {
+    "count": "words_conf",
     "T": 10,
     "vocal_recall": 0.25,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.615
    },
    {
+    "count": "words_conf",
     "T": 11,
     "vocal_recall": 0.24,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.61
    },
    {
+    "count": "words_conf",
     "T": 12,
     "vocal_recall": 0.23,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.605
    },
    {
+    "count": "words_conf",
     "T": 13,
     "vocal_recall": 0.2,
     "instrumental_recall": 0.98,
     "balanced_acc": 0.59
    },
    {
+    "count": "words_conf",
     "T": 14,
     "vocal_recall": 0.2,
     "instrumental_recall": 0.99,
     "balanced_acc": 0.595
    },
    {
+    "count": "words_conf",
     "T": 15,
     "vocal_recall": 0.19,
     "instrumental_recall": 0.99,
     "balanced_acc": 0.59
    },
    {
+    "count": "words_conf",
     "T": 16,
     "vocal_recall": 0.18,
     "instrumental_recall": 0.99,
     "balanced_acc": 0.585
    },
    {
+    "count": "words_conf",
     "T": 17,
     "vocal_recall": 0.18,
     "instrumental_recall": 0.99,
     "balanced_acc": 0.585
    },
    {
+    "count": "words_conf",
     "T": 18,
     "vocal_recall": 0.17,
     "instrumental_recall": 0.99,
     "balanced_acc": 0.58
    },
    {
+    "count": "words_conf",
     "T": 19,
     "vocal_recall": 0.17,
     "instrumental_recall": 1.0,
     "balanced_acc": 0.585
    },
    {
+    "count": "words_conf",
     "T": 20,
     "vocal_recall": 0.17,
     "instrumental_recall": 1.0,
     "balanced_acc": 0.585
+   },
+   {
+    "count": "words_all",
+    "T": 1,
+    "vocal_recall": 0.61,
+    "instrumental_recall": 0.92,
+    "balanced_acc": 0.765
+   },
+   {
+    "count": "words_all",
+    "T": 2,
+    "vocal_recall": 0.52,
+    "instrumental_recall": 0.96,
+    "balanced_acc": 0.74
+   },
+   {
+    "count": "words_all",
+    "T": 3,
+    "vocal_recall": 0.49,
+    "instrumental_recall": 0.97,
+    "balanced_acc": 0.73
+   },
+   {
+    "count": "words_all",
+    "T": 4,
+    "vocal_recall": 0.47,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.725
+   },
+   {
+    "count": "words_all",
+    "T": 5,
+    "vocal_recall": 0.46,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.72
+   },
+   {
+    "count": "words_all",
+    "T": 6,
+    "vocal_recall": 0.42,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.7
+   },
+   {
+    "count": "words_all",
+    "T": 7,
+    "vocal_recall": 0.41,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.695
+   },
+   {
+    "count": "words_all",
+    "T": 8,
+    "vocal_recall": 0.37,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.675
+   },
+   {
+    "count": "words_all",
+    "T": 9,
+    "vocal_recall": 0.34,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.66
+   },
+   {
+    "count": "words_all",
+    "T": 10,
+    "vocal_recall": 0.34,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.66
+   },
+   {
+    "count": "words_all",
+    "T": 11,
+    "vocal_recall": 0.33,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.655
+   },
+   {
+    "count": "words_all",
+    "T": 12,
+    "vocal_recall": 0.32,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.65
+   },
+   {
+    "count": "words_all",
+    "T": 13,
+    "vocal_recall": 0.29,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.635
+   },
+   {
+    "count": "words_all",
+    "T": 14,
+    "vocal_recall": 0.28,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.635
+   },
+   {
+    "count": "words_all",
+    "T": 15,
+    "vocal_recall": 0.26,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.625
+   },
+   {
+    "count": "words_all",
+    "T": 16,
+    "vocal_recall": 0.24,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.615
+   },
+   {
+    "count": "words_all",
+    "T": 17,
+    "vocal_recall": 0.24,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.615
+   },
+   {
+    "count": "words_all",
+    "T": 18,
+    "vocal_recall": 0.23,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.61
+   },
+   {
+    "count": "words_all",
+    "T": 19,
+    "vocal_recall": 0.23,
+    "instrumental_recall": 1.0,
+    "balanced_acc": 0.615
+   },
+   {
+    "count": "words_all",
+    "T": 20,
+    "vocal_recall": 0.23,
+    "instrumental_recall": 1.0,
+    "balanced_acc": 0.615
    }
   ],
   "chosen": {
+   "count": "words_all",
    "T": 1,
-   "vocal_recall": 0.37,
-   "instrumental_recall": 0.98,
-   "balanced_acc": 0.675
+   "vocal_recall": 0.61,
+   "instrumental_recall": 0.92,
+   "balanced_acc": 0.765
   }
  },
  "funnel": {
@@ -142,167 +303,167 @@
    "blues": {
     "candidates": 100,
     "metadata_instrumental_tag": 4,
-    "whisper_instrumental": 85,
-    "whisper_vocal": 15,
-    "instrumental_artists": 45
+    "whisper_instrumental": 66,
+    "whisper_vocal": 34,
+    "instrumental_artists": 38
    },
    "classical": {
     "candidates": 294,
     "metadata_instrumental_tag": 144,
-    "whisper_instrumental": 291,
-    "whisper_vocal": 3,
-    "instrumental_artists": 138
+    "whisper_instrumental": 256,
+    "whisper_vocal": 38,
+    "instrumental_artists": 128
    },
    "country": {
     "candidates": 122,
     "metadata_instrumental_tag": 9,
-    "whisper_instrumental": 100,
-    "whisper_vocal": 22,
-    "instrumental_artists": 52
+    "whisper_instrumental": 83,
+    "whisper_vocal": 39,
+    "instrumental_artists": 50
    },
    "easy listening": {
     "candidates": 68,
     "metadata_instrumental_tag": 13,
-    "whisper_instrumental": 61,
-    "whisper_vocal": 7,
-    "instrumental_artists": 43
+    "whisper_instrumental": 54,
+    "whisper_vocal": 14,
+    "instrumental_artists": 38
    },
    "electronic": {
     "candidates": 350,
     "metadata_instrumental_tag": 200,
-    "whisper_instrumental": 342,
-    "whisper_vocal": 8,
-    "instrumental_artists": 264
+    "whisper_instrumental": 315,
+    "whisper_vocal": 35,
+    "instrumental_artists": 246
    },
    "folk": {
     "candidates": 289,
     "metadata_instrumental_tag": 139,
-    "whisper_instrumental": 255,
-    "whisper_vocal": 34,
-    "instrumental_artists": 160
+    "whisper_instrumental": 202,
+    "whisper_vocal": 87,
+    "instrumental_artists": 130
    },
    "hip-hop": {
     "candidates": 236,
     "metadata_instrumental_tag": 86,
-    "whisper_instrumental": 180,
-    "whisper_vocal": 56,
-    "instrumental_artists": 108
+    "whisper_instrumental": 125,
+    "whisper_vocal": 111,
+    "instrumental_artists": 76
    },
    "jazz": {
     "candidates": 222,
     "metadata_instrumental_tag": 72,
-    "whisper_instrumental": 218,
-    "whisper_vocal": 4,
-    "instrumental_artists": 151
+    "whisper_instrumental": 190,
+    "whisper_vocal": 32,
+    "instrumental_artists": 133
    },
    "pop": {
     "candidates": 211,
     "metadata_instrumental_tag": 61,
-    "whisper_instrumental": 185,
-    "whisper_vocal": 26,
-    "instrumental_artists": 137
+    "whisper_instrumental": 159,
+    "whisper_vocal": 52,
+    "instrumental_artists": 122
    },
    "rock": {
     "candidates": 350,
     "metadata_instrumental_tag": 200,
-    "whisper_instrumental": 333,
-    "whisper_vocal": 17,
-    "instrumental_artists": 236
+    "whisper_instrumental": 302,
+    "whisper_vocal": 48,
+    "instrumental_artists": 218
    },
    "soul": {
     "candidates": 94,
     "metadata_instrumental_tag": 9,
-    "whisper_instrumental": 81,
-    "whisper_vocal": 13,
-    "instrumental_artists": 39
+    "whisper_instrumental": 70,
+    "whisper_vocal": 24,
+    "instrumental_artists": 35
    }
   },
   "region": {
    "African": {
     "candidates": 184,
     "metadata_instrumental_tag": 7,
-    "whisper_instrumental": 167,
-    "whisper_vocal": 17,
-    "instrumental_artists": 67
+    "whisper_instrumental": 123,
+    "whisper_vocal": 61,
+    "instrumental_artists": 55
    },
    "Balkan": {
     "candidates": 294,
     "metadata_instrumental_tag": 0,
-    "whisper_instrumental": 279,
-    "whisper_vocal": 15,
-    "instrumental_artists": 77
+    "whisper_instrumental": 255,
+    "whisper_vocal": 39,
+    "instrumental_artists": 74
    },
    "Brazilian": {
     "candidates": 108,
     "metadata_instrumental_tag": 1,
-    "whisper_instrumental": 80,
-    "whisper_vocal": 28,
-    "instrumental_artists": 34
+    "whisper_instrumental": 70,
+    "whisper_vocal": 38,
+    "instrumental_artists": 31
    },
    "East Asian": {
     "candidates": 67,
     "metadata_instrumental_tag": 3,
-    "whisper_instrumental": 61,
-    "whisper_vocal": 6,
-    "instrumental_artists": 28
+    "whisper_instrumental": 46,
+    "whisper_vocal": 21,
+    "instrumental_artists": 22
    },
    "European": {
     "candidates": 288,
     "metadata_instrumental_tag": 3,
-    "whisper_instrumental": 263,
-    "whisper_vocal": 25,
-    "instrumental_artists": 96
+    "whisper_instrumental": 229,
+    "whisper_vocal": 59,
+    "instrumental_artists": 89
    },
    "French": {
     "candidates": 160,
     "metadata_instrumental_tag": 0,
-    "whisper_instrumental": 134,
-    "whisper_vocal": 26,
-    "instrumental_artists": 46
+    "whisper_instrumental": 112,
+    "whisper_vocal": 48,
+    "instrumental_artists": 41
    },
    "Indian": {
     "candidates": 48,
     "metadata_instrumental_tag": 2,
-    "whisper_instrumental": 46,
-    "whisper_vocal": 2,
-    "instrumental_artists": 22
+    "whisper_instrumental": 37,
+    "whisper_vocal": 11,
+    "instrumental_artists": 19
    },
    "Latin": {
     "candidates": 60,
     "metadata_instrumental_tag": 20,
-    "whisper_instrumental": 52,
-    "whisper_vocal": 8,
-    "instrumental_artists": 25
+    "whisper_instrumental": 45,
+    "whisper_vocal": 15,
+    "instrumental_artists": 24
    },
    "Latin American": {
     "candidates": 307,
     "metadata_instrumental_tag": 3,
-    "whisper_instrumental": 263,
-    "whisper_vocal": 44,
-    "instrumental_artists": 129
+    "whisper_instrumental": 223,
+    "whisper_vocal": 84,
+    "instrumental_artists": 120
    },
    "Middle Eastern": {
     "candidates": 73,
     "metadata_instrumental_tag": 2,
-    "whisper_instrumental": 63,
-    "whisper_vocal": 10,
-    "instrumental_artists": 24
+    "whisper_instrumental": 55,
+    "whisper_vocal": 18,
+    "instrumental_artists": 20
    },
    "Spanish": {
     "candidates": 67,
     "metadata_instrumental_tag": 0,
-    "whisper_instrumental": 57,
-    "whisper_vocal": 10,
-    "instrumental_artists": 23
+    "whisper_instrumental": 48,
+    "whisper_vocal": 19,
+    "instrumental_artists": 20
    }
   },
   "mtg": {
    "tracks": 186,
    "tag_instrumental": 177,
-   "whisper_instrumental": 177,
-   "tag_and_whisper_instrumental": 168
+   "whisper_instrumental": 166,
+   "tag_and_whisper_instrumental": 157
   },
-  "fma_tagged_instrumental_flagged_vocal": 29,
+  "fma_tagged_instrumental_flagged_vocal": 131,
   "fma_tagged_instrumental_total": 978
  }
 }

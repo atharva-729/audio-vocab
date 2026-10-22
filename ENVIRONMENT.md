@@ -36,7 +36,7 @@ personal-laptop bundle (`scripts/fetch_bundle.py` → Google Drive → `scripts/
 | Host | Status | Used for |
 |---|---|---|
 | github.com, codeload, raw.githubusercontent, media.githubusercontent (LFS) | open, ~10 MB/s | ESC-50, CREMA-D, MTG-Jamendo metadata, VocalSound metadata |
-| zenodo.org | open, **slow (~0.5 MB/s)** | FSD50K, RAVDESS, Song Describer |
+| zenodo.org | **blocked for large downloads since 2026-10-22** (403 "unusual traffic from your network"); small files still work | FSD50K (done in Colab instead) |
 | os.unil.cloud.switch.ch | open, ~2 MB/s | FMA |
 | archive.org | open, ~1.6 MB/s | Musopen recordings |
 | xeno-canto.org | open; API v3 needs a key (`xeno_canto_api_key` in `.env`) | bird calls |

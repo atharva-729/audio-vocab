@@ -73,17 +73,21 @@ def calibrate_and_apply():
     items = c[c.dataset.isin(["fma", "mtg"])].drop_duplicates(["dataset", "item_id"]).copy()
     items["key"] = items.dataset + ":" + items.item_id.astype(str)
     items = items[items.key.isin(w.index)]
-    items["words"] = items.key.map(w.words_conf)
-    cal = items[items.pool.isin(["calib_instrumental", "calib_vocal"])]
-    pos = (cal.pool == "calib_vocal").values
+    # The calibration set picks both the word count used (confident words only, or all transcribed words) and T
+    # (decision 19: confident-only missed 63% of vocal-tagged tracks).
+    cal_mask = items.pool.isin(["calib_instrumental", "calib_vocal"])
+    pos = (items[cal_mask].pool == "calib_vocal").values
     grid = []
-    for T in T_GRID:
-        flag = (cal.words >= T).values
-        tpr, tnr = flag[pos].mean(), (~flag[~pos]).mean()
-        grid.append({"T": T, "vocal_recall": round(float(tpr), 3), "instrumental_recall": round(float(tnr), 3),
-                     "balanced_acc": round(float((tpr + tnr) / 2), 3)})
+    for col in ("words_conf", "words_all"):
+        words = items[cal_mask].key.map(w[col])
+        for T in T_GRID:
+            flag = (words >= T).values
+            tpr, tnr = flag[pos].mean(), (~flag[~pos]).mean()
+            grid.append({"count": col, "T": T, "vocal_recall": round(float(tpr), 3),
+                         "instrumental_recall": round(float(tnr), 3), "balanced_acc": round(float((tpr + tnr) / 2), 3)})
     best = max(grid, key=lambda g: (g["balanced_acc"], -g["T"]))
     T = best["T"]
+    items["words"] = items.key.map(w[best["count"]])
     items["vocal"] = items.words >= T
     ana = items[~items.pool.isin(["calib_instrumental", "calib_vocal"])]
     funnel = {}

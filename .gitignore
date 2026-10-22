@@ -25,3 +25,6 @@ runs/*.txt
 data/whisper.parquet
 data/cremad_acoustic.parquet
 data/music_features.parquet
+
+# Colab FSD50K embeddings (derived, 12 MB)
+fsd50k_colab.npz
