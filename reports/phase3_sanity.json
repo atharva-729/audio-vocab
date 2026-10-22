@@ -1,0 +1,86 @@
+{
+ "clips_per_dataset": {
+  "cremad": 7442,
+  "esc50": 2000,
+  "fma": 4192,
+  "mtg": 1135,
+  "musopen": 232,
+  "vocalsound": 600,
+  "xenocanto": 680
+ },
+ "items_per_dataset": {
+  "cremad": 7442,
+  "esc50": 2000,
+  "fma": 4192,
+  "mtg": 1135,
+  "musopen": 116,
+  "vocalsound": 600,
+  "xenocanto": 680
+ },
+ "embedded": {
+  "gemma": {
+   "cremad": 7442,
+   "esc50": 2000,
+   "fma": 4177,
+   "mtg": 1135,
+   "musopen": 232,
+   "vocalsound": 600,
+   "xenocanto": 680
+  },
+  "clap": {
+   "cremad": 7442,
+   "esc50": 2000,
+   "fma": 4177,
+   "mtg": 1135,
+   "musopen": 232,
+   "vocalsound": 600,
+   "xenocanto": 680
+  }
+ },
+ "sanity": {
+  "gemma": {
+   "1_within_class_vs_random": {
+    "overall_mean_cos": 0.8272,
+    "classes_within_gt_overall": 50,
+    "n_classes": 50,
+    "pass": true
+   },
+   "2_esc50_probe_official_folds": {
+    "acc": 0.8225,
+    "ci": [
+     0.802,
+     0.8423
+    ],
+    "chance": 0.02,
+    "pass": true
+   },
+   "3_dog_barking_top25": {
+    "dog_in_top25": 17,
+    "expected_by_chance": 0.5,
+    "pass": true
+   }
+  },
+  "clap": {
+   "1_within_class_vs_random": {
+    "overall_mean_cos": 0.1348,
+    "classes_within_gt_overall": 50,
+    "n_classes": 50,
+    "pass": true
+   },
+   "2_esc50_probe_official_folds": {
+    "acc": 0.9705,
+    "ci": [
+     0.9627,
+     0.9779
+    ],
+    "chance": 0.02,
+    "pass": true
+   },
+   "3_dog_barking_top25": {
+    "dog_in_top25": 25,
+    "expected_by_chance": 0.5,
+    "pass": true
+   }
+  }
+ }
+}
