@@ -38,15 +38,34 @@ def cmd_embed(args):
         print(f"{m}: {shape} in {secs / 60:.0f} min -> index/{m}.npy")
 
 
+def cmd_analyse(args):
+    from . import bridge, emotion, genre, instrumental, phase3, resolution, whatmakes, words
+    steps = {"resolution": resolution.run, "emotion": emotion.run, "words": words.run, "phase3": phase3.run,
+             "instrumental": instrumental.calibrate_and_apply, "genre": genre.run, "whatmakes": whatmakes.run,
+             "bridge": bridge.run}
+    for s in args.steps or steps:
+        print(f"== {s}", flush=True)
+        steps[s]()
+
+
+def cmd_page(args):
+    from . import page
+    page.build()
+    nums = page.hardcoded_numbers()
+    print(f"docs/data.js written; numbers typed into docs/index.html visible text: {nums or 'none'}")
+
+
 def main():
     ap = argparse.ArgumentParser(prog="vocab")
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name, fn in [("setup", cmd_setup), ("notes", cmd_notes), ("plan", cmd_plan), ("fetch", cmd_fetch),
-                     ("clips", cmd_clips), ("embed", cmd_embed)]:
+                     ("clips", cmd_clips), ("embed", cmd_embed), ("analyse", cmd_analyse), ("page", cmd_page)]:
         p = sub.add_parser(name)
         p.set_defaults(fn=fn)
         if name == "clips":
             p.add_argument("--only", nargs="*")
+        if name == "analyse":
+            p.add_argument("steps", nargs="*")
         if name == "embed":
             p.add_argument("--models", nargs="+", default=["clap", "gemma"])
         if name == "fetch":

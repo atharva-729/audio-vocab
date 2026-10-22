@@ -54,8 +54,7 @@ def sanity(model):
 def umap_maps(model="gemma", seed=0):
     import umap
     df = data.clips()
-    a = data.audio(model)
-    X, have = (a, np.ones(len(df), bool)) if isinstance(a, np.ndarray) else a
+    X, have = data.audio(model)
     df = df[have].copy()
     X = X[have]
     rng = np.random.default_rng(seed)
@@ -93,8 +92,7 @@ def run():
     df = data.clips()
     counts = {}
     for model in ("gemma", "clap"):
-        a = data.audio(model)
-        have = np.ones(len(df), bool) if isinstance(a, np.ndarray) else a[1]
+        have = data.audio(model)[1]
         counts[model] = df[have].groupby("dataset").size().to_dict()
     out = {"clips_per_dataset": df.groupby("dataset").size().to_dict(),
            "items_per_dataset": df.groupby("dataset").item_id.nunique().to_dict(),
