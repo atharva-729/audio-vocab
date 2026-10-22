@@ -66,13 +66,20 @@ def esc50(t):
 
 def fsd50k(t):
     s = sel("fsd50k")
+    # clips embedded in Colab (Zenodo blocks the work network): durations come from the imported file
+    cf = raw("fsd50k", "colab_durations.json")
+    colab = json.loads(cf.read_text()) if cf.exists() else {}
     rows = []
     for r in s.itertuples():
         p = raw("fsd50k", "audio", f"{r.clip}.wav")
-        if not p.exists():
+        if p.exists():
+            dur = round(min(10.0, _dur(p)), 3)
+        elif str(r.clip) in colab:
+            dur = colab[str(r.clip)]
+        else:
             continue
         rows.append({"dataset": "fsd50k", "item_id": r.clip, "window": 0, "source": f"fsd50k/audio/{r.clip}.wav",
-                     "start": 0.0, "dur": round(min(10.0, _dur(p)), 3), "label": r.label, "family": r.family,
+                     "start": 0.0, "dur": dur, "label": r.label, "family": r.family,
                      "groups": _groups(t["fsd50k"][r.label]), "group_id": "fsd_up_" + r.group_id, "split": "eval",
                      "licence": r.licence})
     return pd.DataFrame(rows)

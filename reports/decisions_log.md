@@ -59,3 +59,8 @@ Entries are append-only.
     std 0.015), so C = 1 is effectively a very strong penalty. CLAP's spread-out vectors were barely affected.
     Standardising is a scale correction applied identically to both models and every probe; C stays fixed at 1 and
     nothing was tuned on reported folds. Check on two ESC-50 folds: Gemma 0.70 → 0.83.
+
+18. **Whisper on MTG-Jamendo only for the 186 piano-tagged tracks** (the only MTG tracks Phase 8 uses), instead of
+    all 1,135. MTG's missing voice tag can't stand in for "instrumental": only 31 of 1,135 tracks carry a voice/vocals
+    tag, and 563 carry no instrument tag at all, so tags are present-when-noticed, not complete. Whisper order:
+    calibration set first (it fixes the threshold), then FMA, then the MTG piano tracks.

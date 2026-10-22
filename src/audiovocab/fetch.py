@@ -248,6 +248,33 @@ def musopen():
     log("musopen", f"done={_pool('musopen', list(df.itertuples()), one, 3)}")
 
 
+def import_colab_fsd(npz_path):
+    """Fold fsd50k_colab.npz (from colab/fsd50k_embed.ipynb) into the project: durations for clips.parquet, and
+    every vector into the per-clip embedding cache under the same key a local run would use."""
+    import json
+
+    import numpy as np
+
+    from . import cache, datasets, embed
+    z = np.load(npz_path)
+    meta = json.loads(str(z["meta"]))
+    log("fsd50k", f"colab file: {len(z['ids'])} clips, parity {meta['parity']}, {meta['device']} {meta.get('gpu', '')}")
+    if min(min(v) for v in meta["parity"].values()) < 0.999:
+        raise SystemExit("parity below 0.999: the Colab vectors don't match the local pipeline; not importing")
+    durs = {str(i): float(d) for i, d in zip(z["ids"], z["dur"])}
+    raw("fsd50k").mkdir(parents=True, exist_ok=True)
+    raw("fsd50k", "colab_durations.json").write_text(json.dumps(durs))
+    df = datasets.build()
+    fsd = df[df.dataset == "fsd50k"]
+    idx = {str(i): k for k, i in enumerate(z["ids"])}
+    for r in fsd.to_dict("records"):
+        k = embed.clip_key(r)
+        cache.put_array("emb_gemma", k, z["gemma"][idx[str(r["item_id"])]].astype(np.float32))
+        cache.put_array("emb_clap", k, z["clap"][idx[str(r["item_id"])]].astype(np.float32))
+    log("fsd50k", f"imported {len(fsd)} FSD50K clips into clips.parquet and the embedding cache")
+    return len(fsd)
+
+
 FETCHERS = {"esc50": esc50, "cremad": cremad, "xenocanto": xenocanto, "fma": fma, "musopen": musopen,
             "fsd50k": fsd50k}
 
