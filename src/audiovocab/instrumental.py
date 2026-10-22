@@ -23,7 +23,10 @@ T_GRID = list(range(1, 21))
 def _items():
     c = pd.read_parquet(path("data") / "clips.parquet")
     m = c[c.dataset.isin(["fma", "mtg"])].drop_duplicates(["dataset", "item_id"])
-    return m
+    # MTG: only the piano-tagged tracks Phase 8 uses. MTG's "no voice tag" can't be trusted as "instrumental":
+    # only 31 of 1,135 tracks carry a voice tag at all, and 563 have no instrument tags (decision 18).
+    piano = m.instruments.astype(str).str.contains("'piano'")
+    return m[(m.dataset == "fma") | piano]
 
 
 def transcribe_all(threads=4):
@@ -32,6 +35,9 @@ def transcribe_all(threads=4):
     done = pd.read_parquet(out_f) if out_f.exists() else pd.DataFrame(columns=["key"])
     have = set(done.key)
     items = _items()
+    # calibration first (it sets the threshold), then FMA genre/region pools, then MTG
+    order = {"calib_instrumental": 0, "calib_vocal": 0, "genre": 1, "region": 2}
+    items = items.assign(_o=items.pool.map(order).fillna(3)).sort_values("_o", kind="stable")
     todo = [r for r in items.to_dict("records") if f"{r['dataset']}:{r['item_id']}" not in have]
     print(f"whisper: {len(todo)} of {len(items)} items to do", flush=True)
     if not todo:
