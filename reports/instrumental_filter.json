@@ -1,0 +1,308 @@
+{
+ "rule": {
+  "logprob_min": -1.0,
+  "no_speech_max": 0.5,
+  "vad": true,
+  "window_s": 20
+ },
+ "calibration": {
+  "n_instrumental": 100,
+  "n_vocal": 100,
+  "grid": [
+   {
+    "T": 1,
+    "vocal_recall": 0.37,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.675
+   },
+   {
+    "T": 2,
+    "vocal_recall": 0.37,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.675
+   },
+   {
+    "T": 3,
+    "vocal_recall": 0.35,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.665
+   },
+   {
+    "T": 4,
+    "vocal_recall": 0.35,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.665
+   },
+   {
+    "T": 5,
+    "vocal_recall": 0.34,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.66
+   },
+   {
+    "T": 6,
+    "vocal_recall": 0.32,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.65
+   },
+   {
+    "T": 7,
+    "vocal_recall": 0.31,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.645
+   },
+   {
+    "T": 8,
+    "vocal_recall": 0.27,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.625
+   },
+   {
+    "T": 9,
+    "vocal_recall": 0.25,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.615
+   },
+   {
+    "T": 10,
+    "vocal_recall": 0.25,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.615
+   },
+   {
+    "T": 11,
+    "vocal_recall": 0.24,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.61
+   },
+   {
+    "T": 12,
+    "vocal_recall": 0.23,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.605
+   },
+   {
+    "T": 13,
+    "vocal_recall": 0.2,
+    "instrumental_recall": 0.98,
+    "balanced_acc": 0.59
+   },
+   {
+    "T": 14,
+    "vocal_recall": 0.2,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.595
+   },
+   {
+    "T": 15,
+    "vocal_recall": 0.19,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.59
+   },
+   {
+    "T": 16,
+    "vocal_recall": 0.18,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.585
+   },
+   {
+    "T": 17,
+    "vocal_recall": 0.18,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.585
+   },
+   {
+    "T": 18,
+    "vocal_recall": 0.17,
+    "instrumental_recall": 0.99,
+    "balanced_acc": 0.58
+   },
+   {
+    "T": 19,
+    "vocal_recall": 0.17,
+    "instrumental_recall": 1.0,
+    "balanced_acc": 0.585
+   },
+   {
+    "T": 20,
+    "vocal_recall": 0.17,
+    "instrumental_recall": 1.0,
+    "balanced_acc": 0.585
+   }
+  ],
+  "chosen": {
+   "T": 1,
+   "vocal_recall": 0.37,
+   "instrumental_recall": 0.98,
+   "balanced_acc": 0.675
+  }
+ },
+ "funnel": {
+  "genre": {
+   "blues": {
+    "candidates": 100,
+    "metadata_instrumental_tag": 4,
+    "whisper_instrumental": 85,
+    "whisper_vocal": 15,
+    "instrumental_artists": 45
+   },
+   "classical": {
+    "candidates": 294,
+    "metadata_instrumental_tag": 144,
+    "whisper_instrumental": 291,
+    "whisper_vocal": 3,
+    "instrumental_artists": 138
+   },
+   "country": {
+    "candidates": 122,
+    "metadata_instrumental_tag": 9,
+    "whisper_instrumental": 100,
+    "whisper_vocal": 22,
+    "instrumental_artists": 52
+   },
+   "easy listening": {
+    "candidates": 68,
+    "metadata_instrumental_tag": 13,
+    "whisper_instrumental": 61,
+    "whisper_vocal": 7,
+    "instrumental_artists": 43
+   },
+   "electronic": {
+    "candidates": 350,
+    "metadata_instrumental_tag": 200,
+    "whisper_instrumental": 342,
+    "whisper_vocal": 8,
+    "instrumental_artists": 264
+   },
+   "folk": {
+    "candidates": 289,
+    "metadata_instrumental_tag": 139,
+    "whisper_instrumental": 255,
+    "whisper_vocal": 34,
+    "instrumental_artists": 160
+   },
+   "hip-hop": {
+    "candidates": 236,
+    "metadata_instrumental_tag": 86,
+    "whisper_instrumental": 180,
+    "whisper_vocal": 56,
+    "instrumental_artists": 108
+   },
+   "jazz": {
+    "candidates": 222,
+    "metadata_instrumental_tag": 72,
+    "whisper_instrumental": 218,
+    "whisper_vocal": 4,
+    "instrumental_artists": 151
+   },
+   "pop": {
+    "candidates": 211,
+    "metadata_instrumental_tag": 61,
+    "whisper_instrumental": 185,
+    "whisper_vocal": 26,
+    "instrumental_artists": 137
+   },
+   "rock": {
+    "candidates": 350,
+    "metadata_instrumental_tag": 200,
+    "whisper_instrumental": 333,
+    "whisper_vocal": 17,
+    "instrumental_artists": 236
+   },
+   "soul": {
+    "candidates": 94,
+    "metadata_instrumental_tag": 9,
+    "whisper_instrumental": 81,
+    "whisper_vocal": 13,
+    "instrumental_artists": 39
+   }
+  },
+  "region": {
+   "African": {
+    "candidates": 184,
+    "metadata_instrumental_tag": 7,
+    "whisper_instrumental": 167,
+    "whisper_vocal": 17,
+    "instrumental_artists": 67
+   },
+   "Balkan": {
+    "candidates": 294,
+    "metadata_instrumental_tag": 0,
+    "whisper_instrumental": 279,
+    "whisper_vocal": 15,
+    "instrumental_artists": 77
+   },
+   "Brazilian": {
+    "candidates": 108,
+    "metadata_instrumental_tag": 1,
+    "whisper_instrumental": 80,
+    "whisper_vocal": 28,
+    "instrumental_artists": 34
+   },
+   "East Asian": {
+    "candidates": 67,
+    "metadata_instrumental_tag": 3,
+    "whisper_instrumental": 61,
+    "whisper_vocal": 6,
+    "instrumental_artists": 28
+   },
+   "European": {
+    "candidates": 288,
+    "metadata_instrumental_tag": 3,
+    "whisper_instrumental": 263,
+    "whisper_vocal": 25,
+    "instrumental_artists": 96
+   },
+   "French": {
+    "candidates": 160,
+    "metadata_instrumental_tag": 0,
+    "whisper_instrumental": 134,
+    "whisper_vocal": 26,
+    "instrumental_artists": 46
+   },
+   "Indian": {
+    "candidates": 48,
+    "metadata_instrumental_tag": 2,
+    "whisper_instrumental": 46,
+    "whisper_vocal": 2,
+    "instrumental_artists": 22
+   },
+   "Latin": {
+    "candidates": 60,
+    "metadata_instrumental_tag": 20,
+    "whisper_instrumental": 52,
+    "whisper_vocal": 8,
+    "instrumental_artists": 25
+   },
+   "Latin American": {
+    "candidates": 307,
+    "metadata_instrumental_tag": 3,
+    "whisper_instrumental": 263,
+    "whisper_vocal": 44,
+    "instrumental_artists": 129
+   },
+   "Middle Eastern": {
+    "candidates": 73,
+    "metadata_instrumental_tag": 2,
+    "whisper_instrumental": 63,
+    "whisper_vocal": 10,
+    "instrumental_artists": 24
+   },
+   "Spanish": {
+    "candidates": 67,
+    "metadata_instrumental_tag": 0,
+    "whisper_instrumental": 57,
+    "whisper_vocal": 10,
+    "instrumental_artists": 23
+   }
+  },
+  "mtg": {
+   "tracks": 186,
+   "tag_instrumental": 177,
+   "whisper_instrumental": 177,
+   "tag_and_whisper_instrumental": 168
+  },
+  "fma_tagged_instrumental_flagged_vocal": 29,
+  "fma_tagged_instrumental_total": 978
+ }
+}
