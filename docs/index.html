@@ -79,141 +79,166 @@ select { background: var(--bg3); color: var(--fg); border: 1px solid var(--rule)
 footer { padding: 26px 0 40px; color: var(--mut); font-size: 12.5px; }
 footer li { margin: 3px 0; }
 </style>
-</head>
+<style>
+/* readability pass: bigger text, more space */
+body { font-size: 16.5px; line-height: 1.65; }
+section { padding: 56px 0; }
+.lead { font-size: 1.04rem; max-width: 88ch; margin-top: 10px; }
+.tag { font-size: 1.12rem; }
+ul.bul li { margin: 10px 0; }
+.box { padding: 20px; }
+h2 { margin-bottom: 10px; }
+h3.rh { font-family: var(--serif); font-size: 1.25rem; margin: 40px 0 12px; }
+.cap { font-size: 14px; margin: 10px 0 0; line-height: 1.55; }
+.finding { margin: 26px 0 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--rule); }
+.finding h3 { font-family: var(--serif); font-size: 1.2rem; margin: 0 0 4px; }
+.em { color: var(--hl); font-weight: 600; background: rgba(246,185,59,.10); padding: 0 3px; border-radius: 3px; }
+.dcard .k { font: 500 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--hl); }
+.dcard h3 { margin: 8px 0 6px; font-family: var(--serif); font-size: 1.15rem; }
+.dcard p { margin: 6px 0 0; color: var(--soft); }
+.dcard .meta { font-size: 13px; color: var(--mut); margin-top: 10px; }
+td, th { padding: 8px 10px; }
+ul.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: st; }
+ul.steps li { counter-increment: st; background: var(--bg2); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--soft); }
+ul.steps li::before { content: counter(st); display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: var(--hl); color: var(--bg);
+  font: 600 12px/20px var(--mono); text-align: center; margin-right: 8px; }
+ul.steps li b { color: var(--fg); }
+@media (max-width: 880px) { ul.steps { grid-template-columns: 1fr; } }
+.takeaway { margin: 14px 0 0; padding: 10px 14px; border-left: 3px solid var(--hl); background: rgba(246,185,59,.06); border-radius: 0 8px 8px 0; color: var(--soft); }
+.takeaway b { color: var(--fg); }
+ul.mini { margin: 0; padding-left: 18px; color: var(--soft); }
+ul.mini li { margin: 4px 0; }
+</style></head>
 <body>
 <nav><div class="wrap">
   <span class="brand">Audio Vocab</span>
-  <a href="#story">The story</a><a href="#idea">Probe vs word</a><a href="#data">Data</a>
-  <a href="#f1">Words vs sounds</a><a href="#f2">Laughter vs birds</a><a href="#f3">Emotion</a><a href="#f4">Music</a>
-  <a href="#f5">Vibe Search</a><a href="#which">Which model</a><a href="#business">Business</a><a href="#how">How</a>
+  <a href="#ps">Problem</a><a href="#models">Models</a><a href="#data">Datasets</a><a href="#results">Results</a>
+  <a href="#findings">Findings</a><a href="#which">Which model</a><a href="#business">Business</a><a href="#how">How</a>
 </div></nav>
 
-<section class="hero"><div class="wrap">
-  <div class="kicker"><b>Audio embeddings</b> internal study</div>
-  <h1>What can an audio AI model actually hear, and can typing a word find it?</h1>
+<section class="hero" id="ps"><div class="wrap">
+  <div class="kicker"><b>1</b> the problem</div>
+  <h1>What can an audio embedding model actually hear, and can typing a word find it?</h1>
   <p class="tag" id="p-tagline"></p>
+  <ul class="steps" id="p-story"></ul>
+  <div class="grid2" style="margin-top:16px">
+    <div class="box"><h3 style="margin-top:0">What we found</h3><ul class="bul heads" id="p-headlines"></ul>
+      <p class="takeaway" id="p-takeaway"></p>
+      <p class="mut" style="margin:14px 0 0;font-size:14px"><a href="#results">Charts</a> · <a href="#findings">Findings &amp; conclusions</a> · <a href="#glossary">Glossary</a></p></div>
+    <div class="box"><h3 style="margin-top:0">What the model knows vs what a word finds</h3><div class="legend" id="lg-hero2"></div>
+      <div id="ch-hero2" class="chart" style="min-height:330px"></div><p class="mut cap" id="p-hero-chart-note"></p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="models"><div class="wrap">
+  <div class="kicker"><b>2</b> the models</div>
+  <h2>Two AI models that turn sounds and words into numbers</h2>
+  <p class="lead">Both turn a clip <i>and</i> a sentence into numbers (an <b>embedding</b>). Similar things land close, so words can search sound.</p>
+  <div class="grid2" style="margin-top:16px">
+    <div class="box"><h3 style="margin-top:0;color:var(--s1)">EmbeddingGemma 2 (Gemma): a words model with ears</h3>
+      <ul class="mini"><li>Google's <b>text model with an audio "ear"</b>: audio becomes pseudo-words.</li><li>Strong on <b>speech and meaning</b>; the podcast search runs on it.</li></ul></div>
+    <div class="box"><h3 style="margin-top:0;color:var(--s2)">CLAP: a sound model that learned captions</h3>
+      <ul class="mini"><li>LAION's model trained on <b>sounds paired with captions</b> ("a dog barking").</li><li>Built to match sounds to descriptions; hears the <b>voice itself</b>.</li></ul></div>
+  </div>
+  <p class="lead" style="margin-top:16px"><b>Why two?</b> A second opinion: shared results are general, the rest are quirks. <span class="em">They turned out good at different things.</span></p>
+
+  <h3 class="rh">What the numbers look like: a map of every clip</h3>
   <div class="grid2">
-    <div class="box"><ul class="bul heads" id="p-headlines"></ul>
-      <p class="mut" style="margin:12px 0 0;font-size:13px">New to this? Start with <a href="#story">the story</a> and <a href="#idea">the one idea behind every number</a>. Terms: <a href="#glossary">glossary</a>.</p></div>
-    <div class="box"><h3 style="margin-top:0">Is it in the model vs can a word find it</h3>
-      <div class="legend" id="lg-pz"></div><div id="ch-pz" class="chart" style="min-height:360px"></div>
-      <p class="mut" style="font-size:12.5px;margin:0" id="p-hero-note"></p></div>
+    <div class="box"><h3 style="margin-top:0">Every clip, by sound family (Gemma)</h3><div id="ch-umap" class="chart" style="min-height:420px"></div>
+      <p class="mut cap"><b>How to read:</b> each dot is one clip, flattened from the model's numbers onto a 2-D map (UMAP). Colour = sound family. <span class="em">No labels were used to place the dots: similar sounds cluster on their own.</span>
+      The scattered clumps are emotional speech; each mixes all six emotions, so they group by something else (likely the sentence spoken).</p></div>
+    <div class="box"><h3 style="margin-top:0">Clips and typed words on one map (Gemma)</h3><div id="ch-joint" class="chart" style="min-height:420px"></div>
+      <p class="mut cap"><b>How to read:</b> yellow rings = typed words, dots = clips. <span class="em">Words clump together instead of mixing with the clips they describe</span> (the "modality gap"). Hover to see labels.</p>
+      <p class="mut" style="font-size:13px" id="joint-note"></p></div>
   </div>
-  <div class="box drill" id="drill-pz"></div>
 </div></section>
 
-<section class="alt" id="story"><div class="wrap">
-  <div class="kicker"><b>1</b> the story</div>
-  <h2>Why we did this</h2>
-  <ul class="bul" id="p-story" style="max-width:85ch;margin-top:10px"></ul>
-  <h3 style="margin-top:24px">The two models, and why there are two</h3>
-  <div class="grid2">
-    <div class="box"><h3 style="margin-top:0;color:var(--s1)">EmbeddingGemma 2 (Gemma)</h3>
-      <p style="margin:0;color:var(--soft)">The model the podcast search used, from Google. It's basically a <b>text model with an audio "ear" attached</b>: audio is turned into pseudo-words and fed through the same brain that reads text. Strong on <b>speech</b>.</p></div>
-    <div class="box"><h3 style="margin-top:0;color:var(--s2)">CLAP</h3>
-      <p style="margin:0;color:var(--soft)">An older model from LAION, trained specifically on <b>sound clips paired with captions</b> ("a dog barking", "rain on a roof"). Its whole job is matching sounds to short descriptions.</p></div>
-  </div>
-  <p class="lead" style="margin-top:12px"><b>Why use both?</b> As a second opinion. If both models show the same thing, it's a fact about audio AI in general; if only one does, it's a quirk of that model. It mattered a lot: they're good at <i>different</i> things.</p>
-</div></section>
-
-<section id="idea"><div class="wrap">
-  <div class="kicker"><b>2</b> the one idea behind every number</div>
-  <h2>Two questions we ask of every sound</h2>
-  <p class="lead">Each model turns a clip into a list of numbers. We ask two different questions of those numbers.</p>
-  <div class="grid2" style="margin-top:12px">
-    <div class="box"><h3 style="margin-top:0">Probe: "Is the information <i>in</i> there?"</h3>
-      <p style="margin:0;color:var(--soft)">A <b>probe</b> is a tiny, simple classifier trained on top of the model's numbers. Show it labelled examples of "giggle" and "chuckle"; it learns where the line between them falls; then we test it on clips it has <b>never seen, from different people</b>. The big model is never changed. If the probe is accurate, the model's numbers <b>contain</b> the difference.</p></div>
-    <div class="box"><h3 style="margin-top:0">Zero-shot: "Can a <i>word</i> find it?"</h3>
-      <p style="margin:0;color:var(--soft)">No training at all. Type the word ("a person giggling"), turn it into numbers with the same model, and label each clip by whichever word it's closest to. That's exactly how a <b>search box</b> works. If zero-shot is accurate, <b>words can reach</b> that sound.</p></div>
-  </div>
-  <div class="grid3" style="margin-top:12px">
-    <div class="box"><b style="color:var(--ok)">Probe high, word high</b><p class="mut" style="margin:4px 0 0">The model knows it, and you can search for it with words.</p></div>
-    <div class="box"><b style="color:var(--hl)">Probe high, word low</b><p class="mut" style="margin:4px 0 0"><b>"Knows but can't name"</b>: the information is in the sound numbers, but typing the word doesn't find it.</p></div>
-    <div class="box"><b style="color:var(--bad)">Probe low</b><p class="mut" style="margin:4px 0 0">The model doesn't really hear the difference at all.</p></div>
-  </div>
-  <p class="lead" style="margin-top:12px"><b>Reading the numbers:</b> accuracy = share of test clips labelled correctly. Always compare it with <b>guessing</b>: with two options guessing is right half the time, with fifty options almost never. Every test uses different recordings, speakers or artists than training, so no cheating by recognising the same microphone or person.</p>
-</div></section>
-
-<section class="alt" id="data"><div class="wrap">
-  <div class="kicker"><b>3</b> the data</div>
+<section id="data"><div class="wrap">
+  <div class="kicker"><b>3</b> the datasets</div>
   <h2>Public datasets where every clip already has a correct label</h2>
-  <p class="lead" id="p-data-lead"></p>
-  <div class="scroll" style="margin-top:14px"><table id="tbl-data"></table></div>
+  <ul class="bul" id="p-data-lead"></ul>
+  <div class="grid2" id="ds-cards" style="margin-top:16px"></div>
 </div></section>
 
-<section id="f1"><div class="wrap">
-  <div class="kicker"><b>Finding 1</b> words vs sounds</div>
-  <h2>Gemma hears sounds well, but words barely reach them. CLAP does both.</h2>
-  <ul class="bul" id="p-f1" style="max-width:95ch;margin-top:8px"></ul>
-  <div class="grid2" style="margin-top:14px">
-    <div class="box"><h3 style="margin-top:0">EmbeddingGemma 2: each dot is one sound class</h3><div id="ch-name-gemma" class="chart" style="min-height:380px"></div></div>
-    <div class="box"><h3 style="margin-top:0">CLAP: each dot is one sound class</h3><div id="ch-name-clap" class="chart" style="min-height:380px"></div></div>
+<section class="alt" id="results"><div class="wrap">
+  <div class="kicker"><b>4</b> results</div>
+  <h2>What we measured, and the charts</h2>
+  <div class="grid2" style="margin-top:12px">
+    <div class="box"><b>Probe = "is the information in the model?"</b><p class="mut" style="margin:6px 0 0">A tiny classifier trained on the model's numbers, tested on unseen clips from new people. The model itself is unchanged.</p></div>
+    <div class="box"><b>Zero-shot = "can a typed word find it?"</b><p class="mut" style="margin:6px 0 0">No training: each clip gets the label of the nearest typed word, like a search box.</p></div>
+  </div>
+  <p class="lead" style="margin-top:12px">Probe high, zero-shot low = <span class="em">"knows but can't name"</span>. Always compare against <b>guessing</b>.</p>
+
+  <h3 class="rh">The overview: is it in the model vs can a word find it</h3>
+  <div class="box"><div class="legend" id="lg-pz"></div><div id="ch-pz" class="chart" style="min-height:420px"></div>
+    <p class="mut cap" id="p-hero-note"></p></div>
+  <div class="box drill" id="drill-pz"></div>
+
+  <h3 class="rh">Every sound class, one dot each</h3>
+  <div class="grid2">
+    <div class="box"><h3 style="margin-top:0">Gemma</h3><div id="ch-name-gemma" class="chart" style="min-height:380px"></div></div>
+    <div class="box"><h3 style="margin-top:0">CLAP</h3><div id="ch-name-clap" class="chart" style="min-height:380px"></div></div>
   </div>
   <div class="legend" id="lg-fam"></div>
-  <p class="mut" style="font-size:13px">Right = the probe finds it (it's in the model). Up = typing the word finds it. Dots far below the dotted line = <b>knows but can't name</b>. Hover a dot to see the sound.</p>
-</div></section>
+  <p class="mut cap"><b>How to read:</b> each dot is one sound (dog, rain, giggle…). <b>Right</b> = the probe finds it (it's in the model). <b>Up</b> = typing its name finds it. On the dotted line, both agree; <span class="em">far below the line = the model knows the sound but its name doesn't find it</span>. Hover a dot to see which sound.</p>
 
-<section class="alt" id="f2"><div class="wrap">
-  <div class="kicker"><b>Finding 2</b> laughter vs birds</div>
-  <h2>Laughter types are only roughly separable, and not "better" than birds</h2>
-  <ul class="bul" id="p-f2" style="max-width:95ch;margin-top:8px"></ul>
-  <div class="box" style="margin-top:14px"><h3 style="margin-top:0">Fine distinctions: probe accuracy within each set of similar sounds</h3><div class="legend" id="lg-sib"></div><div id="ch-sib" class="chart" style="min-height:420px"></div>
-    <p class="mut" style="font-size:12.5px;margin:0">Grey tick = guessing for that set. Further right of the tick = finer hearing.</p></div>
-</div></section>
+  <h3 class="rh">Fine distinctions: sets of similar sounds</h3>
+  <div class="box"><div class="legend" id="lg-sib"></div><div id="ch-sib" class="chart" style="min-height:420px"></div>
+    <p class="mut cap"><b>How to read:</b> each row is a set of similar sounds the probe must tell apart (e.g. giggle vs chuckle). The <b>dot</b> is the probe's accuracy (blue = Gemma, orange = CLAP). The <b>horizontal line</b> through a dot is the range we're 95% sure the true accuracy lies in (shorter = more certain). The <b>grey tick</b> is guessing for that set. <span class="em">The further a dot sits to the right of its grey tick, the finer the hearing.</span></p></div>
 
-<section id="f3"><div class="wrap">
-  <div class="kicker"><b>Finding 3</b> emotion</div>
-  <h2>Emotion is in there, but unnameable</h2>
-  <ul class="bul" id="p-f3" style="max-width:95ch;margin-top:8px"></ul>
-  <div class="grid4" style="margin-top:14px" id="emo-tiles"></div>
+  <h3 class="rh">Emotion: who, what or how</h3>
+  <div class="grid4" id="emo-tiles"></div>
   <div class="grid2" style="margin-top:14px">
-    <div class="box"><h3 style="margin-top:0">Who, what or how: probe skill above guessing</h3><div class="legend" id="lg-emo"></div><div id="ch-emo" class="chart" style="min-height:340px"></div></div>
-    <div class="box"><h3 style="margin-top:0">Which emotion the probe picks (Gemma; rows = true emotion)</h3><div id="ch-conf" class="chart" style="min-height:340px"></div></div>
+    <div class="box"><div class="legend" id="lg-emo"></div><div id="ch-emo" class="chart" style="min-height:340px"></div>
+      <p class="mut cap">Bars = how far above guessing a probe gets (0% = guessing, 100% = perfect) at telling the <b>emotion</b>, the <b>sentence</b> or the <b>speaker</b>. "Prosody" = simple loudness/pitch/speed measurements, for comparison.</p></div>
+    <div class="box"><div id="ch-conf" class="chart" style="min-height:340px"></div>
+      <p class="mut cap">Which emotion the Gemma probe picks (rows = the true emotion). The diagonal is correct.</p></div>
   </div>
-</div></section>
 
-<section class="alt" id="f4"><div class="wrap">
-  <div class="kicker"><b>Finding 4</b> music</div>
-  <h2>Genre words partly work; "classical" means tonal sound without drums</h2>
-  <ul class="bul" id="p-f4" style="max-width:95ch;margin-top:8px"></ul>
-  <div class="grid4" style="margin-top:14px" id="music-tiles"></div>
+  <h3 class="rh">Music: can a genre word find the genre?</h3>
+  <div class="grid4" id="music-tiles"></div>
   <div class="grid2" style="margin-top:14px">
-    <div class="box"><h3 style="margin-top:0">Type the genre: share of the nearest tracks that are that genre (Gemma)</h3><div class="legend" id="lg-gen"></div><div id="ch-genre" class="chart" style="min-height:380px"></div></div>
-    <div class="box"><h3 style="margin-top:0">Is it in the model vs can the word find it, per genre</h3><div class="legend" id="lg-gen2"></div><div id="ch-genre2" class="chart" style="min-height:380px"></div></div>
+    <div class="box"><div class="legend" id="lg-gen"></div><div id="ch-genre" class="chart" style="min-height:380px"></div>
+      <p class="mut cap">Type the genre: the share of the nearest tracks that really are that genre (bar), against what random picking would give (yellow tick).</p></div>
+    <div class="box"><div class="legend" id="lg-gen2"></div><div id="ch-genre2" class="chart" style="min-height:380px"></div>
+      <p class="mut cap">Per genre: filled dot = in the model (probe), ring = typed word finds it.</p></div>
   </div>
-  <h3 id="classical" style="margin-top:28px">What makes classical "classical"? We edited the audio and re-measured</h3>
-  <ul class="bul" id="p-f4b" style="max-width:95ch"></ul>
-  <div style="margin:10px 0"><select id="sel-genre"></select> <span class="mut" style="font-size:13px">pick another genre to see its edits</span></div>
-  <p class="lead" id="wm-lead"></p>
+
+  <h3 class="rh" id="classical">What makes classical "classical"? We edited the audio and re-measured</h3>
+  <div style="margin:4px 0 10px"><select id="sel-genre"></select> <span class="mut">pick another genre</span></div>
+  <ul class="bul" id="wm-lead"></ul>
   <div class="grid2">
-    <div class="box"><h3 style="margin-top:0" id="wm-title">Change one thing at a time</h3><div class="legend" id="lg-pert"></div><div id="ch-pert" class="chart" style="min-height:420px"></div></div>
-    <div class="box"><h3 style="margin-top:0">Which measured qualities go with the genre score</h3><div id="ch-feat" class="chart" style="min-height:420px"></div></div>
+    <div class="box"><h3 style="margin-top:0" id="wm-title">Change one thing at a time</h3><div class="legend" id="lg-pert"></div><div id="ch-pert" class="chart" style="min-height:420px"></div>
+      <p class="mut cap"><b>How to read:</b> each row = one edit. <span class="em">Further left = more of the genre signal lost</span>; −100% = all of it.</p></div>
+    <div class="box"><h3 style="margin-top:0">Which sound qualities go with the genre score</h3><div id="ch-feat" class="chart" style="min-height:420px"></div>
+      <p class="mut cap"><b>How to read:</b> bar right = more of this quality, higher genre score. Bar left = more of it, lower score.</p></div>
   </div>
   <div class="grid3" style="margin-top:14px">
     <div class="box"><h3 style="margin-top:0">Same instrument, different genre</h3><div id="wm-inst"></div></div>
     <div class="box"><h3 style="margin-top:0">Words nearest the genre</h3><div id="wm-desc"></div></div>
     <div class="box"><h3 style="margin-top:0">Mistaken for the genre</h3><div class="scroll" id="wm-fp"></div></div>
   </div>
+
+  <h3 class="rh">Back to the podcast search</h3>
+  <div class="box scroll"><table id="tbl-bridge"></table></div>
 </div></section>
 
-<section id="f5"><div class="wrap">
-  <div class="kicker"><b>Finding 5</b> back to Vibe Search</div>
-  <h2>The podcast search's failures sit where the model is weak</h2>
-  <ul class="bul" id="p-f5" style="max-width:95ch;margin-top:8px"></ul>
-  <div class="box scroll" style="margin-top:14px"><table id="tbl-bridge"></table></div>
-  <div class="notobv"><ul id="nb-vibe"></ul></div>
+<section id="findings"><div class="wrap">
+  <div class="kicker"><b>5</b> findings</div>
+  <h2>What it all means</h2>
+  <div class="finding"><h3>Finding 1: Gemma hears sounds well, but words barely reach them. CLAP does both.</h3><ul class="bul" id="p-f1"></ul></div>
+  <div class="finding"><h3>Finding 2: laughter types are only roughly separable, and not "better" than birds</h3><ul class="bul" id="p-f2"></ul></div>
+  <div class="finding"><h3>Finding 3: emotion is in there, but unnameable</h3><ul class="bul" id="p-f3"></ul></div>
+  <div class="finding"><h3>Finding 4: genre words partly work; "classical" means tonal sound without drums</h3><ul class="bul" id="p-f4"></ul><ul class="bul" id="p-f4b"></ul></div>
+  <div class="finding"><h3>Finding 5: the podcast search's failures sit where the model is weak</h3><ul class="bul" id="p-f5"></ul><ul class="bul" id="nb-vibe"></ul></div>
 </div></section>
 
 <section class="alt" id="which"><div class="wrap">
-  <div class="kicker"><b>So what</b> which model for what</div>
-  <h2>Which is better? It depends on the job</h2>
+  <div class="kicker"><b>6</b> conclusions</div>
+  <h2>Which model is better? It depends on the job</h2>
   <div class="box scroll" style="margin-top:12px"><table id="tbl-which"></table></div>
-</div></section>
-
-<section id="business"><div class="wrap">
-  <div class="kicker"><b>So what</b> business sense</div>
-  <h2>Is anything deployable? Yes, a few concrete things, all cheap</h2>
-  <ul class="bul" id="p-business" style="max-width:95ch;margin-top:8px"></ul>
+  <h2 id="business" style="margin-top:34px">Is anything deployable? Yes, a few concrete things, all cheap</h2>
+  <ul class="bul" id="p-business" style="margin-top:10px"></ul>
 </div></section>
 
 <div class="line">That is the result. Everything below is the how.</div>
@@ -221,18 +246,21 @@ footer li { margin: 3px 0; }
 <section id="how"><div class="wrap">
   <div class="kicker"><b>Method</b> glossary, detail and limits</div>
   <h2 id="glossary">Glossary</h2>
-  <ul class="bul" id="p-glossary" style="max-width:95ch;margin-top:8px"></ul>
+  <ul class="bul" id="p-glossary" style="margin-top:8px"></ul>
+
+  <h2 style="margin-top:30px">Dataset details and licences</h2>
+  <div class="scroll" style="margin-top:10px"><table id="tbl-data"></table></div>
 
   <h2 style="margin-top:30px">Technical summary</h2>
   <p class="tag" id="tagline"></p>
   <ul class="bul heads" id="headlines"></ul>
-  <p class="mut" style="font-size:13px" id="scope"></p>
+  <p class="mut" id="scope"></p>
 
   <h2 style="margin-top:30px" id="hear">Resolution by family</h2>
   <p class="lead" id="hear-lead"></p>
   <div class="grid2" style="margin-top:12px">
     <div class="box"><div class="legend" id="lg-hero"></div><div id="ch-hero" class="chart" style="min-height:360px"></div>
-      <div class="mut" style="font-size:12.5px">Click a row to see its classes.</div></div>
+      <div class="mut" style="font-size:13px">Click a row to see its classes.</div></div>
     <div class="box"><h3 style="margin-top:0">Effective vocabulary per family</h3><p class="mut" style="font-size:13px;margin:0" id="vocab-note"></p><div class="scroll"><table id="tbl-vocab"></table></div></div>
   </div>
   <div class="box drill" id="drill-hero"></div>
@@ -273,10 +301,6 @@ footer li { margin: 3px 0; }
   <div class="grid2" style="margin-top:12px">
     <div class="box"><h3 style="margin-top:0">Protocol</h3><ul class="bul" id="how-proto"></ul></div>
     <div class="box"><h3 style="margin-top:0">Limits</h3><ul class="bul" id="how-limits"></ul></div>
-  </div>
-  <div class="grid2" style="margin-top:16px">
-    <div class="box"><h3 style="margin-top:0">Map of all clips (Gemma, UMAP, by family)</h3><div id="ch-umap" class="chart" style="min-height:420px"></div></div>
-    <div class="box"><h3 style="margin-top:0">Joint map: words (rings) and clips</h3><div id="ch-joint" class="chart" style="min-height:420px"></div><p class="mut" style="font-size:13px" id="joint-note"></p></div>
   </div>
   <div class="grid2" style="margin-top:16px">
     <div class="box"><h3 style="margin-top:0">Sanity checks</h3><div class="scroll"><table id="tbl-sanity"></table></div></div>
