@@ -35,11 +35,28 @@
   if (T.p_emo_tiles) T.emo_tiles = T.p_emo_tiles;
   if (T.p_music_tiles) T.music_tiles = T.p_music_tiles;
   text('p-tagline', T.p_tagline); bullets('p-headlines', T.p_headlines); text('p-hero-note', T.p_hero_note);
-  bullets('p-story', T.p_story); text('p-data-lead', T.p_data_lead);
+  bullets('p-story', T.p_story); bullets('p-data-lead', T.p_data_lead);
+  text('p-takeaway', T.p_takeaway); text('p-hero-chart-note', T.p_hero_chart_note);
   ['p_f1', 'p_f2', 'p_f3', 'p_f4', 'p_f4b', 'p_f5', 'p_business', 'p_glossary'].forEach(k => bullets(k.replace('_', '-'), T[k]));
   if ($('tbl-which') && T.p_which) $('tbl-which').innerHTML = '<tr><th>If you want to…</th><th>Use</th><th>Why</th></tr>' +
     T.p_which.map(r => `<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td class="mut">${r[2]}</td></tr>`).join('');
   const PZ = T.pz_rows || [];
+  if (PZ.length) {  // hero dumbbell: probe (dot) vs typed word (ring), one line per model
+    const SHORT = { esc50: 'Everyday sounds', fsd50k: 'Fine sounds', vocalsound: 'Vocal sounds', xenocanto: 'Bird species', cremad: 'Emotion', fma: 'Music genre' };
+    const n = PZ.length, yv = PZ.map((r, i) => n - 1 - i), tr = [];
+    ['gemma', 'clap'].forEach((m, k) => {
+      const nm = m === 'gemma' ? 'Gemma' : 'CLAP', off = k ? -0.17 : 0.17;
+      PZ.forEach((r, i) => tr.push({ type: 'scatter', mode: 'lines', x: [r[m].zs, r[m].probe], y: [yv[i] + off, yv[i] + off], line: { color: C[m], width: 3 }, opacity: .55, hoverinfo: 'skip' }));
+      tr.push({ type: 'scatter', mode: 'markers', x: PZ.map(r => r[m].probe), y: yv.map(v => v + off), text: PZ.map(r => SHORT[r.id] || r.name),
+                marker: { size: 11, color: C[m], line: { color: '#141922', width: 1.5 } }, hovertemplate: '%{text}<br>' + nm + ' probe: %{x:.0%}<extra></extra>' });
+      tr.push({ type: 'scatter', mode: 'markers', x: PZ.map(r => r[m].zs), y: yv.map(v => v + off), text: PZ.map(r => SHORT[r.id] || r.name),
+                marker: { size: 10, color: '#141922', line: { color: C[m], width: 2.5 } }, hovertemplate: '%{text}<br>' + nm + ' typed word: %{x:.0%}<extra></extra>' });
+    });
+    tr.push({ type: 'scatter', mode: 'markers', x: PZ.map(r => r.chance), y: yv, marker: { symbol: 'line-ns-open', size: 28, color: C.mut, line: { width: 1.5 } }, hovertemplate: 'guessing: %{x:.0%}<extra></extra>' });
+    plot('ch-hero2', tr, { height: 330, xaxis: { range: [0, 1.02], tickformat: '.0%', gridcolor: C.rule },
+      yaxis: { tickvals: yv, ticktext: PZ.map(r => SHORT[r.id] || r.name), range: [-0.6, n - 0.4], gridcolor: 'rgba(0,0,0,0)' } });
+    legend('lg-hero2', [['Gemma', C.gemma], ['CLAP', C.clap], ['in the model (probe)', C.soft], ['typed word finds it', C.soft, 'ring'], ['guessing', C.mut]]);
+  }
   if (PZ.length) {
     const y = PZ.map(r => r.name).reverse(), rows = PZ.slice().reverse(), light = { gemma: 'rgba(57,135,229,.35)', clap: 'rgba(217,89,38,.35)' };
     const tr = [];
@@ -114,6 +131,13 @@
         ${cls.map(x => `<tr><td>${esc(lab(x))}</td><td class="n">${pct(g && g.per_class[x].probe)}</td><td class="n">${pct(g && g.per_class[x].zero_shot)}</td><td class="n">${pct(c && c.per_class[x].probe)}</td><td class="n">${pct(c && c.per_class[x].zero_shot)}</td></tr>`).join('')}</table></div>
         ${g && g.pairs_below.length ? `<p class="mut" style="font-size:13px">Pairs Gemma separates below the threshold: ${g.pairs_below.map(p => `${esc(lab(p[0]))} vs ${esc(lab(p[1]))} (${pct(p[2])})`).join('; ')}</p>` : ''}`;
     });
+  }
+
+  if ($('ds-cards') && D.datasets) {
+    const cnt = (D.counts && D.counts.items) || {};
+    $('ds-cards').innerHTML = D.datasets.map(d => `<div class="box dcard"><div class="k">${esc(d.kind || '')}</div><h3>${esc(d.name)}</h3>
+      <p>${d.plain || esc(d.what)}</p><p><b>Why we chose it:</b> ${d.why || ''}</p>
+      <div class="meta">${cnt[d.id] != null ? cnt[d.id].toLocaleString() + ' items used' : ''} · licence: ${esc(d.licence)}</div></div>`).join('');
   }
 
   // ---------- data ----------
@@ -249,7 +273,7 @@
     $('sel-genre').innerHTML = gs.map(g => `<option>${g}</option>`).join('');
     const drawWM = g => {
       text('wm-title', `What makes ${esc(g)} sound "${esc(g)}" to the model?`);
-      text('wm-lead', (T.wm_lead || {})[g]);
+      bullets('wm-lead', (T.wm_lead || {})[g]);
       const r = W8.gemma[g], rc = W8.clap && W8.clap[g], names = Object.keys(r.perturbations.delta);
       const nice = n => ((T.pert_names || {})[n] || W8.perturbations[n] || n);
       // each model's change as a share of its own genre gap (members' score minus others'); raw change if no gap
@@ -266,10 +290,12 @@
       plot('ch-feat', [{ type: 'bar', orientation: 'h', y: fk.map(k => (T.feat_names || {})[k] || k), x: fk.map(k => fe[k].across), marker: { color: fk.map(k => fe[k].across >= 0 ? C.gemma : css('--s5')) }, hovertemplate: '%{y}: ρ = %{x:.2f}<extra></extra>' }],
         { xaxis: { range: [-1, 1], tickformat: '.1f', gridcolor: C.rule, zerolinecolor: C.mut }, yaxis: { autorange: 'reversed' } });
       const I = r.instrument_fixed || {};
-      $('wm-inst').innerHTML = Object.keys(I).length ? `<table><tr><th>Instrument</th><th class="n">AUC (95% CI)</th><th class="n">tracks</th></tr>` + Object.keys(I).map(k => `<tr><td>${k}</td><td class="n">${I[k].auc != null ? f2(I[k].auc) + ` (${f2(I[k].auc_ci[0])}–${f2(I[k].auc_ci[1])})` : '<span class="pill">too few</span>'}</td><td class="n">${I[k].members} vs ${I[k].non_members}</td></tr>`).join('') + '</table>' + `<p class="mut" style="font-size:12.5px">${(T.inst_note || {})[g] || ''}</p>` : '<p class="mut">No MTG-Jamendo tag for this genre.</p>';
+      const pi = I.piano && I.piano.auc != null ? I.piano : null;
+      const instTop = pi ? `<p style="margin:0 0 8px"><b>Piano only:</b> can the ${esc(g)} score tell ${esc(g)} piano from other piano? <span class="em">${pi.auc_ci[0] > .5 ? 'Yes' : 'Not reliably'}</span> (AUC ${f2(pi.auc)}).</p>` : '';
+      $('wm-inst').innerHTML = Object.keys(I).length ? instTop + `<table><tr><th>Instrument</th><th class="n">AUC (95% CI)</th><th class="n">${esc(g)} vs other tracks</th></tr>` + Object.keys(I).map(k => `<tr><td>${k}</td><td class="n">${I[k].auc != null ? f2(I[k].auc) + ` (${f2(I[k].auc_ci[0])}–${f2(I[k].auc_ci[1])})` : '<span class="pill">too few</span>'}</td><td class="n">${I[k].members} vs ${I[k].non_members}</td></tr>`).join('') + '</table>' + `<p class="mut" style="font-size:12.5px">${(T.inst_note || {})[g] || ''}</p>` : '<p class="mut">No MTG-Jamendo tag for this genre.</p>';
       const d = r.descriptors;
-      $('wm-desc').innerHTML = `<p class="mut" style="font-size:12.5px;margin:0">Text side vs audio side agreement: ρ = ${f2(d.spearman_text_vs_audio)}</p><div class="grid2" style="gap:8px;margin-top:6px"><div><b style="font-size:12px">Nearest the word</b><ol style="padding-left:18px;margin:4px 0">${d.top10_text_side.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div><div><b style="font-size:12px">Nearest the sound</b><ol style="padding-left:18px;margin:4px 0">${d.top10_audio_side.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div></div>`;
-      $('wm-fp').innerHTML = `<table><tr><th>Track</th><th>Labelled</th><th class="n">score</th></tr>${r.false_positives.slice(0, 8).map(x => `<tr><td>${esc(x.title || x.track)}<br><span class="mut">${esc(x.artist || '')}</span></td><td>${esc(x.genre)}</td><td class="n">${f2(x.score)}</td></tr>`).join('')}</table>`;
+      $('wm-desc').innerHTML = `<p style="margin:0">Descriptive words closest to the <b>word</b> "${esc(g)}" vs to the <b>sound</b> of ${esc(g)} tracks.</p><p class="mut" style="font-size:12.5px;margin:4px 0 0">Agreement between the two rankings: ρ = ${f2(d.spearman_text_vs_audio)} (1 = same order).</p><div class="grid2" style="gap:8px;margin-top:6px"><div><b style="font-size:12px">Nearest the word</b><ol style="padding-left:18px;margin:4px 0">${d.top10_text_side.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div><div><b style="font-size:12px">Nearest the sound</b><ol style="padding-left:18px;margin:4px 0">${d.top10_audio_side.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div></div>`;
+      $('wm-fp').innerHTML = `<p style="margin:0 0 8px">Other-genre tracks the model rates most "${esc(g)}".</p><table><tr><th>Track</th><th>Really</th><th class="n">${esc(g)} score</th></tr>${r.false_positives.slice(0, 8).map(x => `<tr><td>${esc(x.title || x.track)}<br><span class="mut">${esc(x.artist || '')}</span></td><td>${esc(x.genre)}</td><td class="n">${f2(x.score)}</td></tr>`).join('')}</table>`;
       bullets('nb-wm', (T.nb_wm || {})[g]);
     };
     $('sel-genre').onchange = e => drawWM(e.target.value); drawWM(gs[0]);
@@ -295,8 +321,8 @@
     const fams = D.families.filter(f => U.audio.family.includes(f));
     plot('ch-umap', fams.map(f => { const ix = U.audio.family.map((x, i) => x === f ? i : -1).filter(i => i >= 0);
       return { type: 'scattergl', mode: 'markers', name: FN(f), x: ix.map(i => U.audio.x[i]), y: ix.map(i => U.audio.y[i]), text: ix.map(i => lab(U.audio.label[i]) + ' · ' + DS[U.audio.dataset[i]]),
-        marker: { size: 4, color: FAMC[f], opacity: .7 }, hovertemplate: '%{text}<extra></extra>' }; }),
-      Object.assign({ showlegend: true, legend: { orientation: 'h', y: -0.05, font: { size: 11 } }, margin: { l: 4, r: 4, t: 4, b: 4 } }, view(U.audio.x, U.audio.y)));
+        marker: { size: 5, color: FAMC[f], opacity: .7 }, hovertemplate: '%{text}<extra></extra>' }; }),
+      Object.assign({ showlegend: true, legend: { orientation: 'h', y: -0.05, font: { size: 11 }, itemsizing: 'constant' }, margin: { l: 4, r: 4, t: 4, b: 4 } }, view(U.audio.x, U.audio.y)));
     const J = U.joint, ti = J.is_text.map((t, i) => t ? i : -1).filter(i => i >= 0), ci = J.is_text.map((t, i) => t ? -1 : i).filter(i => i >= 0);
     plot('ch-joint', [
       { type: 'scattergl', mode: 'markers', x: ci.map(i => J.x[i]), y: ci.map(i => J.y[i]), marker: { size: 3, color: ci.map(i => FAMC[J.family[i]] || C.mut), opacity: .5 }, text: ci.map(i => lab(J.label[i])), hovertemplate: '%{text}<extra></extra>' },

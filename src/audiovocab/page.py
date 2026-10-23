@@ -9,14 +9,30 @@ FAMILY_ORDER = ["human_vocal", "speech_emotion", "human_activity", "animal", "na
 FAMILY_NAME = {"human_vocal": "Human vocal", "speech_emotion": "Speech emotion", "human_activity": "Human activity",
                "animal": "Animals", "nature": "Nature", "machine_domestic": "Machines & domestic", "music": "Music"}
 DATASET_CARDS = [
-    {"id": "esc50", "name": "ESC-50", "what": "50 everyday sound classes, 5 s clips, official folds", "licence": "CC BY-NC 3.0", "play": "ESC-10 clips only"},
-    {"id": "fsd50k", "name": "FSD50K (eval)", "what": "AudioSet-ontology sound events incl. giggle vs chuckle", "licence": "per clip CC0/BY/BY-NC", "play": "CC0/BY clips only"},
-    {"id": "vocalsound", "name": "VocalSound", "what": "laughter, sigh, cough, throat-clear, sneeze, sniff; one clip per speaker", "licence": "CC BY-SA 4.0", "play": "yes"},
-    {"id": "xenocanto", "name": "xeno-canto", "what": "17 bird species: cuckoo, 6 owls, doves, hoopoe, songbirds, corvids", "licence": "per recording, no ND", "play": "CC0/BY/BY-SA only"},
-    {"id": "cremad", "name": "CREMA-D", "what": "12 sentences x 6 emotions x 91 actors", "licence": "ODbL / DbCL", "play": "yes"},
-    {"id": "fma", "name": "FMA (fma_large)", "what": "30 s clips; genre + regional subgenres; artist ids", "licence": "per track CC (metadata CC BY)", "play": "CC BY/BY-SA/CC0 only"},
-    {"id": "musopen", "name": "Musopen", "what": "canonical classical: 37 works, symphonies to sonatas", "licence": "Public Domain Mark", "play": "yes"},
-    {"id": "mtg", "name": "MTG-Jamendo", "what": "genre + instrument tags on the same tracks (2 shards)", "licence": "research-only", "play": "no (labels only)"},
+    {"id": "esc50", "name": "ESC-50", "what": "50 everyday sound classes, 5 s clips, official folds", "licence": "CC BY-NC 3.0", "play": "ESC-10 clips only",
+     "kind": "Everyday sounds", "plain": "2,000 five-second clips of 50 everyday sounds: dog, rain, chainsaw, sneeze, clock tick…",
+     "why": "The standard baseline: can it hear everyday sounds at all?"},
+    {"id": "fsd50k", "name": "FSD50K", "what": "AudioSet-ontology sound events incl. giggle vs chuckle", "licence": "per clip CC0/BY/BY-NC", "play": "CC0/BY clips only",
+     "kind": "Fine sound differences", "plain": "Clips in 62 finer classes: giggle vs chuckle, scream vs shout, whisper vs singing, car vs truck…",
+     "why": "The only free dataset with laughter <i>types</i> (giggle, chuckle), so we can test <b>kinds of laughter</b>."},
+    {"id": "vocalsound", "name": "VocalSound", "what": "laughter, sigh, cough, throat-clear, sneeze, sniff; one clip per speaker", "licence": "CC BY-SA 4.0", "play": "yes",
+     "kind": "Human non-speech sounds", "plain": "Laughter, sigh, cough, throat-clear, sneeze, sniff, each from a different person.",
+     "why": "<b>Human sounds without words</b>, from thousands of people, so no single voice to memorise."},
+    {"id": "xenocanto", "name": "xeno-canto", "what": "17 bird species: cuckoo, 6 owls, doves, hoopoe, songbirds, corvids", "licence": "per recording, no ND", "play": "CC0/BY/BY-SA only",
+     "kind": "Bird species", "plain": "Recordings of 17 species: cuckoo, 6 owls, doves, hoopoe, songbirds, crows.",
+     "why": "Answers <b>\"cuckoo vs owl\"</b> directly; the nature side of humans vs nature."},
+    {"id": "cremad", "name": "CREMA-D", "what": "12 sentences x 6 emotions x 91 actors", "licence": "ODbL / DbCL", "play": "yes",
+     "kind": "Emotion in voices", "plain": "91 actors each saying the same 12 sentences in 6 emotions (angry, happy, sad, afraid, disgusted, neutral).",
+     "why": "<b>Same words</b> in every emotion: does it hear <i>how</i> it's said, or only <i>what</i>?"},
+    {"id": "fma", "name": "FMA", "what": "30 s clips; genre + regional subgenres; artist ids", "licence": "per track CC (metadata CC BY)", "play": "CC BY/BY-SA/CC0 only",
+     "kind": "Music by genre and region", "plain": "Thousands of 30-second tracks labelled with genre (jazz, rock, classical…) and region (Brazilian, Indian…).",
+     "why": "Can a <b>genre or region word</b> find music? Sung tracks removed, so lyrics don't help."},
+    {"id": "musopen", "name": "Musopen", "what": "canonical classical: 37 works, symphonies to sonatas", "licence": "Public Domain Mark", "play": "yes",
+     "kind": "Real classical music", "plain": "Recordings of Beethoven, Mozart, Brahms, Schubert… (public domain).",
+     "why": "FMA's \"classical\" is mostly amateur; this checks the <b>real thing</b>."},
+    {"id": "mtg", "name": "MTG-Jamendo", "what": "genre + instrument tags on the same tracks (2 shards)", "licence": "research-only", "play": "no (labels only)",
+     "kind": "Music with instrument labels", "plain": "Tracks tagged with both genre and instrument (piano, guitar…).",
+     "why": "Holds the <b>instrument fixed</b>: is \"classical\" just \"piano\"?"},
 ]
 
 
@@ -91,4 +107,9 @@ def hardcoded_numbers():
     html = re.sub(r"<script.*?</script>|<style.*?</style>|<div class=\"kicker\">.*?</div>", "", html, flags=re.S)  # kickers = section numbering
     text = re.sub(r"<[^>]+>", " ", html)
     text = re.sub(r"EmbeddingGemma 2|Apache 2\.0", "", text)  # names, not findings
+    text = re.sub(r"Finding \d", "", text)  # section labels
+    # "How to read" captions explain chart conventions (95% intervals, 0% = guessing, −100% = all gone), not results
+    html_caps = re.findall(r'<p class="mut cap"[^>]*>(.*?)</p>', html, flags=re.S)
+    for cap in html_caps:
+        text = text.replace(re.sub(r"<[^>]+>", " ", cap), "")
     return re.findall(r"\b\d+(?:[.,]\d+)?%?", text)
