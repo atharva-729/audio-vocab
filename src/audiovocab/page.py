@@ -88,7 +88,7 @@ def build():
 def hardcoded_numbers():
     """The Checkpoint 9 grep: numbers in the visible text of docs/index.html (scripts and styles removed)."""
     html = (path("data").parent / "docs" / "index.html").read_text(encoding="utf-8")
-    html = re.sub(r"<script.*?</script>|<style.*?</style>", "", html, flags=re.S)
+    html = re.sub(r"<script.*?</script>|<style.*?</style>|<div class=\"kicker\">.*?</div>", "", html, flags=re.S)  # kickers = section numbering
     text = re.sub(r"<[^>]+>", " ", html)
     text = re.sub(r"EmbeddingGemma 2|Apache 2\.0", "", text)  # names, not findings
     return re.findall(r"\b\d+(?:[.,]\d+)?%?", text)

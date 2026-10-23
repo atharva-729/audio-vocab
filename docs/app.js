@@ -31,6 +31,49 @@
   const text = (id, s) => { if ($(id) && s != null) $(id).innerHTML = s; };
   const tile = (big, l) => `<div class="box tile"><div class="big">${big}</div><div class="l">${l}</div></div>`;
 
+  // ---------- plain-language layer (EXPLAINED.md structure) ----------
+  if (T.p_emo_tiles) T.emo_tiles = T.p_emo_tiles;
+  if (T.p_music_tiles) T.music_tiles = T.p_music_tiles;
+  text('p-tagline', T.p_tagline); bullets('p-headlines', T.p_headlines); text('p-hero-note', T.p_hero_note);
+  bullets('p-story', T.p_story); text('p-data-lead', T.p_data_lead);
+  ['p_f1', 'p_f2', 'p_f3', 'p_f4', 'p_f4b', 'p_f5', 'p_business', 'p_glossary'].forEach(k => bullets(k.replace('_', '-'), T[k]));
+  if ($('tbl-which') && T.p_which) $('tbl-which').innerHTML = '<tr><th>If you want to…</th><th>Use</th><th>Why</th></tr>' +
+    T.p_which.map(r => `<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td class="mut">${r[2]}</td></tr>`).join('');
+  const PZ = T.pz_rows || [];
+  if (PZ.length) {
+    const y = PZ.map(r => r.name).reverse(), rows = PZ.slice().reverse(), light = { gemma: 'rgba(57,135,229,.35)', clap: 'rgba(217,89,38,.35)' };
+    const tr = [];
+    ['gemma', 'clap'].forEach(m => {
+      const nm = m === 'gemma' ? 'Gemma' : 'CLAP';
+      tr.push({ type: 'bar', orientation: 'h', name: nm + ': probe (in the model)', y, x: rows.map(r => r[m].probe), marker: { color: C[m] }, customdata: rows.map(r => r.id),
+                offsetgroup: m + 'p', hovertemplate: '%{y}<br>' + nm + ' probe: %{x:.0%}<extra></extra>' });
+      tr.push({ type: 'bar', orientation: 'h', name: nm + ': typed word', y, x: rows.map(r => r[m].zs), marker: { color: light[m], line: { color: C[m], width: 1.5 } }, customdata: rows.map(r => r.id),
+                offsetgroup: m + 'z', hovertemplate: '%{y}<br>' + nm + ' typed word: %{x:.0%}<extra></extra>' });
+    });
+    tr.push({ type: 'scatter', mode: 'markers', y, x: rows.map(r => r.chance), marker: { symbol: 'line-ns-open', size: 26, color: C.fg, line: { width: 2 } }, hovertemplate: 'guessing: %{x:.0%}<extra></extra>' });
+    plot('ch-pz', tr, { barmode: 'group', bargap: .25, bargroupgap: .05, xaxis: { range: [0, 1], tickformat: '.0%', gridcolor: C.rule }, height: 420 });
+    legend('lg-pz', [['Gemma: in the model (probe)', C.gemma], ['Gemma: typed word', light.gemma], ['CLAP: in the model (probe)', C.clap], ['CLAP: typed word', light.clap], ['guessing', C.fg]]);
+    $('ch-pz').on && $('ch-pz').on('plotly_click', ev => {
+      const id = ev.points[0].customdata; if (!id) return;
+      const box = $('drill-pz'); box.classList.add('on');
+      const row = PZ.find(r => r.id === id);
+      if (['esc50', 'fsd50k', 'vocalsound', 'xenocanto'].includes(id)) {
+        const g = cls.filter(c => c.model === 'gemma' && c.dataset === id), c = cls.filter(c => c.model === 'clap' && c.dataset === id);
+        const byGap = g.slice().sort((a, b) => (b.probe - b.zero_shot) - (a.probe - a.zero_shot));
+        const cc = l => c.find(x => x.label === l) || {};
+        box.innerHTML = `<h3 style="margin-top:0">${esc(row.name)}: every class, biggest "knows but can't name" first (Gemma)</h3><div class="scroll" style="max-height:360px;overflow:auto"><table><tr><th>Sound</th><th class="n">Gemma probe</th><th class="n">Gemma typed word</th><th class="n">CLAP probe</th><th class="n">CLAP typed word</th></tr>` +
+          byGap.map(x => `<tr><td>${esc(lab(x.label))}</td><td class="n">${pct(x.probe)}</td><td class="n">${pct(x.zero_shot)}</td><td class="n">${pct(cc(x.label).probe)}</td><td class="n">${pct(cc(x.label).zero_shot)}</td></tr>`).join('') + '</table></div>';
+      } else if (id === 'cremad' && D.p6) {
+        box.innerHTML = `<h3 style="margin-top:0">Emotion: found by a probe vs by typing the emotion</h3><table><tr><th>Emotion</th><th class="n">Gemma probe</th><th class="n">Gemma typed</th><th class="n">CLAP probe</th><th class="n">CLAP typed</th></tr>` +
+          D.p6.labels.map(e => `<tr><td>${e}</td><td class="n">${pct(D.p6.gemma.emotion_recall[e])}</td><td class="n">${pct(D.p6.gemma.zero_shot.raw.recall[e])}</td><td class="n">${pct(D.p6.clap.emotion_recall[e])}</td><td class="n">${pct(D.p6.clap.zero_shot.raw.recall[e])}</td></tr>`).join('') + '</table>';
+      } else if (id === 'fma' && D.p7) {
+        const g = D.p7.gemma.genre, z = g.zero_shot[g.best_form], c = D.p7.clap.genre, zc = c.zero_shot[c.best_form];
+        box.innerHTML = `<h3 style="margin-top:0">Music genre: found by a probe vs by typing the genre</h3><table><tr><th>Genre</th><th class="n">Gemma probe</th><th class="n">Gemma typed</th><th class="n">CLAP probe</th><th class="n">CLAP typed</th></tr>` +
+          g.words.map(w => `<tr><td>${w}</td><td class="n">${pct(g.probe_recall[w])}</td><td class="n">${pct(z.recall_report[w])}</td><td class="n">${pct(c.probe_recall[w])}</td><td class="n">${pct(zc.recall_report[w])}</td></tr>`).join('') + '</table>';
+      }
+    });
+  }
+
   // ---------- hero ----------
   text('tagline', T.tagline);
   bullets('headlines', T.headlines);

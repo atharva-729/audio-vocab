@@ -96,4 +96,6 @@ def findings(D):
     T["sibling_rows"] = sibling_rows(D)
     from .findings_text import narrative
     T.update(narrative(D, T))
+    from .findings_plain import plain
+    T.update(plain(D))
     return T
