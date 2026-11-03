@@ -8,7 +8,7 @@ others, and it surfaced two facts about the space:
 - a **modality gap** (words form their own island; centring closes it but loses the vibe);
 - **mechanics, not emotion** (it finds people talking over each other, but not hostility).
 
-This project studies the space directly, on labelled datasets instead of podcasts. It starts from the starting question:
+This project studies the space directly, on labelled datasets instead of podcasts. It starts from one question:
 
 > With words, a dozen synonyms of "love" form a tight cluster. What's the audio equivalent? Are there 50 kinds of
 > laughter the model can tell apart? Can it finely separate types of laughter but barely tell a cuckoo from an owl,
@@ -431,7 +431,7 @@ Show, per genre:
 
 ## Phase 9: Findings page, and the bridge back to Vibe Search
 
-**Goal:** one page a reader can take in in two minutes, with drill-down for the curious.
+**Goal:** one page a technical reader can take in within two minutes, with drill-down for the curious.
 
 1. **Bridge to Vibe Search** (`reports/vibe_search_bridge.json`):
    - Map the sister project's listening-test searches onto these findings, reading its `reports/listening_test.json`
@@ -458,7 +458,7 @@ Show, per genre:
      - English words only.
    - Audio playback only where the licence allows it. Otherwise show labels, not sound.
    - Every number comes from `reports/*.json`. None are typed by hand.
-   - Footer: dataset attributions from `LICENCES.md`, model credits, and "internal prototype".
+   - Footer: dataset attributions from `LICENCES.md`, model credits, and "prototype".
 3. Write `PROJECT_STATUS.md` in the same style as the sister project's: what was built, how it diverged from this
    README, findings, environment notes and open items.
 

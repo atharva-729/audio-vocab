@@ -4,7 +4,7 @@ paths:
   index: index
   runs: runs
   reports: reports
-  sister: ../podcast-vibe-search   # read-only
+  sister: ../podcast-vibe-search   # read-only (relative to this repo)
 
 models:
   # Weights stay in the sister repo (not copied). Run with HF_HUB_OFFLINE=1.
@@ -59,7 +59,7 @@ descriptors:
 
 llm:
   # Only if Phase 5 synonym drafting needs it.
-  base_url: https://llm-gateway.example.com/openai/v1
+  base_url: ""            # OpenAI-compatible endpoint; set it in config.local.yaml (not committed)
   model: gpt-5-mini
   params: {reasoning_effort: minimal}
   daily_budget_usd: 0.80

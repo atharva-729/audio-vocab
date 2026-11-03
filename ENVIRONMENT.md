@@ -15,11 +15,10 @@ marked **(audio-vocab)**.
 - **EmbeddingGemma 2 must run in float32 on CPU.** It loads in bfloat16 by default, which is **12× slower** here. Never
   use fp16 (NaNs, per the model card). Load with `config_kwargs={"vision_config": None}` (audio and text) or also
   `"audio_config": None` (text only, for queries).
-- **Models live in the sister's `models/`** (not copied; absolute paths in `config.yaml`):
+- **Models live in the sister's `models/`** (not copied; relative paths in `config.yaml`):
   `google--embeddinggemma-2`, `laion--clap-htsat-unfused` and `Systran--faster-whisper-small`. Run with
   `HF_HUB_OFFLINE=1` (`config.py` sets it by default).
-- **LLM:** an LLM gateway at **`https://llm-gateway.example.com/openai/v1`** (the `.example.com` host returns a
-  "down" page), model **`gpt-5-mini`** with `reasoning_effort: minimal`, and the token in `LLM_API_KEY` (sent as
+- **LLM:** an OpenAI-compatible LLM gateway; its URL goes in `config.local.yaml` (not committed), model **`gpt-5-mini`** with `reasoning_effort: minimal`, and the token in `LLM_API_KEY` (sent as
   `Bearer <token>:audio-vocab`). The spend guard is $0.80/day, logged in `runs/spend.json`. Calls are cached in
   `runs/cache/`. Not expected to be needed.
 - **Long jobs:** run them detached (`Start-Process`). The sister's overnight run used `runs/overnight.sh`, which also

@@ -28,3 +28,6 @@ data/music_features.parquet
 
 # Colab FSD50K embeddings (derived, 12 MB)
 fsd50k_colab.npz
+
+# Machine-specific overrides (LLM URL, token variable name)
+config.local.yaml

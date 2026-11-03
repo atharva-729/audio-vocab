@@ -161,7 +161,7 @@ Gemma.
    probes for emotion.
 
 **Caveats to say out loud:**
-- These are internal-study results on specific public datasets.
+- These are study results on specific public datasets.
 - Two datasets (ESC-50, MTG-Jamendo) are non-commercial or research-only: fine for this study, but check before
   any commercial product.
 - Some results rest on small samples (e.g. 59 clips for giggle vs chuckle, 16 tracks per genre in the "what makes

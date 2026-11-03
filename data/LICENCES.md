@@ -1,8 +1,8 @@
 # Dataset licences
 
 Verified 2026-10-22 from each dataset's own licence text (files in `data/raw/meta/`, fetched by `audiovocab.meta`).
-This is a working summary for an internal prototype, not legal advice. **Check before any commercial
-or commercial use:** several sources are non-commercial (NC), and this is a non-commercial research study.
+This is a working summary for a prototype, not legal advice. **Check before any commercial use:** several sources
+are non-commercial (NC), and this is a non-commercial research study.
 
 ## How licences are applied in this project
 

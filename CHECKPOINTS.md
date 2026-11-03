@@ -223,7 +223,7 @@ both models. Changes are read as a share of each genre's member-vs-rest gap.
   - The grep check for numbers typed into the HTML's visible text finds **none** (product names like
     "EmbeddingGemma 2" are excluded).
   - Headless-Edge screenshots were checked: charts render, labels fit, and drill-down works.
-  - Attributions, limits and "internal prototype" are in the footer and method section.
+  - Attributions, limits and "prototype" are in the footer and method section.
   - Audio playback is not included (labels only), so no licence question arises on the page.
 - **Bridge** (`reports/vibe_search_bridge.json`):
   - The pre-set rule marks 10 of 12 sister searches as "weak areas", including 6 that scored 3–4 of 4 by ear.

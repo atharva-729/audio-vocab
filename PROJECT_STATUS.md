@@ -91,7 +91,7 @@ vocab page       → docs/data.js (the page reads only this)
   vocal detector, or source separation (out of scope in v1), would sharpen the lyrics-effect and region results.
 - **The effective-vocabulary measure hits its ceiling** at 70%. A stricter threshold would be more informative, but
   it must be fixed before looking.
-- **Licence check:** ESC-50 is CC BY-NC and MTG-Jamendo is research-only. That's fine for this internal study, but
+- **Licence check:** ESC-50 is CC BY-NC and MTG-Jamendo is research-only. That's fine for this non-commercial study, but
   check before any commercial use.
 - **Sister repo:** nothing was changed there. The cross-check (`reports/vibe_search_crosscheck.md`) found no
   problems.
